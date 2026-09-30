@@ -1,0 +1,480 @@
+{
+  "schema_version": 2,
+  "exported_at": "2026-09-30T01:29:44.731Z",
+  "timezone": "Asia/Seoul",
+  "time_unit": "minutes",
+  "record_origin": "user",
+  "plans": [
+    {
+      "id": "ac9cad6d-c16c-4c20-b890-eac7466e6ad2",
+      "title": "ALEPH 과제 진행·검증 정리",
+      "version": 2,
+      "end_date": "2026-10-02",
+      "priority": "high",
+      "created_at": "2026-09-30T01:08:38.158Z",
+      "start_date": "2026-09-16",
+      "updated_at": "2026-09-30T01:08:38.201Z",
+      "description": "이전 ALEPH 과제의 보관 근거를 연결한 공부·과제 진행 계획. 예상 시간은 사용자가 수락한 AI 추천값이며 과거에 사용자가 세운 계획이나 실제 측정 시간이 아니다. T02 본인 플레이·T04 현재 제출 상태 확인·T06 최종 검증은 남은 일로 유지한다.\n[승인 가져오기: t06-previous-coursework-20260930-v1]\n\nAI 구현 기록: 승인된 추천을 가져온 뒤 출처·반올림 규칙을 명확히 하도록 이 설명을 수정했다. 사용자 직접 수정·직접 공부 시간으로 기록하지 않는다. 실행 3건은 과거 도구가 수행한 실제 AI 협업 구간이며 합성 시험값이 아니다. 원자료 130.9693742/53.054/904.712초를 각각 가장 가까운 정수 2/1/15분으로 반올림했다. 원본 시각의 밀리초보다 작은 정밀도는 메모에 그대로 보존한다. 자료의 created_at·수정·완료 처리 시각은 현재 가져오기 시점이며 과거로 바꾸지 않았다.",
+      "record_origin": "user",
+      "expected_minutes": 300,
+      "source_review_id": null,
+      "success_criteria": "이전 과제의 확인된 실행 근거를 보존하고, T02 본인 플레이·T04 제출 상태 확인·T06 앱 검증의 남은 일을 정리한다.",
+      "carried_improvement": ""
+    },
+    {
+      "id": "a38f2070-8f88-413e-b132-58d75ad8f1ae",
+      "title": "ALEPH 남은 검증 마무리",
+      "version": 1,
+      "end_date": "2026-10-02",
+      "priority": "high",
+      "created_at": "2026-09-30T01:22:29.450Z",
+      "start_date": "2026-10-01",
+      "updated_at": "2026-09-30T01:22:29.450Z",
+      "description": "T02 본인 플레이, T04 제출 접수·승인 상태 재확인, T06 최종 검증을 이어간다. 시작 전에 파일 읽기와 검사 실행 권한을 먼저 확인한다. 예상 135분은 이미 채택한 미완료 세 작업의 60+15+60분 합이다.",
+      "record_origin": "user",
+      "expected_minutes": 135,
+      "source_review_id": "0ce0ee26-835e-4d5e-837c-ccbbf146b7b0",
+      "success_criteria": "파일 읽기·검사 실행 가능 여부를 먼저 확인하고, 남은 검증의 실제 근거와 결과를 기록한다.",
+      "carried_improvement": "작업 전에 파일 읽기와 검사 실행 권한부터 확인한다"
+    }
+  ],
+  "tasks": [
+    {
+      "id": "db003817-745a-48d5-90c0-0c80758edcbb",
+      "tags": [
+        "T02",
+        "본인 플레이",
+        "남은 일"
+      ],
+      "notes": "보관 문서에서 실제 A/B 각 10회·총 20회 기록과 최종 난이도 판단이 미확보임을 확인했다. 미완료로 유지한다. 출처: SKT-ALEPH-Project-2-Game/docs/PLAYTEST.md, docs/SUBMISSION.md. 예상 60분은 승인된 AI 추천값이다.\n[가져오기 항목: t06-previous-coursework-20260930-v1/t02-playtest]",
+      "title": "T02 A/B 각 10회 본인 플레이와 CSV 비교",
+      "status": "pending",
+      "plan_id": "ac9cad6d-c16c-4c20-b890-eac7466e6ad2",
+      "version": 1,
+      "due_date": "2026-10-01",
+      "priority": "high",
+      "created_at": "2026-09-30T01:08:38.216Z",
+      "deleted_at": null,
+      "updated_at": "2026-09-30T01:08:38.216Z",
+      "record_origin": "user",
+      "completion_cycle": 0,
+      "expected_minutes": 60
+    },
+    {
+      "id": "1ac41761-944a-465c-96ae-7cdee4d2b9bd",
+      "tags": [
+        "T03",
+        "사용자 확인",
+        "보관 근거"
+      ],
+      "notes": "2026-09-21 사용자가 모든 검사를 직접 수행하고 최종 완성 이미지 3개를 확인했다고 전달한 사실이 보관 문서에 있다. 이 과거 확인 사실을 완료 상태로 가져온다. 실제 시작·종료·소요 시간은 없으므로 실행 기록은 만들지 않는다. 완료 처리 시각은 현재 가져오기 시점이며 과거 체크 버튼 시각이 아니다. 출처: SKT-ALEPH-Project-3-Studio/HANDOFF.md:31, docs/SUBMISSION.md:24. 예상 30분은 승인된 AI 추천값이다.\n[가져오기 항목: t06-previous-coursework-20260930-v1/t03-images]",
+      "title": "T03 완성 이미지 3개 최종 확인",
+      "status": "completed",
+      "plan_id": "ac9cad6d-c16c-4c20-b890-eac7466e6ad2",
+      "version": 2,
+      "due_date": "2026-09-21",
+      "priority": "medium",
+      "created_at": "2026-09-30T01:08:38.231Z",
+      "deleted_at": null,
+      "updated_at": "2026-09-30T01:08:38.233Z",
+      "record_origin": "user",
+      "completion_cycle": 0,
+      "expected_minutes": 30
+    },
+    {
+      "id": "2f88a19f-eb83-4aea-909c-1f1e5843981e",
+      "tags": [
+        "T04",
+        "상태 재확인",
+        "남은 일"
+      ],
+      "notes": "이전 최종 보고서의 검증 결과와 현재 플랫폼 접수·승인 상태는 구분한다. 현재 상태를 다시 확인할 새 작업으로 미완료 유지한다. 출처: SKT-ALEPH-Project-4-Dashboard/docs/FINAL-REPORT.md. 과거 보고서로 현재 승인을 확정하지 않는다. 예상 15분은 승인된 AI 추천값이다.\n[가져오기 항목: t06-previous-coursework-20260930-v1/t04-submission-recheck]",
+      "title": "T04 제출 접수·승인 상태 재확인",
+      "status": "pending",
+      "plan_id": "ac9cad6d-c16c-4c20-b890-eac7466e6ad2",
+      "version": 1,
+      "due_date": "2026-10-01",
+      "priority": "high",
+      "created_at": "2026-09-30T01:08:38.237Z",
+      "deleted_at": null,
+      "updated_at": "2026-09-30T01:08:38.237Z",
+      "record_origin": "user",
+      "completion_cycle": 0,
+      "expected_minutes": 15
+    },
+    {
+      "id": "22f76d33-ade3-4a63-bf7c-cd8129d2937a",
+      "tags": [
+        "T05",
+        "R01 A",
+        "실측 AI 협업"
+      ],
+      "notes": "도구가 실제 수행한 AI 협업 구간. 학생 직접 공부 시간으로 바꾸어 표현하지 않는다. 실험 실행·실패 기록 보존을 완료한 상태이며 T05 과제 전체 통과를 뜻하지 않는다. 고정 검사 8/10, 실패 2건. 원자료 시작 2026-09-29T05:42:21.2135575Z, 종료 2026-09-29T05:44:32.1829317Z, 실측 130.9693742초. 정수 분 반올림 2분. DB 시각은 2026-09-29T05:42:21.213Z~2026-09-29T05:44:32.182Z이며 잘린 소수 정밀도는 이 메모에 보존했다. 출처: SKT-ALEPH-Project-5-Handoff/records/attempts/r01/a-summary.json 및 session-events.json의 A_START/A_END. 예상 45분은 승인된 AI 추천값이다.\n[가져오기 항목: t06-previous-coursework-20260930-v1/t05-r01-a]",
+      "title": "T05 R01 A 실험 실행·실패 기록 보존",
+      "status": "completed",
+      "plan_id": "ac9cad6d-c16c-4c20-b890-eac7466e6ad2",
+      "version": 2,
+      "due_date": "2026-09-29",
+      "priority": "medium",
+      "created_at": "2026-09-30T01:08:38.238Z",
+      "deleted_at": null,
+      "updated_at": "2026-09-30T01:08:38.240Z",
+      "record_origin": "user",
+      "completion_cycle": 0,
+      "expected_minutes": 45
+    },
+    {
+      "id": "eee639b1-e2d9-485d-99fd-9052fece7b36",
+      "tags": [
+        "T05",
+        "R02 A",
+        "실측 AI 협업"
+      ],
+      "notes": "도구가 실제 수행한 AI 협업 구간. 학생 직접 공부 시간으로 바꾸어 표현하지 않는다. A 구현·검사·인수인계를 완료했으며 고정 검사 8/10, S07·S08 실패 2건은 B에 넘겼다. 원자료 시작 2026-09-29T06:17:07.988Z, 종료 2026-09-29T06:18:01.042Z, 실측 53.054초. 정수 분 반올림 1분. 출처: SKT-ALEPH-Project-5-Handoff/records/a-summary.json 및 records/session-events.json의 A_START/A_END. 예상 45분은 승인된 AI 추천값이다.\n[가져오기 항목: t06-previous-coursework-20260930-v1/t05-r02-a]",
+      "title": "T05 R02 A 구현·고정 검사·인수인계",
+      "status": "completed",
+      "plan_id": "ac9cad6d-c16c-4c20-b890-eac7466e6ad2",
+      "version": 2,
+      "due_date": "2026-09-29",
+      "priority": "medium",
+      "created_at": "2026-09-30T01:08:38.243Z",
+      "deleted_at": null,
+      "updated_at": "2026-09-30T01:08:38.244Z",
+      "record_origin": "user",
+      "completion_cycle": 0,
+      "expected_minutes": 45
+    },
+    {
+      "id": "56ebde2e-6910-416c-b04c-63233e442ea4",
+      "tags": [
+        "T05",
+        "R02 B",
+        "실측 AI 협업"
+      ],
+      "notes": "도구가 실제 수행한 AI 협업 구간. 학생 직접 공부 시간으로 바꾸어 표현하지 않는다. B 이어받기·수정·고정 검사 완료, 최종 10/10. 원자료 시작 2026-09-29T06:18:31.937Z, 종료 2026-09-29T06:33:36.649Z, 실측 904.712초. 정수 분 반올림 15분. 출처: SKT-ALEPH-Project-5-Handoff/records/b-summary.json 및 records/session-events.json의 B_START/B_END. 예상 45분은 승인된 AI 추천값이다.\n[가져오기 항목: t06-previous-coursework-20260930-v1/t05-r02-b]",
+      "title": "T05 R02 B 이어받기·수정·고정 검사",
+      "status": "completed",
+      "plan_id": "ac9cad6d-c16c-4c20-b890-eac7466e6ad2",
+      "version": 2,
+      "due_date": "2026-09-29",
+      "priority": "medium",
+      "created_at": "2026-09-30T01:08:38.248Z",
+      "deleted_at": null,
+      "updated_at": "2026-09-30T01:08:38.251Z",
+      "record_origin": "user",
+      "completion_cycle": 0,
+      "expected_minutes": 45
+    },
+    {
+      "id": "61a3a22b-deb8-4078-972f-a704ecdac68d",
+      "tags": [
+        "T06",
+        "최종 검증",
+        "진행 중"
+      ],
+      "notes": "T06 구현·기능 검사와 실제 본인 기록 및 공개 제출 확인을 구분하여 최종 검증한다. 완료했다고 기록하지 않는다. 실제 수행 결과와 사용자 회고는 별도로 확보한다. 예상 60분은 승인된 AI 추천값이다.\n[가져오기 항목: t06-previous-coursework-20260930-v1/t06-final-verification]",
+      "title": "T06 다이어리 본인 기록·최종 검증",
+      "status": "pending",
+      "plan_id": "ac9cad6d-c16c-4c20-b890-eac7466e6ad2",
+      "version": 1,
+      "due_date": "2026-10-02",
+      "priority": "high",
+      "created_at": "2026-09-30T01:08:38.254Z",
+      "deleted_at": null,
+      "updated_at": "2026-09-30T01:08:38.254Z",
+      "record_origin": "user",
+      "completion_cycle": 0,
+      "expected_minutes": 60
+    }
+  ],
+  "reviews": [
+    {
+      "id": "0ce0ee26-835e-4d5e-837c-ccbbf146b7b0",
+      "plan_id": "ac9cad6d-c16c-4c20-b890-eac7466e6ad2",
+      "created_at": "2026-09-30T01:20:29.326Z",
+      "improvement": "작업 전에 파일 읽기와 검사 실행 권한부터 확인한다",
+      "next_plan_id": "a38f2070-8f88-413e-b132-58d75ad8f1ae",
+      "record_origin": "user"
+    }
+  ],
+  "executions": [
+    {
+      "id": "593b290d-e7be-4606-ae60-bf23ade91723",
+      "task_id": "22f76d33-ade3-4a63-bf7c-cd8129d2937a",
+      "ended_at": "2026-09-29T05:44:32.182Z",
+      "created_at": "2026-09-30T01:08:38.255Z",
+      "started_at": "2026-09-29T05:42:21.213Z",
+      "record_origin": "user",
+      "actual_minutes": 2,
+      "blocked_reason": "실제 AI 협업 실행 R01 A: 시작 소스의 공개 URL 사전 등록이 미확인되어 실패를 보존했다. 학생 직접 공부 시간이 아니다. 원본 2026-09-29T05:42:21.2135575Z~2026-09-29T05:44:32.1829317Z, 130.9693742초 → 반올림 2분. 출처: T05 records/attempts/r01/a-summary.json, session-events.json A_START/A_END. [가져오기 실행: t06-previous-coursework-20260930-v1/t05-r01-a-execution]"
+    },
+    {
+      "id": "20e6c277-093e-4278-9b73-083d9ffd5aa5",
+      "task_id": "eee639b1-e2d9-485d-99fd-9052fece7b36",
+      "ended_at": "2026-09-29T06:18:01.042Z",
+      "created_at": "2026-09-30T01:08:38.258Z",
+      "started_at": "2026-09-29T06:17:07.988Z",
+      "record_origin": "user",
+      "actual_minutes": 1,
+      "blocked_reason": "실제 AI 협업 실행 R02 A: S07 결과 없음 안내·S08 검색 지우기 검사 실패 2건을 B 작업으로 인계했다. 학생 직접 공부 시간이 아니다. 원본 2026-09-29T06:17:07.988Z~2026-09-29T06:18:01.042Z, 53.054초 → 반올림 1분. 출처: T05 records/a-summary.json, records/session-events.json A_START/A_END. [가져오기 실행: t06-previous-coursework-20260930-v1/t05-r02-a-execution]"
+    },
+    {
+      "id": "90726015-3859-4a5a-8b63-3ca0601a8614",
+      "task_id": "56ebde2e-6910-416c-b04c-63233e442ea4",
+      "ended_at": "2026-09-29T06:33:36.649Z",
+      "created_at": "2026-09-30T01:08:38.259Z",
+      "started_at": "2026-09-29T06:18:31.937Z",
+      "record_origin": "user",
+      "actual_minutes": 15,
+      "blocked_reason": "실제 AI 협업 실행 R02 B: CLI 읽기 명령 권한 안내가 부족해 추가 요청이 필요했고 해결 후 고정 검사 10/10을 완료했다. 학생 직접 공부 시간이 아니다. 원본 2026-09-29T06:18:31.937Z~2026-09-29T06:33:36.649Z, 904.712초 → 반올림 15분. 출처: T05 records/b-summary.json, records/session-events.json B_START/B_END. [가져오기 실행: t06-previous-coursework-20260930-v1/t05-r02-b-execution]"
+    }
+  ],
+  "plan_history": [
+    {
+      "id": "bc7aa5fe-9ac9-4689-b418-cca33b5cb1cc",
+      "plan_id": "ac9cad6d-c16c-4c20-b890-eac7466e6ad2",
+      "version": 1,
+      "snapshot": {
+        "id": "ac9cad6d-c16c-4c20-b890-eac7466e6ad2",
+        "title": "ALEPH 과제 진행·검증 정리",
+        "version": 1,
+        "end_date": "2026-10-02",
+        "priority": "high",
+        "created_at": "2026-09-30T01:08:38.158Z",
+        "start_date": "2026-09-16",
+        "updated_at": "2026-09-30T01:08:38.158Z",
+        "description": "이전 ALEPH 과제의 보관 근거를 연결한 공부·과제 진행 계획. 예상 시간은 사용자가 수락한 AI 추천값이며 과거에 사용자가 세운 계획이나 실제 측정 시간이 아니다. T02 본인 플레이·T04 현재 제출 상태 확인·T06 최종 검증은 남은 일로 유지한다.\n[승인 가져오기: t06-previous-coursework-20260930-v1]",
+        "record_origin": "user",
+        "expected_minutes": 300,
+        "source_review_id": null,
+        "success_criteria": "이전 과제의 확인된 실행 근거를 보존하고, T02 본인 플레이·T04 제출 상태 확인·T06 앱 검증의 남은 일을 정리한다.",
+        "carried_improvement": ""
+      },
+      "created_at": "2026-09-30T01:08:38.158Z"
+    },
+    {
+      "id": "bb5d98af-8031-4019-b1ec-d672bc968445",
+      "plan_id": "ac9cad6d-c16c-4c20-b890-eac7466e6ad2",
+      "version": 2,
+      "snapshot": {
+        "id": "ac9cad6d-c16c-4c20-b890-eac7466e6ad2",
+        "title": "ALEPH 과제 진행·검증 정리",
+        "version": 2,
+        "end_date": "2026-10-02",
+        "priority": "high",
+        "created_at": "2026-09-30T01:08:38.158Z",
+        "start_date": "2026-09-16",
+        "updated_at": "2026-09-30T01:08:38.201Z",
+        "description": "이전 ALEPH 과제의 보관 근거를 연결한 공부·과제 진행 계획. 예상 시간은 사용자가 수락한 AI 추천값이며 과거에 사용자가 세운 계획이나 실제 측정 시간이 아니다. T02 본인 플레이·T04 현재 제출 상태 확인·T06 최종 검증은 남은 일로 유지한다.\n[승인 가져오기: t06-previous-coursework-20260930-v1]\n\nAI 구현 기록: 승인된 추천을 가져온 뒤 출처·반올림 규칙을 명확히 하도록 이 설명을 수정했다. 사용자 직접 수정·직접 공부 시간으로 기록하지 않는다. 실행 3건은 과거 도구가 수행한 실제 AI 협업 구간이며 합성 시험값이 아니다. 원자료 130.9693742/53.054/904.712초를 각각 가장 가까운 정수 2/1/15분으로 반올림했다. 원본 시각의 밀리초보다 작은 정밀도는 메모에 그대로 보존한다. 자료의 created_at·수정·완료 처리 시각은 현재 가져오기 시점이며 과거로 바꾸지 않았다.",
+        "record_origin": "user",
+        "expected_minutes": 300,
+        "source_review_id": null,
+        "success_criteria": "이전 과제의 확인된 실행 근거를 보존하고, T02 본인 플레이·T04 제출 상태 확인·T06 앱 검증의 남은 일을 정리한다.",
+        "carried_improvement": ""
+      },
+      "created_at": "2026-09-30T01:08:38.201Z"
+    },
+    {
+      "id": "192368bc-b026-49d3-854f-a00a83040834",
+      "plan_id": "a38f2070-8f88-413e-b132-58d75ad8f1ae",
+      "version": 1,
+      "snapshot": {
+        "id": "a38f2070-8f88-413e-b132-58d75ad8f1ae",
+        "title": "ALEPH 남은 검증 마무리",
+        "version": 1,
+        "end_date": "2026-10-02",
+        "priority": "high",
+        "created_at": "2026-09-30T01:22:29.450Z",
+        "start_date": "2026-10-01",
+        "updated_at": "2026-09-30T01:22:29.450Z",
+        "description": "T02 본인 플레이, T04 제출 접수·승인 상태 재확인, T06 최종 검증을 이어간다. 시작 전에 파일 읽기와 검사 실행 권한을 먼저 확인한다. 예상 135분은 이미 채택한 미완료 세 작업의 60+15+60분 합이다.",
+        "record_origin": "user",
+        "expected_minutes": 135,
+        "source_review_id": "0ce0ee26-835e-4d5e-837c-ccbbf146b7b0",
+        "success_criteria": "파일 읽기·검사 실행 가능 여부를 먼저 확인하고, 남은 검증의 실제 근거와 결과를 기록한다.",
+        "carried_improvement": "작업 전에 파일 읽기와 검사 실행 권한부터 확인한다"
+      },
+      "created_at": "2026-09-30T01:22:29.450Z"
+    }
+  ],
+  "request_receipts": [
+    {
+      "action": "task.complete",
+      "response": {
+        "event": {
+          "id": "d92701de-e2af-475c-87f9-42597339043f",
+          "cycle": 0,
+          "task_id": "1ac41761-944a-465c-96ae-7cdee4d2b9bd",
+          "request_id": "7f883acf-fd43-411a-94f7-aae45faf01b8",
+          "completed_at": "2026-09-30T01:08:38.233Z"
+        },
+        "entity": {
+          "id": "1ac41761-944a-465c-96ae-7cdee4d2b9bd",
+          "tags": [
+            "T03",
+            "사용자 확인",
+            "보관 근거"
+          ],
+          "notes": "2026-09-21 사용자가 모든 검사를 직접 수행하고 최종 완성 이미지 3개를 확인했다고 전달한 사실이 보관 문서에 있다. 이 과거 확인 사실을 완료 상태로 가져온다. 실제 시작·종료·소요 시간은 없으므로 실행 기록은 만들지 않는다. 완료 처리 시각은 현재 가져오기 시점이며 과거 체크 버튼 시각이 아니다. 출처: SKT-ALEPH-Project-3-Studio/HANDOFF.md:31, docs/SUBMISSION.md:24. 예상 30분은 승인된 AI 추천값이다.\n[가져오기 항목: t06-previous-coursework-20260930-v1/t03-images]",
+          "title": "T03 완성 이미지 3개 최종 확인",
+          "status": "completed",
+          "plan_id": "ac9cad6d-c16c-4c20-b890-eac7466e6ad2",
+          "version": 2,
+          "due_date": "2026-09-21",
+          "priority": "medium",
+          "created_at": "2026-09-30T01:08:38.231Z",
+          "deleted_at": null,
+          "updated_at": "2026-09-30T01:08:38.233Z",
+          "record_origin": "user",
+          "completion_cycle": 0,
+          "expected_minutes": 30
+        },
+        "changed": true
+      },
+      "created_at": "2026-09-30T01:08:38.233Z",
+      "request_id": "7f883acf-fd43-411a-94f7-aae45faf01b8",
+      "resource_id": "1ac41761-944a-465c-96ae-7cdee4d2b9bd"
+    },
+    {
+      "action": "task.complete",
+      "response": {
+        "event": {
+          "id": "4ebfb1c7-6352-4629-a7fc-d040f607b22a",
+          "cycle": 0,
+          "task_id": "22f76d33-ade3-4a63-bf7c-cd8129d2937a",
+          "request_id": "6a543cf4-6853-4d0e-80eb-33b51b68ab8f",
+          "completed_at": "2026-09-30T01:08:38.240Z"
+        },
+        "entity": {
+          "id": "22f76d33-ade3-4a63-bf7c-cd8129d2937a",
+          "tags": [
+            "T05",
+            "R01 A",
+            "실측 AI 협업"
+          ],
+          "notes": "도구가 실제 수행한 AI 협업 구간. 학생 직접 공부 시간으로 바꾸어 표현하지 않는다. 실험 실행·실패 기록 보존을 완료한 상태이며 T05 과제 전체 통과를 뜻하지 않는다. 고정 검사 8/10, 실패 2건. 원자료 시작 2026-09-29T05:42:21.2135575Z, 종료 2026-09-29T05:44:32.1829317Z, 실측 130.9693742초. 정수 분 반올림 2분. DB 시각은 2026-09-29T05:42:21.213Z~2026-09-29T05:44:32.182Z이며 잘린 소수 정밀도는 이 메모에 보존했다. 출처: SKT-ALEPH-Project-5-Handoff/records/attempts/r01/a-summary.json 및 session-events.json의 A_START/A_END. 예상 45분은 승인된 AI 추천값이다.\n[가져오기 항목: t06-previous-coursework-20260930-v1/t05-r01-a]",
+          "title": "T05 R01 A 실험 실행·실패 기록 보존",
+          "status": "completed",
+          "plan_id": "ac9cad6d-c16c-4c20-b890-eac7466e6ad2",
+          "version": 2,
+          "due_date": "2026-09-29",
+          "priority": "medium",
+          "created_at": "2026-09-30T01:08:38.238Z",
+          "deleted_at": null,
+          "updated_at": "2026-09-30T01:08:38.240Z",
+          "record_origin": "user",
+          "completion_cycle": 0,
+          "expected_minutes": 45
+        },
+        "changed": true
+      },
+      "created_at": "2026-09-30T01:08:38.240Z",
+      "request_id": "6a543cf4-6853-4d0e-80eb-33b51b68ab8f",
+      "resource_id": "22f76d33-ade3-4a63-bf7c-cd8129d2937a"
+    },
+    {
+      "action": "task.complete",
+      "response": {
+        "event": {
+          "id": "7cf67b16-1aee-4ed7-ab5b-745723c9d1cd",
+          "cycle": 0,
+          "task_id": "eee639b1-e2d9-485d-99fd-9052fece7b36",
+          "request_id": "8b114ea2-864a-45c2-bfce-cf60788a9787",
+          "completed_at": "2026-09-30T01:08:38.244Z"
+        },
+        "entity": {
+          "id": "eee639b1-e2d9-485d-99fd-9052fece7b36",
+          "tags": [
+            "T05",
+            "R02 A",
+            "실측 AI 협업"
+          ],
+          "notes": "도구가 실제 수행한 AI 협업 구간. 학생 직접 공부 시간으로 바꾸어 표현하지 않는다. A 구현·검사·인수인계를 완료했으며 고정 검사 8/10, S07·S08 실패 2건은 B에 넘겼다. 원자료 시작 2026-09-29T06:17:07.988Z, 종료 2026-09-29T06:18:01.042Z, 실측 53.054초. 정수 분 반올림 1분. 출처: SKT-ALEPH-Project-5-Handoff/records/a-summary.json 및 records/session-events.json의 A_START/A_END. 예상 45분은 승인된 AI 추천값이다.\n[가져오기 항목: t06-previous-coursework-20260930-v1/t05-r02-a]",
+          "title": "T05 R02 A 구현·고정 검사·인수인계",
+          "status": "completed",
+          "plan_id": "ac9cad6d-c16c-4c20-b890-eac7466e6ad2",
+          "version": 2,
+          "due_date": "2026-09-29",
+          "priority": "medium",
+          "created_at": "2026-09-30T01:08:38.243Z",
+          "deleted_at": null,
+          "updated_at": "2026-09-30T01:08:38.244Z",
+          "record_origin": "user",
+          "completion_cycle": 0,
+          "expected_minutes": 45
+        },
+        "changed": true
+      },
+      "created_at": "2026-09-30T01:08:38.244Z",
+      "request_id": "8b114ea2-864a-45c2-bfce-cf60788a9787",
+      "resource_id": "eee639b1-e2d9-485d-99fd-9052fece7b36"
+    },
+    {
+      "action": "task.complete",
+      "response": {
+        "event": {
+          "id": "e0e5936e-cebb-467a-819f-7f923cbe6318",
+          "cycle": 0,
+          "task_id": "56ebde2e-6910-416c-b04c-63233e442ea4",
+          "request_id": "23df08b6-26e3-4e1b-ba23-63ee3d515005",
+          "completed_at": "2026-09-30T01:08:38.251Z"
+        },
+        "entity": {
+          "id": "56ebde2e-6910-416c-b04c-63233e442ea4",
+          "tags": [
+            "T05",
+            "R02 B",
+            "실측 AI 협업"
+          ],
+          "notes": "도구가 실제 수행한 AI 협업 구간. 학생 직접 공부 시간으로 바꾸어 표현하지 않는다. B 이어받기·수정·고정 검사 완료, 최종 10/10. 원자료 시작 2026-09-29T06:18:31.937Z, 종료 2026-09-29T06:33:36.649Z, 실측 904.712초. 정수 분 반올림 15분. 출처: SKT-ALEPH-Project-5-Handoff/records/b-summary.json 및 records/session-events.json의 B_START/B_END. 예상 45분은 승인된 AI 추천값이다.\n[가져오기 항목: t06-previous-coursework-20260930-v1/t05-r02-b]",
+          "title": "T05 R02 B 이어받기·수정·고정 검사",
+          "status": "completed",
+          "plan_id": "ac9cad6d-c16c-4c20-b890-eac7466e6ad2",
+          "version": 2,
+          "due_date": "2026-09-29",
+          "priority": "medium",
+          "created_at": "2026-09-30T01:08:38.248Z",
+          "deleted_at": null,
+          "updated_at": "2026-09-30T01:08:38.251Z",
+          "record_origin": "user",
+          "completion_cycle": 0,
+          "expected_minutes": 45
+        },
+        "changed": true
+      },
+      "created_at": "2026-09-30T01:08:38.251Z",
+      "request_id": "23df08b6-26e3-4e1b-ba23-63ee3d515005",
+      "resource_id": "56ebde2e-6910-416c-b04c-63233e442ea4"
+    }
+  ],
+  "completion_events": [
+    {
+      "id": "d92701de-e2af-475c-87f9-42597339043f",
+      "cycle": 0,
+      "task_id": "1ac41761-944a-465c-96ae-7cdee4d2b9bd",
+      "request_id": "7f883acf-fd43-411a-94f7-aae45faf01b8",
+      "completed_at": "2026-09-30T01:08:38.233Z"
+    },
+    {
+      "id": "4ebfb1c7-6352-4629-a7fc-d040f607b22a",
+      "cycle": 0,
+      "task_id": "22f76d33-ade3-4a63-bf7c-cd8129d2937a",
+      "request_id": "6a543cf4-6853-4d0e-80eb-33b51b68ab8f",
+      "completed_at": "2026-09-30T01:08:38.240Z"
+    },
+    {
+      "id": "7cf67b16-1aee-4ed7-ab5b-745723c9d1cd",
+      "cycle": 0,
+      "task_id": "eee639b1-e2d9-485d-99fd-9052fece7b36",
+      "request_id": "8b114ea2-864a-45c2-bfce-cf60788a9787",
+      "completed_at": "2026-09-30T01:08:38.244Z"
+    },
+    {
+      "id": "e0e5936e-cebb-467a-819f-7f923cbe6318",
+      "cycle": 0,
+      "task_id": "56ebde2e-6910-416c-b04c-63233e442ea4",
+      "request_id": "23df08b6-26e3-4e1b-ba23-63ee3d515005",
+      "completed_at": "2026-09-30T01:08:38.251Z"
+    }
+  ]
+}

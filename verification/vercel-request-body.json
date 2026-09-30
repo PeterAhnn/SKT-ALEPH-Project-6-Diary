@@ -1,0 +1,71 @@
+{
+  "checked_at": "2026-09-30T01:33:14.779Z",
+  "status": "PASS",
+  "synthetic_test": true,
+  "environment": "Actual installed @vercel/node dev-server wrapper on local Node.js; API module loaded with synthetic example endpoint/key and rejected payloads only",
+  "node_version": "v24.18.0",
+  "runtime_package": "@vercel/node",
+  "runtime_version": "16.0.2",
+  "source_references": [
+    "@vercel/node/dist/index.js: shouldAddHelpers derives from config.helpers",
+    "@vercel/node/dist/dev-server.mjs: main/addHelpers/readBody/restoreBody"
+  ],
+  "documentation": "https://vercel.com/docs/functions/runtimes/node-js",
+  "fix": {
+    "file": "api/index.mjs",
+    "config": {
+      "helpers": false
+    }
+  },
+  "before_default_helpers": {
+    "invalid": {
+      "status": 400,
+      "body": {
+        "ok": false,
+        "error": {
+          "code": "VALIDATION",
+          "message": "입력 형식을 읽을 수 없습니다."
+        }
+      }
+    }
+  },
+  "after_helpers_disabled": {
+    "invalid": {
+      "status": 400,
+      "body": {
+        "ok": false,
+        "error": {
+          "code": "VALIDATION",
+          "message": "계획 제목을(를) 비어 있지 않은 160자 이하의 글로 입력해 주세요."
+        }
+      }
+    },
+    "oversized": {
+      "status": 413,
+      "body": {
+        "ok": false,
+        "error": {
+          "code": "PAYLOAD_TOO_LARGE",
+          "message": "입력 자료가 너무 큽니다. 64KB 이하로 줄여 주세요."
+        }
+      }
+    },
+    "health": {
+      "status": 200,
+      "body": {
+        "ok": true,
+        "storage": "postgres",
+        "authentication": false
+      }
+    }
+  },
+  "checks": {
+    "actual_runtime_wrapper": true,
+    "invalid_json_reaches_field_validation": true,
+    "shared_64kb_limit_413": true,
+    "rewrite_route_health_200": true
+  },
+  "persisted_records_created": 0,
+  "real_cloud_requests": 0,
+  "scope": "No production POST, no real database, no application fixture records. The same adapter/handler remains unchanged."
+}

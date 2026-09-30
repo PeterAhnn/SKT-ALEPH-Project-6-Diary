@@ -1,0 +1,228 @@
+{
+  "checked_at": "2026-09-30T01:29:45.406Z",
+  "base_url": "https://skt-aleph-project-6-diary.vercel.app",
+  "status": "passed",
+  "scope": "Unauthenticated GET root, four static files, health, state twice, and complete export. No writes or DOM interaction.",
+  "limitations": [
+    "HTTP GET and CSP checks do not replace DOM/mobile interaction or console inspection.",
+    "Secret scans cover the recorded response patterns, not every possible secret format.",
+    "Counts and overdue=0 are the approved baseline for 2026-09-30; later user edits or date changes may require updated expectations."
+  ],
+  "request_credentials": "none",
+  "get_requests": 9,
+  "baseline_date": "2026-09-30",
+  "state_today": "2026-09-30",
+  "counts": {
+    "plans": 2,
+    "plan_history": 3,
+    "tasks": 7,
+    "executions": 3,
+    "completion_events": 4,
+    "request_receipts": 4,
+    "reviews": 1
+  },
+  "metrics": {
+    "planned": 7,
+    "completed": 4,
+    "overdue": 0,
+    "blocked": 3,
+    "expected_minutes": 300,
+    "actual_minutes": 18,
+    "delta_minutes": -282
+  },
+  "review_id": "0ce0ee26-835e-4d5e-837c-ccbbf146b7b0",
+  "next_plan_id": "a38f2070-8f88-413e-b132-58d75ad8f1ae",
+  "state_sha256": "c0f8ead9dcf2d3ef78353b1d8c54d445f1f1ae75bca90852b81e573796d4a22a",
+  "repeated_state_sha256": "c0f8ead9dcf2d3ef78353b1d8c54d445f1f1ae75bca90852b81e573796d4a22a",
+  "export_sha256": "ce884e41260a3f7cace2a257b81d7bfb88c47068752147392b77d07691f352be",
+  "checks": {
+    "exact_public_notice": true,
+    "assets_equal": true,
+    "all_static_files_accessible": true,
+    "postgres_health_without_authentication": true,
+    "repeat_state_exactly_equal": true,
+    "counts_equal": true,
+    "timezone_and_minutes_equal": true,
+    "source_plan_metrics_equal": true,
+    "selected_improvement_and_bidirectional_link_equal": true,
+    "export_all_seven_arrays_equal": true,
+    "export_units_equal": true,
+    "no_credentials_or_login_redirects": true,
+    "response_secret_patterns_clear": true
+  },
+  "assets": [
+    {
+      "path": "/index.html",
+      "local_sha256": "c24c277c3ed1e34aeb586de2243d079e7f132f49f3a75a341de918fcf13a1363",
+      "public_sha256": "c24c277c3ed1e34aeb586de2243d079e7f132f49f3a75a341de918fcf13a1363",
+      "equal": true
+    },
+    {
+      "path": "/app.mjs",
+      "local_sha256": "1309fe273059fc144324c43ca914c47225da2bd34e60192ff260842d079f56db",
+      "public_sha256": "1309fe273059fc144324c43ca914c47225da2bd34e60192ff260842d079f56db",
+      "equal": true
+    },
+    {
+      "path": "/core.mjs",
+      "local_sha256": "9026c3bdb3681e549f83b85daf6dec8dc7793ae1794cc20f7b13c6bd7eaed0c2",
+      "public_sha256": "9026c3bdb3681e549f83b85daf6dec8dc7793ae1794cc20f7b13c6bd7eaed0c2",
+      "equal": true
+    },
+    {
+      "path": "/styles.css",
+      "local_sha256": "2ea2177ed46e5e8986ef2818b2900c567d4c92b9006ea385c16dcfdda0446321",
+      "public_sha256": "2ea2177ed46e5e8986ef2818b2900c567d4c92b9006ea385c16dcfdda0446321",
+      "equal": true
+    }
+  ],
+  "responses": [
+    {
+      "path": "/",
+      "method": "GET",
+      "status": 200,
+      "redirected": false,
+      "login_redirect": false,
+      "content_type": "text/html; charset=utf-8",
+      "content_security_policy": "default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self' data:; connect-src 'self'; object-src 'none'; base-uri 'none'; frame-ancestors 'none'; form-action 'self'",
+      "nosniff": true,
+      "cache_control": "no-store"
+    },
+    {
+      "path": "/index.html",
+      "method": "GET",
+      "status": 200,
+      "redirected": false,
+      "login_redirect": false,
+      "content_type": "text/html; charset=utf-8",
+      "content_security_policy": "default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self' data:; connect-src 'self'; object-src 'none'; base-uri 'none'; frame-ancestors 'none'; form-action 'self'",
+      "nosniff": true,
+      "cache_control": "no-store"
+    },
+    {
+      "path": "/app.mjs",
+      "method": "GET",
+      "status": 200,
+      "redirected": false,
+      "login_redirect": false,
+      "content_type": "application/javascript; charset=utf-8",
+      "content_security_policy": "default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self' data:; connect-src 'self'; object-src 'none'; base-uri 'none'; frame-ancestors 'none'; form-action 'self'",
+      "nosniff": true,
+      "cache_control": "no-store"
+    },
+    {
+      "path": "/core.mjs",
+      "method": "GET",
+      "status": 200,
+      "redirected": false,
+      "login_redirect": false,
+      "content_type": "application/javascript; charset=utf-8",
+      "content_security_policy": "default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self' data:; connect-src 'self'; object-src 'none'; base-uri 'none'; frame-ancestors 'none'; form-action 'self'",
+      "nosniff": true,
+      "cache_control": "no-store"
+    },
+    {
+      "path": "/styles.css",
+      "method": "GET",
+      "status": 200,
+      "redirected": false,
+      "login_redirect": false,
+      "content_type": "text/css; charset=utf-8",
+      "content_security_policy": "default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self' data:; connect-src 'self'; object-src 'none'; base-uri 'none'; frame-ancestors 'none'; form-action 'self'",
+      "nosniff": true,
+      "cache_control": "no-store"
+    },
+    {
+      "path": "/api/health",
+      "method": "GET",
+      "status": 200,
+      "redirected": false,
+      "login_redirect": false,
+      "content_type": "application/json; charset=utf-8",
+      "content_security_policy": "default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self' data:; connect-src 'self'; object-src 'none'; base-uri 'none'; frame-ancestors 'none'; form-action 'self'",
+      "nosniff": true,
+      "cache_control": "no-store"
+    },
+    {
+      "path": "/api/state",
+      "method": "GET",
+      "status": 200,
+      "redirected": false,
+      "login_redirect": false,
+      "content_type": "application/json; charset=utf-8",
+      "content_security_policy": "default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self' data:; connect-src 'self'; object-src 'none'; base-uri 'none'; frame-ancestors 'none'; form-action 'self'",
+      "nosniff": true,
+      "cache_control": "no-store"
+    },
+    {
+      "path": "/api/state",
+      "method": "GET",
+      "status": 200,
+      "redirected": false,
+      "login_redirect": false,
+      "content_type": "application/json; charset=utf-8",
+      "content_security_policy": "default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self' data:; connect-src 'self'; object-src 'none'; base-uri 'none'; frame-ancestors 'none'; form-action 'self'",
+      "nosniff": true,
+      "cache_control": "no-store"
+    },
+    {
+      "path": "/api/export",
+      "method": "GET",
+      "status": 200,
+      "redirected": false,
+      "login_redirect": false,
+      "content_type": "application/json; charset=utf-8",
+      "content_security_policy": "default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self' data:; connect-src 'self'; object-src 'none'; base-uri 'none'; frame-ancestors 'none'; form-action 'self'",
+      "nosniff": true,
+      "cache_control": "no-store"
+    }
+  ],
+  "secret_pattern_checks": [
+    {
+      "path": "/",
+      "passed": true,
+      "matched_labels": []
+    },
+    {
+      "path": "/index.html",
+      "passed": true,
+      "matched_labels": []
+    },
+    {
+      "path": "/app.mjs",
+      "passed": true,
+      "matched_labels": []
+    },
+    {
+      "path": "/core.mjs",
+      "passed": true,
+      "matched_labels": []
+    },
+    {
+      "path": "/styles.css",
+      "passed": true,
+      "matched_labels": []
+    },
+    {
+      "path": "/api/health",
+      "passed": true,
+      "matched_labels": []
+    },
+    {
+      "path": "/api/state",
+      "passed": true,
+      "matched_labels": []
+    },
+    {
+      "path": "/api/state",
+      "passed": true,
+      "matched_labels": []
+    },
+    {
+      "path": "/api/export",
+      "passed": true,
+      "matched_labels": []
+    }
+  ],
+  "export_file": "verification/current-export.json"
+}

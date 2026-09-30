@@ -1,0 +1,151 @@
+{
+  "schema_version": 1,
+  "recommendation_id": "t06-previous-coursework-20260930-v1",
+  "approval_scope": "사용자가 이전 과제에서 추천한 계획·할 일·실측 AI 협업 실행 3건의 적용을 승인했다. 예상 시간은 승인된 AI 추천값이다.",
+  "record_origin": "user",
+  "provenance_kind": "user_owned_prior_coursework_with_real_ai_collaboration",
+  "timezone": "Asia/Seoul",
+  "time_unit": "minutes",
+  "rounding": "Math.round(duration_seconds / 60). 원자료 초와 원본 시작·종료 시각은 메모·출처에 별도 보존한다. DB 시각은 UTC ISO 밀리초 정밀도로 정규화한다.",
+  "plan": {
+    "title": "ALEPH 과제 진행·검증 정리",
+    "description": "이전 ALEPH 과제의 보관 근거를 연결한 공부·과제 진행 계획. 예상 시간은 사용자가 수락한 AI 추천값이며 과거에 사용자가 세운 계획이나 실제 측정 시간이 아니다. T02 본인 플레이·T04 현재 제출 상태 확인·T06 최종 검증은 남은 일로 유지한다.\n[승인 가져오기: t06-previous-coursework-20260930-v1]",
+    "start_date": "2026-09-16",
+    "end_date": "2026-10-02",
+    "priority": "high",
+    "success_criteria": "이전 과제의 확인된 실행 근거를 보존하고, T02 본인 플레이·T04 제출 상태 확인·T06 앱 검증의 남은 일을 정리한다.",
+    "expected_minutes": 300
+  },
+  "plan_revision_appendix": "AI 구현 기록: 승인된 추천을 가져온 뒤 출처·반올림 규칙을 명확히 하도록 이 설명을 수정했다. 사용자 직접 수정·직접 공부 시간으로 기록하지 않는다. 실행 3건은 과거 도구가 수행한 실제 AI 협업 구간이며 합성 시험값이 아니다. 원자료 130.9693742/53.054/904.712초를 각각 가장 가까운 정수 2/1/15분으로 반올림했다. 원본 시각의 밀리초보다 작은 정밀도는 메모에 그대로 보존한다. 자료의 created_at·수정·완료 처리 시각은 현재 가져오기 시점이며 과거로 바꾸지 않았다.",
+  "tasks": [
+    {
+      "key": "t02-playtest",
+      "title": "T02 A/B 각 10회 본인 플레이와 CSV 비교",
+      "notes": "보관 문서에서 실제 A/B 각 10회·총 20회 기록과 최종 난이도 판단이 미확보임을 확인했다. 미완료로 유지한다. 출처: SKT-ALEPH-Project-2-Game/docs/PLAYTEST.md, docs/SUBMISSION.md. 예상 60분은 승인된 AI 추천값이다.\n[가져오기 항목: t06-previous-coursework-20260930-v1/t02-playtest]",
+      "due_date": "2026-10-01",
+      "priority": "high",
+      "tags": ["T02", "본인 플레이", "남은 일"],
+      "expected_minutes": 60,
+      "status": "pending",
+      "source_refs": ["t02-playtest-doc", "t02-submission-doc"]
+    },
+    {
+      "key": "t03-images",
+      "title": "T03 완성 이미지 3개 최종 확인",
+      "notes": "2026-09-21 사용자가 모든 검사를 직접 수행하고 최종 완성 이미지 3개를 확인했다고 전달한 사실이 보관 문서에 있다. 이 과거 확인 사실을 완료 상태로 가져온다. 실제 시작·종료·소요 시간은 없으므로 실행 기록은 만들지 않는다. 완료 처리 시각은 현재 가져오기 시점이며 과거 체크 버튼 시각이 아니다. 출처: SKT-ALEPH-Project-3-Studio/HANDOFF.md:31, docs/SUBMISSION.md:24. 예상 30분은 승인된 AI 추천값이다.\n[가져오기 항목: t06-previous-coursework-20260930-v1/t03-images]",
+      "due_date": "2026-09-21",
+      "priority": "medium",
+      "tags": ["T03", "사용자 확인", "보관 근거"],
+      "expected_minutes": 30,
+      "status": "completed",
+      "source_refs": ["t03-handoff-doc", "t03-submission-doc"]
+    },
+    {
+      "key": "t04-submission-recheck",
+      "title": "T04 제출 접수·승인 상태 재확인",
+      "notes": "이전 최종 보고서의 검증 결과와 현재 플랫폼 접수·승인 상태는 구분한다. 현재 상태를 다시 확인할 새 작업으로 미완료 유지한다. 출처: SKT-ALEPH-Project-4-Dashboard/docs/FINAL-REPORT.md. 과거 보고서로 현재 승인을 확정하지 않는다. 예상 15분은 승인된 AI 추천값이다.\n[가져오기 항목: t06-previous-coursework-20260930-v1/t04-submission-recheck]",
+      "due_date": "2026-10-01",
+      "priority": "high",
+      "tags": ["T04", "상태 재확인", "남은 일"],
+      "expected_minutes": 15,
+      "status": "pending",
+      "source_refs": ["t04-final-report-doc"]
+    },
+    {
+      "key": "t05-r01-a",
+      "title": "T05 R01 A 실험 실행·실패 기록 보존",
+      "notes": "도구가 실제 수행한 AI 협업 구간. 학생 직접 공부 시간으로 바꾸어 표현하지 않는다. 실험 실행·실패 기록 보존을 완료한 상태이며 T05 과제 전체 통과를 뜻하지 않는다. 고정 검사 8/10, 실패 2건. 원자료 시작 2026-09-29T05:42:21.2135575Z, 종료 2026-09-29T05:44:32.1829317Z, 실측 130.9693742초. 정수 분 반올림 2분. DB 시각은 2026-09-29T05:42:21.213Z~2026-09-29T05:44:32.182Z이며 잘린 소수 정밀도는 이 메모에 보존했다. 출처: SKT-ALEPH-Project-5-Handoff/records/attempts/r01/a-summary.json 및 session-events.json의 A_START/A_END. 예상 45분은 승인된 AI 추천값이다.\n[가져오기 항목: t06-previous-coursework-20260930-v1/t05-r01-a]",
+      "due_date": "2026-09-29",
+      "priority": "medium",
+      "tags": ["T05", "R01 A", "실측 AI 협업"],
+      "expected_minutes": 45,
+      "status": "completed",
+      "source_refs": ["t05-r01-a-summary", "t05-r01-events"]
+    },
+    {
+      "key": "t05-r02-a",
+      "title": "T05 R02 A 구현·고정 검사·인수인계",
+      "notes": "도구가 실제 수행한 AI 협업 구간. 학생 직접 공부 시간으로 바꾸어 표현하지 않는다. A 구현·검사·인수인계를 완료했으며 고정 검사 8/10, S07·S08 실패 2건은 B에 넘겼다. 원자료 시작 2026-09-29T06:17:07.988Z, 종료 2026-09-29T06:18:01.042Z, 실측 53.054초. 정수 분 반올림 1분. 출처: SKT-ALEPH-Project-5-Handoff/records/a-summary.json 및 records/session-events.json의 A_START/A_END. 예상 45분은 승인된 AI 추천값이다.\n[가져오기 항목: t06-previous-coursework-20260930-v1/t05-r02-a]",
+      "due_date": "2026-09-29",
+      "priority": "medium",
+      "tags": ["T05", "R02 A", "실측 AI 협업"],
+      "expected_minutes": 45,
+      "status": "completed",
+      "source_refs": ["t05-r02-a-summary", "t05-r02-events"]
+    },
+    {
+      "key": "t05-r02-b",
+      "title": "T05 R02 B 이어받기·수정·고정 검사",
+      "notes": "도구가 실제 수행한 AI 협업 구간. 학생 직접 공부 시간으로 바꾸어 표현하지 않는다. B 이어받기·수정·고정 검사 완료, 최종 10/10. 원자료 시작 2026-09-29T06:18:31.937Z, 종료 2026-09-29T06:33:36.649Z, 실측 904.712초. 정수 분 반올림 15분. 출처: SKT-ALEPH-Project-5-Handoff/records/b-summary.json 및 records/session-events.json의 B_START/B_END. 예상 45분은 승인된 AI 추천값이다.\n[가져오기 항목: t06-previous-coursework-20260930-v1/t05-r02-b]",
+      "due_date": "2026-09-29",
+      "priority": "medium",
+      "tags": ["T05", "R02 B", "실측 AI 협업"],
+      "expected_minutes": 45,
+      "status": "completed",
+      "source_refs": ["t05-r02-b-summary", "t05-r02-events"]
+    },
+    {
+      "key": "t06-final-verification",
+      "title": "T06 다이어리 본인 기록·최종 검증",
+      "notes": "T06 구현·기능 검사와 실제 본인 기록 및 공개 제출 확인을 구분하여 최종 검증한다. 완료했다고 기록하지 않는다. 실제 수행 결과와 사용자 회고는 별도로 확보한다. 예상 60분은 승인된 AI 추천값이다.\n[가져오기 항목: t06-previous-coursework-20260930-v1/t06-final-verification]",
+      "due_date": "2026-10-02",
+      "priority": "high",
+      "tags": ["T06", "최종 검증", "진행 중"],
+      "expected_minutes": 60,
+      "status": "pending",
+      "source_refs": []
+    }
+  ],
+  "executions": [
+    {
+      "key": "t05-r01-a-execution",
+      "task_key": "t05-r01-a",
+      "started_at": "2026-09-29T05:42:21.213Z",
+      "ended_at": "2026-09-29T05:44:32.182Z",
+      "actual_minutes": 2,
+      "blocked_reason": "실제 AI 협업 실행 R01 A: 시작 소스의 공개 URL 사전 등록이 미확인되어 실패를 보존했다. 학생 직접 공부 시간이 아니다. 원본 2026-09-29T05:42:21.2135575Z~2026-09-29T05:44:32.1829317Z, 130.9693742초 → 반올림 2분. 출처: T05 records/attempts/r01/a-summary.json, session-events.json A_START/A_END. [가져오기 실행: t06-previous-coursework-20260930-v1/t05-r01-a-execution]",
+      "source_duration_seconds": 130.9693742,
+      "source_started_at": "2026-09-29T05:42:21.2135575Z",
+      "source_ended_at": "2026-09-29T05:44:32.1829317Z",
+      "source_refs": ["t05-r01-a-summary", "t05-r01-events"]
+    },
+    {
+      "key": "t05-r02-a-execution",
+      "task_key": "t05-r02-a",
+      "started_at": "2026-09-29T06:17:07.988Z",
+      "ended_at": "2026-09-29T06:18:01.042Z",
+      "actual_minutes": 1,
+      "blocked_reason": "실제 AI 협업 실행 R02 A: S07 결과 없음 안내·S08 검색 지우기 검사 실패 2건을 B 작업으로 인계했다. 학생 직접 공부 시간이 아니다. 원본 2026-09-29T06:17:07.988Z~2026-09-29T06:18:01.042Z, 53.054초 → 반올림 1분. 출처: T05 records/a-summary.json, records/session-events.json A_START/A_END. [가져오기 실행: t06-previous-coursework-20260930-v1/t05-r02-a-execution]",
+      "source_duration_seconds": 53.054,
+      "source_started_at": "2026-09-29T06:17:07.988Z",
+      "source_ended_at": "2026-09-29T06:18:01.042Z",
+      "source_refs": ["t05-r02-a-summary", "t05-r02-events"]
+    },
+    {
+      "key": "t05-r02-b-execution",
+      "task_key": "t05-r02-b",
+      "started_at": "2026-09-29T06:18:31.937Z",
+      "ended_at": "2026-09-29T06:33:36.649Z",
+      "actual_minutes": 15,
+      "blocked_reason": "실제 AI 협업 실행 R02 B: CLI 읽기 명령 권한 안내가 부족해 추가 요청이 필요했고 해결 후 고정 검사 10/10을 완료했다. 학생 직접 공부 시간이 아니다. 원본 2026-09-29T06:18:31.937Z~2026-09-29T06:33:36.649Z, 904.712초 → 반올림 15분. 출처: T05 records/b-summary.json, records/session-events.json B_START/B_END. [가져오기 실행: t06-previous-coursework-20260930-v1/t05-r02-b-execution]",
+      "source_duration_seconds": 904.712,
+      "source_started_at": "2026-09-29T06:18:31.937Z",
+      "source_ended_at": "2026-09-29T06:33:36.649Z",
+      "source_refs": ["t05-r02-b-summary", "t05-r02-events"]
+    }
+  ],
+  "reviews": [],
+  "baseline_expected": { "planned": 7, "completed": 4, "overdue": 0, "blocked": 3, "expected_minutes": 300, "actual_minutes": 18, "delta_minutes": -282 },
+  "sources": [
+    { "id": "t05-r01-a-summary", "path": "SKT-ALEPH-Project-5-Handoff/records/attempts/r01/a-summary.json", "sha256": "3dfaa791e072615909b1e5091489c5c4b7985f3a54f68529b2fc25a960d547fa" },
+    { "id": "t05-r01-events", "path": "SKT-ALEPH-Project-5-Handoff/records/attempts/r01/session-events.json", "sha256": "fd4cf15d15cf96a00aaf3bd8a730f1f666574f17e9ea887a9d1b5648d745872f" },
+    { "id": "t05-r02-a-summary", "path": "SKT-ALEPH-Project-5-Handoff/records/a-summary.json", "sha256": "0fad3dbca762e7d002a3ee14bcbbb7e951ab0b354e5ac9f424847bd8830694ba" },
+    { "id": "t05-r02-b-summary", "path": "SKT-ALEPH-Project-5-Handoff/records/b-summary.json", "sha256": "a82bbb022444ab0813189b835bead7a3b3e3b3d987efeac1642dd2bb5bf1ad4e" },
+    { "id": "t05-r02-events", "path": "SKT-ALEPH-Project-5-Handoff/records/session-events.json", "sha256": "cd3b38ee986c3310dd626f5b97a8455b7f84dedc3fa49971d976f572da1ee130" },
+    { "id": "t03-handoff-doc", "path": "SKT-ALEPH-Project-3-Studio/HANDOFF.md", "sha256": "818ad4f3274fa1648430e2db6a7158d0197b1cc22cdb4a80ebf9311c31b561b6" },
+    { "id": "t03-submission-doc", "path": "SKT-ALEPH-Project-3-Studio/docs/SUBMISSION.md", "sha256": "218b56b0c6ff158d2b286306531e29f009eb0ebb438086a44ee919d60020abf1" },
+    { "id": "t02-playtest-doc", "path": "SKT-ALEPH-Project-2-Game/docs/PLAYTEST.md", "sha256": "0c1b4d62902a7f55ab06f402d453f3f151e2add6b202c9a778de5e5aaffe248c" },
+    { "id": "t02-submission-doc", "path": "SKT-ALEPH-Project-2-Game/docs/SUBMISSION.md", "sha256": "c00fa43a15791b7437c02edbcabbd3a6572f81510ea469fa074ace7f62522f0d" },
+    { "id": "t04-final-report-doc", "path": "SKT-ALEPH-Project-4-Dashboard/docs/FINAL-REPORT.md", "sha256": "da49b2a17dd3b24586c224e913ace690e4b7ec25d5aad1ca221d79c7137e9e82" }
+  ]
+}

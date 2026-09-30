@@ -1,0 +1,13 @@
+{
+  "name": "skt-aleph-project-6-diary",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "engines": { "node": "24.x" },
+  "scripts": {
+    "start": "node server.mjs",
+    "test": "node --test tests/*.test.mjs",
+    "check": "node scripts/check-source.mjs",
+    "build": "npm run check"
+  }
+}

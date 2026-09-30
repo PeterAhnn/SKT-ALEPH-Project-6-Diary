@@ -1,0 +1,3947 @@
+{
+  "schema_version": 2,
+  "task": "T06",
+  "generated_at": "2026-09-30T01:29:14.158Z",
+  "actual_database": {
+    "engine": "PostgreSQL",
+    "role": "production",
+    "project_id": "yynsaokvquggrbdrmalr",
+    "schema": "public",
+    "source": "Actual Supabase pg_catalog and pg_policies metadata saved in verification/postgres-catalog.json",
+    "introspected_at": "2026-09-30T01:25:54.125Z",
+    "snapshot_sha256": "39bb3b86a1d121d191fc400f0f106648e0cef21b0b1970e43883e52d7a3ede0b",
+    "verification_mode": "Saved actual cloud snapshot; rerunning this generator does not query or reverify the live cloud",
+    "verified_table_count": 7,
+    "verified_field_count": 58
+  },
+  "local_database": {
+    "engine": "SQLite",
+    "role": "local development and isolated synthetic QA",
+    "source": "Read-only PRAGMA introspection of initialized disk DB selected by DIARY_DB_PATH",
+    "introspected_at": "2026-09-30T01:29:14.158Z",
+    "verified_table_count": 7,
+    "verified_field_count": 58
+  },
+  "authentication": false,
+  "public_data_notice": "지금은 로그인이 없어 링크를 아는 사람은 누구나 볼 수 있습니다. 남이 봐도 괜찮은 내용만 넣으세요",
+  "tables": [
+    {
+      "name": "completion_events",
+      "fields": [
+        {
+          "name": "id",
+          "type": "text",
+          "default": null,
+          "nullable": false,
+          "primary_key": true,
+          "ordinal_position": 1
+        },
+        {
+          "name": "task_id",
+          "type": "text",
+          "default": null,
+          "nullable": false,
+          "primary_key": false,
+          "ordinal_position": 2
+        },
+        {
+          "name": "cycle",
+          "type": "integer",
+          "default": null,
+          "nullable": false,
+          "primary_key": false,
+          "ordinal_position": 3
+        },
+        {
+          "name": "request_id",
+          "type": "text",
+          "default": null,
+          "nullable": false,
+          "primary_key": false,
+          "ordinal_position": 4
+        },
+        {
+          "name": "completed_at",
+          "type": "text",
+          "default": null,
+          "nullable": false,
+          "primary_key": false,
+          "ordinal_position": 5
+        }
+      ],
+      "schema": "public",
+      "indexes": [
+        {
+          "name": "completion_events_pkey",
+          "ready": true,
+          "valid": true,
+          "fields": [
+            "id"
+          ],
+          "method": "btree",
+          "unique": true,
+          "primary": true,
+          "predicate": null,
+          "definition": "CREATE UNIQUE INDEX completion_events_pkey ON public.completion_events USING btree (id)"
+        },
+        {
+          "name": "completion_events_request_id_key",
+          "ready": true,
+          "valid": true,
+          "fields": [
+            "request_id"
+          ],
+          "method": "btree",
+          "unique": true,
+          "primary": false,
+          "predicate": null,
+          "definition": "CREATE UNIQUE INDEX completion_events_request_id_key ON public.completion_events USING btree (request_id)"
+        },
+        {
+          "name": "completion_events_task_id_cycle_key",
+          "ready": true,
+          "valid": true,
+          "fields": [
+            "task_id",
+            "cycle"
+          ],
+          "method": "btree",
+          "unique": true,
+          "primary": false,
+          "predicate": null,
+          "definition": "CREATE UNIQUE INDEX completion_events_task_id_cycle_key ON public.completion_events USING btree (task_id, cycle)"
+        }
+      ],
+      "policies": [
+        {
+          "name": "t06_public_insert",
+          "roles": [
+            "anon",
+            "authenticated"
+          ],
+          "using": null,
+          "command": "INSERT",
+          "permissive": "PERMISSIVE",
+          "with_check": "(NOT (( SELECT current_setting('pds.mutation'::text, true) AS current_setting) IS DISTINCT FROM 'enabled'::text))"
+        },
+        {
+          "name": "t06_public_read",
+          "roles": [
+            "anon",
+            "authenticated"
+          ],
+          "using": "true",
+          "command": "SELECT",
+          "permissive": "PERMISSIVE",
+          "with_check": null
+        }
+      ],
+      "rls_forced": false,
+      "constraints": [
+        {
+          "name": "completion_events_cycle_check",
+          "type": "CHECK",
+          "fields": [
+            "cycle"
+          ],
+          "on_delete": null,
+          "on_update": null,
+          "validated": true,
+          "deferrable": false,
+          "definition": "CHECK (cycle >= 0)",
+          "references": null,
+          "initially_deferred": false
+        },
+        {
+          "name": "completion_events_pkey",
+          "type": "PRIMARY KEY",
+          "fields": [
+            "id"
+          ],
+          "on_delete": null,
+          "on_update": null,
+          "validated": true,
+          "deferrable": false,
+          "definition": "PRIMARY KEY (id)",
+          "references": null,
+          "initially_deferred": false
+        },
+        {
+          "name": "completion_events_request_id_check",
+          "type": "CHECK",
+          "fields": [
+            "request_id"
+          ],
+          "on_delete": null,
+          "on_update": null,
+          "validated": true,
+          "deferrable": false,
+          "definition": "CHECK (char_length(request_id) >= 1 AND char_length(request_id) <= 128)",
+          "references": null,
+          "initially_deferred": false
+        },
+        {
+          "name": "completion_events_request_id_key",
+          "type": "UNIQUE",
+          "fields": [
+            "request_id"
+          ],
+          "on_delete": null,
+          "on_update": null,
+          "validated": true,
+          "deferrable": false,
+          "definition": "UNIQUE (request_id)",
+          "references": null,
+          "initially_deferred": false
+        },
+        {
+          "name": "completion_events_task_id_cycle_key",
+          "type": "UNIQUE",
+          "fields": [
+            "task_id",
+            "cycle"
+          ],
+          "on_delete": null,
+          "on_update": null,
+          "validated": true,
+          "deferrable": false,
+          "definition": "UNIQUE (task_id, cycle)",
+          "references": null,
+          "initially_deferred": false
+        },
+        {
+          "name": "completion_events_task_id_fkey",
+          "type": "FOREIGN KEY",
+          "fields": [
+            "task_id"
+          ],
+          "on_delete": "NO ACTION",
+          "on_update": "NO ACTION",
+          "validated": true,
+          "deferrable": false,
+          "definition": "FOREIGN KEY (task_id) REFERENCES tasks(id)",
+          "references": {
+            "table": "tasks",
+            "fields": [
+              "id"
+            ],
+            "schema": "public"
+          },
+          "initially_deferred": false
+        }
+      ],
+      "rls_enabled": true,
+      "public_role_privileges": [
+        {
+          "role": "anon",
+          "grantable": "NO",
+          "privilege": "INSERT"
+        },
+        {
+          "role": "anon",
+          "grantable": "NO",
+          "privilege": "SELECT"
+        },
+        {
+          "role": "authenticated",
+          "grantable": "NO",
+          "privilege": "INSERT"
+        },
+        {
+          "role": "authenticated",
+          "grantable": "NO",
+          "privilege": "SELECT"
+        }
+      ],
+      "primary_key": {
+        "name": "completion_events_pkey",
+        "type": "PRIMARY KEY",
+        "fields": [
+          "id"
+        ],
+        "on_delete": null,
+        "on_update": null,
+        "validated": true,
+        "deferrable": false,
+        "definition": "PRIMARY KEY (id)",
+        "references": null,
+        "initially_deferred": false
+      },
+      "foreign_keys": [
+        {
+          "name": "completion_events_task_id_fkey",
+          "fields": [
+            "task_id"
+          ],
+          "field": "task_id",
+          "references": {
+            "table": "tasks",
+            "fields": [
+              "id"
+            ],
+            "schema": "public",
+            "field": "id"
+          },
+          "on_delete": "NO ACTION",
+          "on_update": "NO ACTION",
+          "deferrable": false,
+          "initially_deferred": false
+        }
+      ],
+      "checks": [
+        {
+          "name": "completion_events_cycle_check",
+          "type": "CHECK",
+          "fields": [
+            "cycle"
+          ],
+          "on_delete": null,
+          "on_update": null,
+          "validated": true,
+          "deferrable": false,
+          "definition": "CHECK (cycle >= 0)",
+          "references": null,
+          "initially_deferred": false
+        },
+        {
+          "name": "completion_events_request_id_check",
+          "type": "CHECK",
+          "fields": [
+            "request_id"
+          ],
+          "on_delete": null,
+          "on_update": null,
+          "validated": true,
+          "deferrable": false,
+          "definition": "CHECK (char_length(request_id) >= 1 AND char_length(request_id) <= 128)",
+          "references": null,
+          "initially_deferred": false
+        }
+      ],
+      "unique_indexes": [
+        {
+          "name": "completion_events_pkey",
+          "ready": true,
+          "valid": true,
+          "fields": [
+            "id"
+          ],
+          "method": "btree",
+          "unique": true,
+          "primary": true,
+          "predicate": null,
+          "definition": "CREATE UNIQUE INDEX completion_events_pkey ON public.completion_events USING btree (id)"
+        },
+        {
+          "name": "completion_events_request_id_key",
+          "ready": true,
+          "valid": true,
+          "fields": [
+            "request_id"
+          ],
+          "method": "btree",
+          "unique": true,
+          "primary": false,
+          "predicate": null,
+          "definition": "CREATE UNIQUE INDEX completion_events_request_id_key ON public.completion_events USING btree (request_id)"
+        },
+        {
+          "name": "completion_events_task_id_cycle_key",
+          "ready": true,
+          "valid": true,
+          "fields": [
+            "task_id",
+            "cycle"
+          ],
+          "method": "btree",
+          "unique": true,
+          "primary": false,
+          "predicate": null,
+          "definition": "CREATE UNIQUE INDEX completion_events_task_id_cycle_key ON public.completion_events USING btree (task_id, cycle)"
+        }
+      ]
+    },
+    {
+      "name": "executions",
+      "fields": [
+        {
+          "name": "id",
+          "type": "text",
+          "default": null,
+          "nullable": false,
+          "primary_key": true,
+          "ordinal_position": 1
+        },
+        {
+          "name": "task_id",
+          "type": "text",
+          "default": null,
+          "nullable": false,
+          "primary_key": false,
+          "ordinal_position": 2
+        },
+        {
+          "name": "started_at",
+          "type": "text",
+          "default": null,
+          "nullable": false,
+          "primary_key": false,
+          "ordinal_position": 3
+        },
+        {
+          "name": "ended_at",
+          "type": "text",
+          "default": null,
+          "nullable": false,
+          "primary_key": false,
+          "ordinal_position": 4
+        },
+        {
+          "name": "actual_minutes",
+          "type": "integer",
+          "default": null,
+          "nullable": false,
+          "primary_key": false,
+          "ordinal_position": 5
+        },
+        {
+          "name": "blocked_reason",
+          "type": "text",
+          "default": "''::text",
+          "nullable": false,
+          "primary_key": false,
+          "ordinal_position": 6
+        },
+        {
+          "name": "record_origin",
+          "type": "text",
+          "default": "'user'::text",
+          "nullable": false,
+          "primary_key": false,
+          "ordinal_position": 7
+        },
+        {
+          "name": "created_at",
+          "type": "text",
+          "default": null,
+          "nullable": false,
+          "primary_key": false,
+          "ordinal_position": 8
+        }
+      ],
+      "schema": "public",
+      "indexes": [
+        {
+          "name": "executions_pkey",
+          "ready": true,
+          "valid": true,
+          "fields": [
+            "id"
+          ],
+          "method": "btree",
+          "unique": true,
+          "primary": true,
+          "predicate": null,
+          "definition": "CREATE UNIQUE INDEX executions_pkey ON public.executions USING btree (id)"
+        },
+        {
+          "name": "executions_task",
+          "ready": true,
+          "valid": true,
+          "fields": [
+            "task_id"
+          ],
+          "method": "btree",
+          "unique": false,
+          "primary": false,
+          "predicate": null,
+          "definition": "CREATE INDEX executions_task ON public.executions USING btree (task_id)"
+        }
+      ],
+      "policies": [
+        {
+          "name": "t06_public_insert",
+          "roles": [
+            "anon",
+            "authenticated"
+          ],
+          "using": null,
+          "command": "INSERT",
+          "permissive": "PERMISSIVE",
+          "with_check": "(NOT (( SELECT current_setting('pds.mutation'::text, true) AS current_setting) IS DISTINCT FROM 'enabled'::text))"
+        },
+        {
+          "name": "t06_public_read",
+          "roles": [
+            "anon",
+            "authenticated"
+          ],
+          "using": "true",
+          "command": "SELECT",
+          "permissive": "PERMISSIVE",
+          "with_check": null
+        }
+      ],
+      "rls_forced": false,
+      "constraints": [
+        {
+          "name": "executions_actual_minutes_check",
+          "type": "CHECK",
+          "fields": [
+            "actual_minutes"
+          ],
+          "on_delete": null,
+          "on_update": null,
+          "validated": true,
+          "deferrable": false,
+          "definition": "CHECK (actual_minutes >= 0 AND actual_minutes <= 1000000)",
+          "references": null,
+          "initially_deferred": false
+        },
+        {
+          "name": "executions_blocked_reason_check",
+          "type": "CHECK",
+          "fields": [
+            "blocked_reason"
+          ],
+          "on_delete": null,
+          "on_update": null,
+          "validated": true,
+          "deferrable": false,
+          "definition": "CHECK (char_length(blocked_reason) <= 4000)",
+          "references": null,
+          "initially_deferred": false
+        },
+        {
+          "name": "executions_check",
+          "type": "CHECK",
+          "fields": [
+            "ended_at",
+            "started_at"
+          ],
+          "on_delete": null,
+          "on_update": null,
+          "validated": true,
+          "deferrable": false,
+          "definition": "CHECK (ended_at >= started_at)",
+          "references": null,
+          "initially_deferred": false
+        },
+        {
+          "name": "executions_pkey",
+          "type": "PRIMARY KEY",
+          "fields": [
+            "id"
+          ],
+          "on_delete": null,
+          "on_update": null,
+          "validated": true,
+          "deferrable": false,
+          "definition": "PRIMARY KEY (id)",
+          "references": null,
+          "initially_deferred": false
+        },
+        {
+          "name": "executions_record_origin_check",
+          "type": "CHECK",
+          "fields": [
+            "record_origin"
+          ],
+          "on_delete": null,
+          "on_update": null,
+          "validated": true,
+          "deferrable": false,
+          "definition": "CHECK (record_origin = 'user'::text)",
+          "references": null,
+          "initially_deferred": false
+        },
+        {
+          "name": "executions_task_id_fkey",
+          "type": "FOREIGN KEY",
+          "fields": [
+            "task_id"
+          ],
+          "on_delete": "NO ACTION",
+          "on_update": "NO ACTION",
+          "validated": true,
+          "deferrable": false,
+          "definition": "FOREIGN KEY (task_id) REFERENCES tasks(id)",
+          "references": {
+            "table": "tasks",
+            "fields": [
+              "id"
+            ],
+            "schema": "public"
+          },
+          "initially_deferred": false
+        }
+      ],
+      "rls_enabled": true,
+      "public_role_privileges": [
+        {
+          "role": "anon",
+          "grantable": "NO",
+          "privilege": "INSERT"
+        },
+        {
+          "role": "anon",
+          "grantable": "NO",
+          "privilege": "SELECT"
+        },
+        {
+          "role": "authenticated",
+          "grantable": "NO",
+          "privilege": "INSERT"
+        },
+        {
+          "role": "authenticated",
+          "grantable": "NO",
+          "privilege": "SELECT"
+        }
+      ],
+      "primary_key": {
+        "name": "executions_pkey",
+        "type": "PRIMARY KEY",
+        "fields": [
+          "id"
+        ],
+        "on_delete": null,
+        "on_update": null,
+        "validated": true,
+        "deferrable": false,
+        "definition": "PRIMARY KEY (id)",
+        "references": null,
+        "initially_deferred": false
+      },
+      "foreign_keys": [
+        {
+          "name": "executions_task_id_fkey",
+          "fields": [
+            "task_id"
+          ],
+          "field": "task_id",
+          "references": {
+            "table": "tasks",
+            "fields": [
+              "id"
+            ],
+            "schema": "public",
+            "field": "id"
+          },
+          "on_delete": "NO ACTION",
+          "on_update": "NO ACTION",
+          "deferrable": false,
+          "initially_deferred": false
+        }
+      ],
+      "checks": [
+        {
+          "name": "executions_actual_minutes_check",
+          "type": "CHECK",
+          "fields": [
+            "actual_minutes"
+          ],
+          "on_delete": null,
+          "on_update": null,
+          "validated": true,
+          "deferrable": false,
+          "definition": "CHECK (actual_minutes >= 0 AND actual_minutes <= 1000000)",
+          "references": null,
+          "initially_deferred": false
+        },
+        {
+          "name": "executions_blocked_reason_check",
+          "type": "CHECK",
+          "fields": [
+            "blocked_reason"
+          ],
+          "on_delete": null,
+          "on_update": null,
+          "validated": true,
+          "deferrable": false,
+          "definition": "CHECK (char_length(blocked_reason) <= 4000)",
+          "references": null,
+          "initially_deferred": false
+        },
+        {
+          "name": "executions_check",
+          "type": "CHECK",
+          "fields": [
+            "ended_at",
+            "started_at"
+          ],
+          "on_delete": null,
+          "on_update": null,
+          "validated": true,
+          "deferrable": false,
+          "definition": "CHECK (ended_at >= started_at)",
+          "references": null,
+          "initially_deferred": false
+        },
+        {
+          "name": "executions_record_origin_check",
+          "type": "CHECK",
+          "fields": [
+            "record_origin"
+          ],
+          "on_delete": null,
+          "on_update": null,
+          "validated": true,
+          "deferrable": false,
+          "definition": "CHECK (record_origin = 'user'::text)",
+          "references": null,
+          "initially_deferred": false
+        }
+      ],
+      "unique_indexes": [
+        {
+          "name": "executions_pkey",
+          "ready": true,
+          "valid": true,
+          "fields": [
+            "id"
+          ],
+          "method": "btree",
+          "unique": true,
+          "primary": true,
+          "predicate": null,
+          "definition": "CREATE UNIQUE INDEX executions_pkey ON public.executions USING btree (id)"
+        }
+      ]
+    },
+    {
+      "name": "plan_history",
+      "fields": [
+        {
+          "name": "id",
+          "type": "text",
+          "default": null,
+          "nullable": false,
+          "primary_key": true,
+          "ordinal_position": 1
+        },
+        {
+          "name": "plan_id",
+          "type": "text",
+          "default": null,
+          "nullable": false,
+          "primary_key": false,
+          "ordinal_position": 2
+        },
+        {
+          "name": "version",
+          "type": "integer",
+          "default": null,
+          "nullable": false,
+          "primary_key": false,
+          "ordinal_position": 3
+        },
+        {
+          "name": "snapshot_json",
+          "type": "text",
+          "default": null,
+          "nullable": false,
+          "primary_key": false,
+          "ordinal_position": 4
+        },
+        {
+          "name": "created_at",
+          "type": "text",
+          "default": null,
+          "nullable": false,
+          "primary_key": false,
+          "ordinal_position": 5
+        }
+      ],
+      "schema": "public",
+      "indexes": [
+        {
+          "name": "plan_history_pkey",
+          "ready": true,
+          "valid": true,
+          "fields": [
+            "id"
+          ],
+          "method": "btree",
+          "unique": true,
+          "primary": true,
+          "predicate": null,
+          "definition": "CREATE UNIQUE INDEX plan_history_pkey ON public.plan_history USING btree (id)"
+        },
+        {
+          "name": "plan_history_plan_id_version_key",
+          "ready": true,
+          "valid": true,
+          "fields": [
+            "plan_id",
+            "version"
+          ],
+          "method": "btree",
+          "unique": true,
+          "primary": false,
+          "predicate": null,
+          "definition": "CREATE UNIQUE INDEX plan_history_plan_id_version_key ON public.plan_history USING btree (plan_id, version)"
+        }
+      ],
+      "policies": [
+        {
+          "name": "t06_public_insert",
+          "roles": [
+            "anon",
+            "authenticated"
+          ],
+          "using": null,
+          "command": "INSERT",
+          "permissive": "PERMISSIVE",
+          "with_check": "(NOT (( SELECT current_setting('pds.mutation'::text, true) AS current_setting) IS DISTINCT FROM 'enabled'::text))"
+        },
+        {
+          "name": "t06_public_read",
+          "roles": [
+            "anon",
+            "authenticated"
+          ],
+          "using": "true",
+          "command": "SELECT",
+          "permissive": "PERMISSIVE",
+          "with_check": null
+        }
+      ],
+      "rls_forced": false,
+      "constraints": [
+        {
+          "name": "plan_history_pkey",
+          "type": "PRIMARY KEY",
+          "fields": [
+            "id"
+          ],
+          "on_delete": null,
+          "on_update": null,
+          "validated": true,
+          "deferrable": false,
+          "definition": "PRIMARY KEY (id)",
+          "references": null,
+          "initially_deferred": false
+        },
+        {
+          "name": "plan_history_plan_id_fkey",
+          "type": "FOREIGN KEY",
+          "fields": [
+            "plan_id"
+          ],
+          "on_delete": "NO ACTION",
+          "on_update": "NO ACTION",
+          "validated": true,
+          "deferrable": false,
+          "definition": "FOREIGN KEY (plan_id) REFERENCES plans(id)",
+          "references": {
+            "table": "plans",
+            "fields": [
+              "id"
+            ],
+            "schema": "public"
+          },
+          "initially_deferred": false
+        },
+        {
+          "name": "plan_history_plan_id_version_key",
+          "type": "UNIQUE",
+          "fields": [
+            "plan_id",
+            "version"
+          ],
+          "on_delete": null,
+          "on_update": null,
+          "validated": true,
+          "deferrable": false,
+          "definition": "UNIQUE (plan_id, version)",
+          "references": null,
+          "initially_deferred": false
+        },
+        {
+          "name": "plan_history_snapshot_json_check",
+          "type": "CHECK",
+          "fields": [
+            "snapshot_json"
+          ],
+          "on_delete": null,
+          "on_update": null,
+          "validated": true,
+          "deferrable": false,
+          "definition": "CHECK (jsonb_typeof(snapshot_json::jsonb) = 'object'::text)",
+          "references": null,
+          "initially_deferred": false
+        },
+        {
+          "name": "plan_history_version_check",
+          "type": "CHECK",
+          "fields": [
+            "version"
+          ],
+          "on_delete": null,
+          "on_update": null,
+          "validated": true,
+          "deferrable": false,
+          "definition": "CHECK (version >= 1)",
+          "references": null,
+          "initially_deferred": false
+        }
+      ],
+      "rls_enabled": true,
+      "public_role_privileges": [
+        {
+          "role": "anon",
+          "grantable": "NO",
+          "privilege": "INSERT"
+        },
+        {
+          "role": "anon",
+          "grantable": "NO",
+          "privilege": "SELECT"
+        },
+        {
+          "role": "authenticated",
+          "grantable": "NO",
+          "privilege": "INSERT"
+        },
+        {
+          "role": "authenticated",
+          "grantable": "NO",
+          "privilege": "SELECT"
+        }
+      ],
+      "primary_key": {
+        "name": "plan_history_pkey",
+        "type": "PRIMARY KEY",
+        "fields": [
+          "id"
+        ],
+        "on_delete": null,
+        "on_update": null,
+        "validated": true,
+        "deferrable": false,
+        "definition": "PRIMARY KEY (id)",
+        "references": null,
+        "initially_deferred": false
+      },
+      "foreign_keys": [
+        {
+          "name": "plan_history_plan_id_fkey",
+          "fields": [
+            "plan_id"
+          ],
+          "field": "plan_id",
+          "references": {
+            "table": "plans",
+            "fields": [
+              "id"
+            ],
+            "schema": "public",
+            "field": "id"
+          },
+          "on_delete": "NO ACTION",
+          "on_update": "NO ACTION",
+          "deferrable": false,
+          "initially_deferred": false
+        }
+      ],
+      "checks": [
+        {
+          "name": "plan_history_snapshot_json_check",
+          "type": "CHECK",
+          "fields": [
+            "snapshot_json"
+          ],
+          "on_delete": null,
+          "on_update": null,
+          "validated": true,
+          "deferrable": false,
+          "definition": "CHECK (jsonb_typeof(snapshot_json::jsonb) = 'object'::text)",
+          "references": null,
+          "initially_deferred": false
+        },
+        {
+          "name": "plan_history_version_check",
+          "type": "CHECK",
+          "fields": [
+            "version"
+          ],
+          "on_delete": null,
+          "on_update": null,
+          "validated": true,
+          "deferrable": false,
+          "definition": "CHECK (version >= 1)",
+          "references": null,
+          "initially_deferred": false
+        }
+      ],
+      "unique_indexes": [
+        {
+          "name": "plan_history_pkey",
+          "ready": true,
+          "valid": true,
+          "fields": [
+            "id"
+          ],
+          "method": "btree",
+          "unique": true,
+          "primary": true,
+          "predicate": null,
+          "definition": "CREATE UNIQUE INDEX plan_history_pkey ON public.plan_history USING btree (id)"
+        },
+        {
+          "name": "plan_history_plan_id_version_key",
+          "ready": true,
+          "valid": true,
+          "fields": [
+            "plan_id",
+            "version"
+          ],
+          "method": "btree",
+          "unique": true,
+          "primary": false,
+          "predicate": null,
+          "definition": "CREATE UNIQUE INDEX plan_history_plan_id_version_key ON public.plan_history USING btree (plan_id, version)"
+        }
+      ]
+    },
+    {
+      "name": "plans",
+      "fields": [
+        {
+          "name": "id",
+          "type": "text",
+          "default": null,
+          "nullable": false,
+          "primary_key": true,
+          "ordinal_position": 1
+        },
+        {
+          "name": "title",
+          "type": "text",
+          "default": null,
+          "nullable": false,
+          "primary_key": false,
+          "ordinal_position": 2
+        },
+        {
+          "name": "description",
+          "type": "text",
+          "default": "''::text",
+          "nullable": false,
+          "primary_key": false,
+          "ordinal_position": 3
+        },
+        {
+          "name": "start_date",
+          "type": "text",
+          "default": null,
+          "nullable": false,
+          "primary_key": false,
+          "ordinal_position": 4
+        },
+        {
+          "name": "end_date",
+          "type": "text",
+          "default": null,
+          "nullable": false,
+          "primary_key": false,
+          "ordinal_position": 5
+        },
+        {
+          "name": "priority",
+          "type": "text",
+          "default": null,
+          "nullable": false,
+          "primary_key": false,
+          "ordinal_position": 6
+        },
+        {
+          "name": "success_criteria",
+          "type": "text",
+          "default": null,
+          "nullable": false,
+          "primary_key": false,
+          "ordinal_position": 7
+        },
+        {
+          "name": "expected_minutes",
+          "type": "integer",
+          "default": null,
+          "nullable": false,
+          "primary_key": false,
+          "ordinal_position": 8
+        },
+        {
+          "name": "version",
+          "type": "integer",
+          "default": null,
+          "nullable": false,
+          "primary_key": false,
+          "ordinal_position": 9
+        },
+        {
+          "name": "source_review_id",
+          "type": "text",
+          "default": null,
+          "nullable": true,
+          "primary_key": false,
+          "ordinal_position": 10
+        },
+        {
+          "name": "carried_improvement",
+          "type": "text",
+          "default": "''::text",
+          "nullable": false,
+          "primary_key": false,
+          "ordinal_position": 11
+        },
+        {
+          "name": "record_origin",
+          "type": "text",
+          "default": "'user'::text",
+          "nullable": false,
+          "primary_key": false,
+          "ordinal_position": 12
+        },
+        {
+          "name": "created_at",
+          "type": "text",
+          "default": null,
+          "nullable": false,
+          "primary_key": false,
+          "ordinal_position": 13
+        },
+        {
+          "name": "updated_at",
+          "type": "text",
+          "default": null,
+          "nullable": false,
+          "primary_key": false,
+          "ordinal_position": 14
+        }
+      ],
+      "schema": "public",
+      "indexes": [
+        {
+          "name": "plans_pkey",
+          "ready": true,
+          "valid": true,
+          "fields": [
+            "id"
+          ],
+          "method": "btree",
+          "unique": true,
+          "primary": true,
+          "predicate": null,
+          "definition": "CREATE UNIQUE INDEX plans_pkey ON public.plans USING btree (id)"
+        },
+        {
+          "name": "plans_source_review_id_key",
+          "ready": true,
+          "valid": true,
+          "fields": [
+            "source_review_id"
+          ],
+          "method": "btree",
+          "unique": true,
+          "primary": false,
+          "predicate": null,
+          "definition": "CREATE UNIQUE INDEX plans_source_review_id_key ON public.plans USING btree (source_review_id)"
+        }
+      ],
+      "policies": [
+        {
+          "name": "t06_public_insert",
+          "roles": [
+            "anon",
+            "authenticated"
+          ],
+          "using": null,
+          "command": "INSERT",
+          "permissive": "PERMISSIVE",
+          "with_check": "(NOT (( SELECT current_setting('pds.mutation'::text, true) AS current_setting) IS DISTINCT FROM 'enabled'::text))"
+        },
+        {
+          "name": "t06_public_read",
+          "roles": [
+            "anon",
+            "authenticated"
+          ],
+          "using": "true",
+          "command": "SELECT",
+          "permissive": "PERMISSIVE",
+          "with_check": null
+        },
+        {
+          "name": "t06_public_update",
+          "roles": [
+            "anon",
+            "authenticated"
+          ],
+          "using": "true",
+          "command": "UPDATE",
+          "permissive": "PERMISSIVE",
+          "with_check": "(NOT (( SELECT current_setting('pds.mutation'::text, true) AS current_setting) IS DISTINCT FROM 'enabled'::text))"
+        }
+      ],
+      "rls_forced": false,
+      "constraints": [
+        {
+          "name": "plans_carried_improvement_check",
+          "type": "CHECK",
+          "fields": [
+            "carried_improvement"
+          ],
+          "on_delete": null,
+          "on_update": null,
+          "validated": true,
+          "deferrable": false,
+          "definition": "CHECK (char_length(carried_improvement) <= 2000)",
+          "references": null,
+          "initially_deferred": false
+        },
+        {
+          "name": "plans_check",
+          "type": "CHECK",
+          "fields": [
+            "end_date",
+            "start_date"
+          ],
+          "on_delete": null,
+          "on_update": null,
+          "validated": true,
+          "deferrable": false,
+          "definition": "CHECK (end_date ~ '^\\d{4}-\\d{2}-\\d{2}$'::text AND end_date >= start_date)",
+          "references": null,
+          "initially_deferred": false
+        },
+        {
+          "name": "plans_description_check",
+          "type": "CHECK",
+          "fields": [
+            "description"
+          ],
+          "on_delete": null,
+          "on_update": null,
+          "validated": true,
+          "deferrable": false,
+          "definition": "CHECK (char_length(description) <= 4000)",
+          "references": null,
+          "initially_deferred": false
+        },
+        {
+          "name": "plans_expected_minutes_check",
+          "type": "CHECK",
+          "fields": [
+            "expected_minutes"
+          ],
+          "on_delete": null,
+          "on_update": null,
+          "validated": true,
+          "deferrable": false,
+          "definition": "CHECK (expected_minutes >= 0 AND expected_minutes <= 1000000)",
+          "references": null,
+          "initially_deferred": false
+        },
+        {
+          "name": "plans_id_check",
+          "type": "CHECK",
+          "fields": [
+            "id"
+          ],
+          "on_delete": null,
+          "on_update": null,
+          "validated": true,
+          "deferrable": false,
+          "definition": "CHECK (id ~ '^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$'::text)",
+          "references": null,
+          "initially_deferred": false
+        },
+        {
+          "name": "plans_pkey",
+          "type": "PRIMARY KEY",
+          "fields": [
+            "id"
+          ],
+          "on_delete": null,
+          "on_update": null,
+          "validated": true,
+          "deferrable": false,
+          "definition": "PRIMARY KEY (id)",
+          "references": null,
+          "initially_deferred": false
+        },
+        {
+          "name": "plans_priority_check",
+          "type": "CHECK",
+          "fields": [
+            "priority"
+          ],
+          "on_delete": null,
+          "on_update": null,
+          "validated": true,
+          "deferrable": false,
+          "definition": "CHECK (priority = ANY (ARRAY['high'::text, 'medium'::text, 'low'::text]))",
+          "references": null,
+          "initially_deferred": false
+        },
+        {
+          "name": "plans_record_origin_check",
+          "type": "CHECK",
+          "fields": [
+            "record_origin"
+          ],
+          "on_delete": null,
+          "on_update": null,
+          "validated": true,
+          "deferrable": false,
+          "definition": "CHECK (record_origin = 'user'::text)",
+          "references": null,
+          "initially_deferred": false
+        },
+        {
+          "name": "plans_source_review_fk",
+          "type": "FOREIGN KEY",
+          "fields": [
+            "source_review_id"
+          ],
+          "on_delete": "NO ACTION",
+          "on_update": "NO ACTION",
+          "validated": true,
+          "deferrable": false,
+          "definition": "FOREIGN KEY (source_review_id) REFERENCES reviews(id)",
+          "references": {
+            "table": "reviews",
+            "fields": [
+              "id"
+            ],
+            "schema": "public"
+          },
+          "initially_deferred": false
+        },
+        {
+          "name": "plans_source_review_id_key",
+          "type": "UNIQUE",
+          "fields": [
+            "source_review_id"
+          ],
+          "on_delete": null,
+          "on_update": null,
+          "validated": true,
+          "deferrable": false,
+          "definition": "UNIQUE (source_review_id)",
+          "references": null,
+          "initially_deferred": false
+        },
+        {
+          "name": "plans_start_date_check",
+          "type": "CHECK",
+          "fields": [
+            "start_date"
+          ],
+          "on_delete": null,
+          "on_update": null,
+          "validated": true,
+          "deferrable": false,
+          "definition": "CHECK (start_date ~ '^\\d{4}-\\d{2}-\\d{2}$'::text)",
+          "references": null,
+          "initially_deferred": false
+        },
+        {
+          "name": "plans_success_criteria_check",
+          "type": "CHECK",
+          "fields": [
+            "success_criteria"
+          ],
+          "on_delete": null,
+          "on_update": null,
+          "validated": true,
+          "deferrable": false,
+          "definition": "CHECK (char_length(success_criteria) >= 1 AND char_length(success_criteria) <= 2000 AND success_criteria ~ '[^[:space:]]'::text)",
+          "references": null,
+          "initially_deferred": false
+        },
+        {
+          "name": "plans_title_check",
+          "type": "CHECK",
+          "fields": [
+            "title"
+          ],
+          "on_delete": null,
+          "on_update": null,
+          "validated": true,
+          "deferrable": false,
+          "definition": "CHECK (char_length(title) >= 1 AND char_length(title) <= 160 AND title ~ '[^[:space:]]'::text)",
+          "references": null,
+          "initially_deferred": false
+        },
+        {
+          "name": "plans_version_check",
+          "type": "CHECK",
+          "fields": [
+            "version"
+          ],
+          "on_delete": null,
+          "on_update": null,
+          "validated": true,
+          "deferrable": false,
+          "definition": "CHECK (version >= 1)",
+          "references": null,
+          "initially_deferred": false
+        }
+      ],
+      "rls_enabled": true,
+      "public_role_privileges": [
+        {
+          "role": "anon",
+          "grantable": "NO",
+          "privilege": "INSERT"
+        },
+        {
+          "role": "anon",
+          "grantable": "NO",
+          "privilege": "SELECT"
+        },
+        {
+          "role": "authenticated",
+          "grantable": "NO",
+          "privilege": "INSERT"
+        },
+        {
+          "role": "authenticated",
+          "grantable": "NO",
+          "privilege": "SELECT"
+        }
+      ],
+      "primary_key": {
+        "name": "plans_pkey",
+        "type": "PRIMARY KEY",
+        "fields": [
+          "id"
+        ],
+        "on_delete": null,
+        "on_update": null,
+        "validated": true,
+        "deferrable": false,
+        "definition": "PRIMARY KEY (id)",
+        "references": null,
+        "initially_deferred": false
+      },
+      "foreign_keys": [
+        {
+          "name": "plans_source_review_fk",
+          "fields": [
+            "source_review_id"
+          ],
+          "field": "source_review_id",
+          "references": {
+            "table": "reviews",
+            "fields": [
+              "id"
+            ],
+            "schema": "public",
+            "field": "id"
+          },
+          "on_delete": "NO ACTION",
+          "on_update": "NO ACTION",
+          "deferrable": false,
+          "initially_deferred": false
+        }
+      ],
+      "checks": [
+        {
+          "name": "plans_carried_improvement_check",
+          "type": "CHECK",
+          "fields": [
+            "carried_improvement"
+          ],
+          "on_delete": null,
+          "on_update": null,
+          "validated": true,
+          "deferrable": false,
+          "definition": "CHECK (char_length(carried_improvement) <= 2000)",
+          "references": null,
+          "initially_deferred": false
+        },
+        {
+          "name": "plans_check",
+          "type": "CHECK",
+          "fields": [
+            "end_date",
+            "start_date"
+          ],
+          "on_delete": null,
+          "on_update": null,
+          "validated": true,
+          "deferrable": false,
+          "definition": "CHECK (end_date ~ '^\\d{4}-\\d{2}-\\d{2}$'::text AND end_date >= start_date)",
+          "references": null,
+          "initially_deferred": false
+        },
+        {
+          "name": "plans_description_check",
+          "type": "CHECK",
+          "fields": [
+            "description"
+          ],
+          "on_delete": null,
+          "on_update": null,
+          "validated": true,
+          "deferrable": false,
+          "definition": "CHECK (char_length(description) <= 4000)",
+          "references": null,
+          "initially_deferred": false
+        },
+        {
+          "name": "plans_expected_minutes_check",
+          "type": "CHECK",
+          "fields": [
+            "expected_minutes"
+          ],
+          "on_delete": null,
+          "on_update": null,
+          "validated": true,
+          "deferrable": false,
+          "definition": "CHECK (expected_minutes >= 0 AND expected_minutes <= 1000000)",
+          "references": null,
+          "initially_deferred": false
+        },
+        {
+          "name": "plans_id_check",
+          "type": "CHECK",
+          "fields": [
+            "id"
+          ],
+          "on_delete": null,
+          "on_update": null,
+          "validated": true,
+          "deferrable": false,
+          "definition": "CHECK (id ~ '^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$'::text)",
+          "references": null,
+          "initially_deferred": false
+        },
+        {
+          "name": "plans_priority_check",
+          "type": "CHECK",
+          "fields": [
+            "priority"
+          ],
+          "on_delete": null,
+          "on_update": null,
+          "validated": true,
+          "deferrable": false,
+          "definition": "CHECK (priority = ANY (ARRAY['high'::text, 'medium'::text, 'low'::text]))",
+          "references": null,
+          "initially_deferred": false
+        },
+        {
+          "name": "plans_record_origin_check",
+          "type": "CHECK",
+          "fields": [
+            "record_origin"
+          ],
+          "on_delete": null,
+          "on_update": null,
+          "validated": true,
+          "deferrable": false,
+          "definition": "CHECK (record_origin = 'user'::text)",
+          "references": null,
+          "initially_deferred": false
+        },
+        {
+          "name": "plans_start_date_check",
+          "type": "CHECK",
+          "fields": [
+            "start_date"
+          ],
+          "on_delete": null,
+          "on_update": null,
+          "validated": true,
+          "deferrable": false,
+          "definition": "CHECK (start_date ~ '^\\d{4}-\\d{2}-\\d{2}$'::text)",
+          "references": null,
+          "initially_deferred": false
+        },
+        {
+          "name": "plans_success_criteria_check",
+          "type": "CHECK",
+          "fields": [
+            "success_criteria"
+          ],
+          "on_delete": null,
+          "on_update": null,
+          "validated": true,
+          "deferrable": false,
+          "definition": "CHECK (char_length(success_criteria) >= 1 AND char_length(success_criteria) <= 2000 AND success_criteria ~ '[^[:space:]]'::text)",
+          "references": null,
+          "initially_deferred": false
+        },
+        {
+          "name": "plans_title_check",
+          "type": "CHECK",
+          "fields": [
+            "title"
+          ],
+          "on_delete": null,
+          "on_update": null,
+          "validated": true,
+          "deferrable": false,
+          "definition": "CHECK (char_length(title) >= 1 AND char_length(title) <= 160 AND title ~ '[^[:space:]]'::text)",
+          "references": null,
+          "initially_deferred": false
+        },
+        {
+          "name": "plans_version_check",
+          "type": "CHECK",
+          "fields": [
+            "version"
+          ],
+          "on_delete": null,
+          "on_update": null,
+          "validated": true,
+          "deferrable": false,
+          "definition": "CHECK (version >= 1)",
+          "references": null,
+          "initially_deferred": false
+        }
+      ],
+      "unique_indexes": [
+        {
+          "name": "plans_pkey",
+          "ready": true,
+          "valid": true,
+          "fields": [
+            "id"
+          ],
+          "method": "btree",
+          "unique": true,
+          "primary": true,
+          "predicate": null,
+          "definition": "CREATE UNIQUE INDEX plans_pkey ON public.plans USING btree (id)"
+        },
+        {
+          "name": "plans_source_review_id_key",
+          "ready": true,
+          "valid": true,
+          "fields": [
+            "source_review_id"
+          ],
+          "method": "btree",
+          "unique": true,
+          "primary": false,
+          "predicate": null,
+          "definition": "CREATE UNIQUE INDEX plans_source_review_id_key ON public.plans USING btree (source_review_id)"
+        }
+      ]
+    },
+    {
+      "name": "request_receipts",
+      "fields": [
+        {
+          "name": "request_id",
+          "type": "text",
+          "default": null,
+          "nullable": false,
+          "primary_key": true,
+          "ordinal_position": 1
+        },
+        {
+          "name": "action",
+          "type": "text",
+          "default": null,
+          "nullable": false,
+          "primary_key": false,
+          "ordinal_position": 2
+        },
+        {
+          "name": "resource_id",
+          "type": "text",
+          "default": null,
+          "nullable": false,
+          "primary_key": false,
+          "ordinal_position": 3
+        },
+        {
+          "name": "response_json",
+          "type": "text",
+          "default": null,
+          "nullable": false,
+          "primary_key": false,
+          "ordinal_position": 4
+        },
+        {
+          "name": "created_at",
+          "type": "text",
+          "default": null,
+          "nullable": false,
+          "primary_key": false,
+          "ordinal_position": 5
+        }
+      ],
+      "schema": "public",
+      "indexes": [
+        {
+          "name": "request_receipts_pkey",
+          "ready": true,
+          "valid": true,
+          "fields": [
+            "request_id"
+          ],
+          "method": "btree",
+          "unique": true,
+          "primary": true,
+          "predicate": null,
+          "definition": "CREATE UNIQUE INDEX request_receipts_pkey ON public.request_receipts USING btree (request_id)"
+        },
+        {
+          "name": "request_receipts_resource",
+          "ready": true,
+          "valid": true,
+          "fields": [
+            "resource_id"
+          ],
+          "method": "btree",
+          "unique": false,
+          "primary": false,
+          "predicate": null,
+          "definition": "CREATE INDEX request_receipts_resource ON public.request_receipts USING btree (resource_id)"
+        }
+      ],
+      "policies": [
+        {
+          "name": "t06_public_insert",
+          "roles": [
+            "anon",
+            "authenticated"
+          ],
+          "using": null,
+          "command": "INSERT",
+          "permissive": "PERMISSIVE",
+          "with_check": "(NOT (( SELECT current_setting('pds.mutation'::text, true) AS current_setting) IS DISTINCT FROM 'enabled'::text))"
+        },
+        {
+          "name": "t06_public_read",
+          "roles": [
+            "anon",
+            "authenticated"
+          ],
+          "using": "true",
+          "command": "SELECT",
+          "permissive": "PERMISSIVE",
+          "with_check": null
+        }
+      ],
+      "rls_forced": false,
+      "constraints": [
+        {
+          "name": "request_receipts_action_check",
+          "type": "CHECK",
+          "fields": [
+            "action"
+          ],
+          "on_delete": null,
+          "on_update": null,
+          "validated": true,
+          "deferrable": false,
+          "definition": "CHECK (action = ANY (ARRAY['task.complete'::text, 'task.reopen'::text]))",
+          "references": null,
+          "initially_deferred": false
+        },
+        {
+          "name": "request_receipts_pkey",
+          "type": "PRIMARY KEY",
+          "fields": [
+            "request_id"
+          ],
+          "on_delete": null,
+          "on_update": null,
+          "validated": true,
+          "deferrable": false,
+          "definition": "PRIMARY KEY (request_id)",
+          "references": null,
+          "initially_deferred": false
+        },
+        {
+          "name": "request_receipts_request_id_check",
+          "type": "CHECK",
+          "fields": [
+            "request_id"
+          ],
+          "on_delete": null,
+          "on_update": null,
+          "validated": true,
+          "deferrable": false,
+          "definition": "CHECK (char_length(request_id) >= 1 AND char_length(request_id) <= 128)",
+          "references": null,
+          "initially_deferred": false
+        },
+        {
+          "name": "request_receipts_resource_id_fkey",
+          "type": "FOREIGN KEY",
+          "fields": [
+            "resource_id"
+          ],
+          "on_delete": "NO ACTION",
+          "on_update": "NO ACTION",
+          "validated": true,
+          "deferrable": false,
+          "definition": "FOREIGN KEY (resource_id) REFERENCES tasks(id)",
+          "references": {
+            "table": "tasks",
+            "fields": [
+              "id"
+            ],
+            "schema": "public"
+          },
+          "initially_deferred": false
+        },
+        {
+          "name": "request_receipts_response_json_check",
+          "type": "CHECK",
+          "fields": [
+            "response_json"
+          ],
+          "on_delete": null,
+          "on_update": null,
+          "validated": true,
+          "deferrable": false,
+          "definition": "CHECK (jsonb_typeof(response_json::jsonb) = 'object'::text)",
+          "references": null,
+          "initially_deferred": false
+        }
+      ],
+      "rls_enabled": true,
+      "public_role_privileges": [
+        {
+          "role": "anon",
+          "grantable": "NO",
+          "privilege": "INSERT"
+        },
+        {
+          "role": "anon",
+          "grantable": "NO",
+          "privilege": "SELECT"
+        },
+        {
+          "role": "authenticated",
+          "grantable": "NO",
+          "privilege": "INSERT"
+        },
+        {
+          "role": "authenticated",
+          "grantable": "NO",
+          "privilege": "SELECT"
+        }
+      ],
+      "primary_key": {
+        "name": "request_receipts_pkey",
+        "type": "PRIMARY KEY",
+        "fields": [
+          "request_id"
+        ],
+        "on_delete": null,
+        "on_update": null,
+        "validated": true,
+        "deferrable": false,
+        "definition": "PRIMARY KEY (request_id)",
+        "references": null,
+        "initially_deferred": false
+      },
+      "foreign_keys": [
+        {
+          "name": "request_receipts_resource_id_fkey",
+          "fields": [
+            "resource_id"
+          ],
+          "field": "resource_id",
+          "references": {
+            "table": "tasks",
+            "fields": [
+              "id"
+            ],
+            "schema": "public",
+            "field": "id"
+          },
+          "on_delete": "NO ACTION",
+          "on_update": "NO ACTION",
+          "deferrable": false,
+          "initially_deferred": false
+        }
+      ],
+      "checks": [
+        {
+          "name": "request_receipts_action_check",
+          "type": "CHECK",
+          "fields": [
+            "action"
+          ],
+          "on_delete": null,
+          "on_update": null,
+          "validated": true,
+          "deferrable": false,
+          "definition": "CHECK (action = ANY (ARRAY['task.complete'::text, 'task.reopen'::text]))",
+          "references": null,
+          "initially_deferred": false
+        },
+        {
+          "name": "request_receipts_request_id_check",
+          "type": "CHECK",
+          "fields": [
+            "request_id"
+          ],
+          "on_delete": null,
+          "on_update": null,
+          "validated": true,
+          "deferrable": false,
+          "definition": "CHECK (char_length(request_id) >= 1 AND char_length(request_id) <= 128)",
+          "references": null,
+          "initially_deferred": false
+        },
+        {
+          "name": "request_receipts_response_json_check",
+          "type": "CHECK",
+          "fields": [
+            "response_json"
+          ],
+          "on_delete": null,
+          "on_update": null,
+          "validated": true,
+          "deferrable": false,
+          "definition": "CHECK (jsonb_typeof(response_json::jsonb) = 'object'::text)",
+          "references": null,
+          "initially_deferred": false
+        }
+      ],
+      "unique_indexes": [
+        {
+          "name": "request_receipts_pkey",
+          "ready": true,
+          "valid": true,
+          "fields": [
+            "request_id"
+          ],
+          "method": "btree",
+          "unique": true,
+          "primary": true,
+          "predicate": null,
+          "definition": "CREATE UNIQUE INDEX request_receipts_pkey ON public.request_receipts USING btree (request_id)"
+        }
+      ]
+    },
+    {
+      "name": "reviews",
+      "fields": [
+        {
+          "name": "id",
+          "type": "text",
+          "default": null,
+          "nullable": false,
+          "primary_key": true,
+          "ordinal_position": 1
+        },
+        {
+          "name": "plan_id",
+          "type": "text",
+          "default": null,
+          "nullable": false,
+          "primary_key": false,
+          "ordinal_position": 2
+        },
+        {
+          "name": "improvement",
+          "type": "text",
+          "default": null,
+          "nullable": false,
+          "primary_key": false,
+          "ordinal_position": 3
+        },
+        {
+          "name": "next_plan_id",
+          "type": "text",
+          "default": null,
+          "nullable": true,
+          "primary_key": false,
+          "ordinal_position": 4
+        },
+        {
+          "name": "record_origin",
+          "type": "text",
+          "default": "'user'::text",
+          "nullable": false,
+          "primary_key": false,
+          "ordinal_position": 5
+        },
+        {
+          "name": "created_at",
+          "type": "text",
+          "default": null,
+          "nullable": false,
+          "primary_key": false,
+          "ordinal_position": 6
+        }
+      ],
+      "schema": "public",
+      "indexes": [
+        {
+          "name": "reviews_next_plan_id_key",
+          "ready": true,
+          "valid": true,
+          "fields": [
+            "next_plan_id"
+          ],
+          "method": "btree",
+          "unique": true,
+          "primary": false,
+          "predicate": null,
+          "definition": "CREATE UNIQUE INDEX reviews_next_plan_id_key ON public.reviews USING btree (next_plan_id)"
+        },
+        {
+          "name": "reviews_pkey",
+          "ready": true,
+          "valid": true,
+          "fields": [
+            "id"
+          ],
+          "method": "btree",
+          "unique": true,
+          "primary": true,
+          "predicate": null,
+          "definition": "CREATE UNIQUE INDEX reviews_pkey ON public.reviews USING btree (id)"
+        },
+        {
+          "name": "reviews_plan",
+          "ready": true,
+          "valid": true,
+          "fields": [
+            "plan_id"
+          ],
+          "method": "btree",
+          "unique": false,
+          "primary": false,
+          "predicate": null,
+          "definition": "CREATE INDEX reviews_plan ON public.reviews USING btree (plan_id)"
+        }
+      ],
+      "policies": [
+        {
+          "name": "t06_public_insert",
+          "roles": [
+            "anon",
+            "authenticated"
+          ],
+          "using": null,
+          "command": "INSERT",
+          "permissive": "PERMISSIVE",
+          "with_check": "(NOT (( SELECT current_setting('pds.mutation'::text, true) AS current_setting) IS DISTINCT FROM 'enabled'::text))"
+        },
+        {
+          "name": "t06_public_read",
+          "roles": [
+            "anon",
+            "authenticated"
+          ],
+          "using": "true",
+          "command": "SELECT",
+          "permissive": "PERMISSIVE",
+          "with_check": null
+        },
+        {
+          "name": "t06_public_update",
+          "roles": [
+            "anon",
+            "authenticated"
+          ],
+          "using": "true",
+          "command": "UPDATE",
+          "permissive": "PERMISSIVE",
+          "with_check": "(NOT (( SELECT current_setting('pds.mutation'::text, true) AS current_setting) IS DISTINCT FROM 'enabled'::text))"
+        }
+      ],
+      "rls_forced": false,
+      "constraints": [
+        {
+          "name": "reviews_improvement_check",
+          "type": "CHECK",
+          "fields": [
+            "improvement"
+          ],
+          "on_delete": null,
+          "on_update": null,
+          "validated": true,
+          "deferrable": false,
+          "definition": "CHECK (char_length(improvement) >= 1 AND char_length(improvement) <= 2000 AND improvement ~ '[^[:space:]]'::text)",
+          "references": null,
+          "initially_deferred": false
+        },
+        {
+          "name": "reviews_next_plan_id_fkey",
+          "type": "FOREIGN KEY",
+          "fields": [
+            "next_plan_id"
+          ],
+          "on_delete": "NO ACTION",
+          "on_update": "NO ACTION",
+          "validated": true,
+          "deferrable": false,
+          "definition": "FOREIGN KEY (next_plan_id) REFERENCES plans(id)",
+          "references": {
+            "table": "plans",
+            "fields": [
+              "id"
+            ],
+            "schema": "public"
+          },
+          "initially_deferred": false
+        },
+        {
+          "name": "reviews_next_plan_id_key",
+          "type": "UNIQUE",
+          "fields": [
+            "next_plan_id"
+          ],
+          "on_delete": null,
+          "on_update": null,
+          "validated": true,
+          "deferrable": false,
+          "definition": "UNIQUE (next_plan_id)",
+          "references": null,
+          "initially_deferred": false
+        },
+        {
+          "name": "reviews_pkey",
+          "type": "PRIMARY KEY",
+          "fields": [
+            "id"
+          ],
+          "on_delete": null,
+          "on_update": null,
+          "validated": true,
+          "deferrable": false,
+          "definition": "PRIMARY KEY (id)",
+          "references": null,
+          "initially_deferred": false
+        },
+        {
+          "name": "reviews_plan_id_fkey",
+          "type": "FOREIGN KEY",
+          "fields": [
+            "plan_id"
+          ],
+          "on_delete": "NO ACTION",
+          "on_update": "NO ACTION",
+          "validated": true,
+          "deferrable": false,
+          "definition": "FOREIGN KEY (plan_id) REFERENCES plans(id)",
+          "references": {
+            "table": "plans",
+            "fields": [
+              "id"
+            ],
+            "schema": "public"
+          },
+          "initially_deferred": false
+        },
+        {
+          "name": "reviews_record_origin_check",
+          "type": "CHECK",
+          "fields": [
+            "record_origin"
+          ],
+          "on_delete": null,
+          "on_update": null,
+          "validated": true,
+          "deferrable": false,
+          "definition": "CHECK (record_origin = 'user'::text)",
+          "references": null,
+          "initially_deferred": false
+        }
+      ],
+      "rls_enabled": true,
+      "public_role_privileges": [
+        {
+          "role": "anon",
+          "grantable": "NO",
+          "privilege": "INSERT"
+        },
+        {
+          "role": "anon",
+          "grantable": "NO",
+          "privilege": "SELECT"
+        },
+        {
+          "role": "authenticated",
+          "grantable": "NO",
+          "privilege": "INSERT"
+        },
+        {
+          "role": "authenticated",
+          "grantable": "NO",
+          "privilege": "SELECT"
+        }
+      ],
+      "primary_key": {
+        "name": "reviews_pkey",
+        "type": "PRIMARY KEY",
+        "fields": [
+          "id"
+        ],
+        "on_delete": null,
+        "on_update": null,
+        "validated": true,
+        "deferrable": false,
+        "definition": "PRIMARY KEY (id)",
+        "references": null,
+        "initially_deferred": false
+      },
+      "foreign_keys": [
+        {
+          "name": "reviews_next_plan_id_fkey",
+          "fields": [
+            "next_plan_id"
+          ],
+          "field": "next_plan_id",
+          "references": {
+            "table": "plans",
+            "fields": [
+              "id"
+            ],
+            "schema": "public",
+            "field": "id"
+          },
+          "on_delete": "NO ACTION",
+          "on_update": "NO ACTION",
+          "deferrable": false,
+          "initially_deferred": false
+        },
+        {
+          "name": "reviews_plan_id_fkey",
+          "fields": [
+            "plan_id"
+          ],
+          "field": "plan_id",
+          "references": {
+            "table": "plans",
+            "fields": [
+              "id"
+            ],
+            "schema": "public",
+            "field": "id"
+          },
+          "on_delete": "NO ACTION",
+          "on_update": "NO ACTION",
+          "deferrable": false,
+          "initially_deferred": false
+        }
+      ],
+      "checks": [
+        {
+          "name": "reviews_improvement_check",
+          "type": "CHECK",
+          "fields": [
+            "improvement"
+          ],
+          "on_delete": null,
+          "on_update": null,
+          "validated": true,
+          "deferrable": false,
+          "definition": "CHECK (char_length(improvement) >= 1 AND char_length(improvement) <= 2000 AND improvement ~ '[^[:space:]]'::text)",
+          "references": null,
+          "initially_deferred": false
+        },
+        {
+          "name": "reviews_record_origin_check",
+          "type": "CHECK",
+          "fields": [
+            "record_origin"
+          ],
+          "on_delete": null,
+          "on_update": null,
+          "validated": true,
+          "deferrable": false,
+          "definition": "CHECK (record_origin = 'user'::text)",
+          "references": null,
+          "initially_deferred": false
+        }
+      ],
+      "unique_indexes": [
+        {
+          "name": "reviews_next_plan_id_key",
+          "ready": true,
+          "valid": true,
+          "fields": [
+            "next_plan_id"
+          ],
+          "method": "btree",
+          "unique": true,
+          "primary": false,
+          "predicate": null,
+          "definition": "CREATE UNIQUE INDEX reviews_next_plan_id_key ON public.reviews USING btree (next_plan_id)"
+        },
+        {
+          "name": "reviews_pkey",
+          "ready": true,
+          "valid": true,
+          "fields": [
+            "id"
+          ],
+          "method": "btree",
+          "unique": true,
+          "primary": true,
+          "predicate": null,
+          "definition": "CREATE UNIQUE INDEX reviews_pkey ON public.reviews USING btree (id)"
+        }
+      ]
+    },
+    {
+      "name": "tasks",
+      "fields": [
+        {
+          "name": "id",
+          "type": "text",
+          "default": null,
+          "nullable": false,
+          "primary_key": true,
+          "ordinal_position": 1
+        },
+        {
+          "name": "plan_id",
+          "type": "text",
+          "default": null,
+          "nullable": false,
+          "primary_key": false,
+          "ordinal_position": 2
+        },
+        {
+          "name": "title",
+          "type": "text",
+          "default": null,
+          "nullable": false,
+          "primary_key": false,
+          "ordinal_position": 3
+        },
+        {
+          "name": "notes",
+          "type": "text",
+          "default": "''::text",
+          "nullable": false,
+          "primary_key": false,
+          "ordinal_position": 4
+        },
+        {
+          "name": "due_date",
+          "type": "text",
+          "default": null,
+          "nullable": true,
+          "primary_key": false,
+          "ordinal_position": 5
+        },
+        {
+          "name": "priority",
+          "type": "text",
+          "default": null,
+          "nullable": false,
+          "primary_key": false,
+          "ordinal_position": 6
+        },
+        {
+          "name": "tags_json",
+          "type": "text",
+          "default": "'[]'::text",
+          "nullable": false,
+          "primary_key": false,
+          "ordinal_position": 7
+        },
+        {
+          "name": "expected_minutes",
+          "type": "integer",
+          "default": null,
+          "nullable": false,
+          "primary_key": false,
+          "ordinal_position": 8
+        },
+        {
+          "name": "status",
+          "type": "text",
+          "default": null,
+          "nullable": false,
+          "primary_key": false,
+          "ordinal_position": 9
+        },
+        {
+          "name": "completion_cycle",
+          "type": "integer",
+          "default": "0",
+          "nullable": false,
+          "primary_key": false,
+          "ordinal_position": 10
+        },
+        {
+          "name": "version",
+          "type": "integer",
+          "default": null,
+          "nullable": false,
+          "primary_key": false,
+          "ordinal_position": 11
+        },
+        {
+          "name": "deleted_at",
+          "type": "text",
+          "default": null,
+          "nullable": true,
+          "primary_key": false,
+          "ordinal_position": 12
+        },
+        {
+          "name": "record_origin",
+          "type": "text",
+          "default": "'user'::text",
+          "nullable": false,
+          "primary_key": false,
+          "ordinal_position": 13
+        },
+        {
+          "name": "created_at",
+          "type": "text",
+          "default": null,
+          "nullable": false,
+          "primary_key": false,
+          "ordinal_position": 14
+        },
+        {
+          "name": "updated_at",
+          "type": "text",
+          "default": null,
+          "nullable": false,
+          "primary_key": false,
+          "ordinal_position": 15
+        }
+      ],
+      "schema": "public",
+      "indexes": [
+        {
+          "name": "tasks_pkey",
+          "ready": true,
+          "valid": true,
+          "fields": [
+            "id"
+          ],
+          "method": "btree",
+          "unique": true,
+          "primary": true,
+          "predicate": null,
+          "definition": "CREATE UNIQUE INDEX tasks_pkey ON public.tasks USING btree (id)"
+        },
+        {
+          "name": "tasks_plan",
+          "ready": true,
+          "valid": true,
+          "fields": [
+            "plan_id"
+          ],
+          "method": "btree",
+          "unique": false,
+          "primary": false,
+          "predicate": null,
+          "definition": "CREATE INDEX tasks_plan ON public.tasks USING btree (plan_id)"
+        }
+      ],
+      "policies": [
+        {
+          "name": "t06_public_insert",
+          "roles": [
+            "anon",
+            "authenticated"
+          ],
+          "using": null,
+          "command": "INSERT",
+          "permissive": "PERMISSIVE",
+          "with_check": "(NOT (( SELECT current_setting('pds.mutation'::text, true) AS current_setting) IS DISTINCT FROM 'enabled'::text))"
+        },
+        {
+          "name": "t06_public_read",
+          "roles": [
+            "anon",
+            "authenticated"
+          ],
+          "using": "true",
+          "command": "SELECT",
+          "permissive": "PERMISSIVE",
+          "with_check": null
+        },
+        {
+          "name": "t06_public_update",
+          "roles": [
+            "anon",
+            "authenticated"
+          ],
+          "using": "true",
+          "command": "UPDATE",
+          "permissive": "PERMISSIVE",
+          "with_check": "(NOT (( SELECT current_setting('pds.mutation'::text, true) AS current_setting) IS DISTINCT FROM 'enabled'::text))"
+        }
+      ],
+      "rls_forced": false,
+      "constraints": [
+        {
+          "name": "tasks_completion_cycle_check",
+          "type": "CHECK",
+          "fields": [
+            "completion_cycle"
+          ],
+          "on_delete": null,
+          "on_update": null,
+          "validated": true,
+          "deferrable": false,
+          "definition": "CHECK (completion_cycle >= 0)",
+          "references": null,
+          "initially_deferred": false
+        },
+        {
+          "name": "tasks_due_date_check",
+          "type": "CHECK",
+          "fields": [
+            "due_date"
+          ],
+          "on_delete": null,
+          "on_update": null,
+          "validated": true,
+          "deferrable": false,
+          "definition": "CHECK (due_date IS NULL OR due_date ~ '^\\d{4}-\\d{2}-\\d{2}$'::text)",
+          "references": null,
+          "initially_deferred": false
+        },
+        {
+          "name": "tasks_expected_minutes_check",
+          "type": "CHECK",
+          "fields": [
+            "expected_minutes"
+          ],
+          "on_delete": null,
+          "on_update": null,
+          "validated": true,
+          "deferrable": false,
+          "definition": "CHECK (expected_minutes >= 0 AND expected_minutes <= 1000000)",
+          "references": null,
+          "initially_deferred": false
+        },
+        {
+          "name": "tasks_notes_check",
+          "type": "CHECK",
+          "fields": [
+            "notes"
+          ],
+          "on_delete": null,
+          "on_update": null,
+          "validated": true,
+          "deferrable": false,
+          "definition": "CHECK (char_length(notes) <= 4000)",
+          "references": null,
+          "initially_deferred": false
+        },
+        {
+          "name": "tasks_pkey",
+          "type": "PRIMARY KEY",
+          "fields": [
+            "id"
+          ],
+          "on_delete": null,
+          "on_update": null,
+          "validated": true,
+          "deferrable": false,
+          "definition": "PRIMARY KEY (id)",
+          "references": null,
+          "initially_deferred": false
+        },
+        {
+          "name": "tasks_plan_id_fkey",
+          "type": "FOREIGN KEY",
+          "fields": [
+            "plan_id"
+          ],
+          "on_delete": "NO ACTION",
+          "on_update": "NO ACTION",
+          "validated": true,
+          "deferrable": false,
+          "definition": "FOREIGN KEY (plan_id) REFERENCES plans(id)",
+          "references": {
+            "table": "plans",
+            "fields": [
+              "id"
+            ],
+            "schema": "public"
+          },
+          "initially_deferred": false
+        },
+        {
+          "name": "tasks_priority_check",
+          "type": "CHECK",
+          "fields": [
+            "priority"
+          ],
+          "on_delete": null,
+          "on_update": null,
+          "validated": true,
+          "deferrable": false,
+          "definition": "CHECK (priority = ANY (ARRAY['high'::text, 'medium'::text, 'low'::text]))",
+          "references": null,
+          "initially_deferred": false
+        },
+        {
+          "name": "tasks_record_origin_check",
+          "type": "CHECK",
+          "fields": [
+            "record_origin"
+          ],
+          "on_delete": null,
+          "on_update": null,
+          "validated": true,
+          "deferrable": false,
+          "definition": "CHECK (record_origin = 'user'::text)",
+          "references": null,
+          "initially_deferred": false
+        },
+        {
+          "name": "tasks_status_check",
+          "type": "CHECK",
+          "fields": [
+            "status"
+          ],
+          "on_delete": null,
+          "on_update": null,
+          "validated": true,
+          "deferrable": false,
+          "definition": "CHECK (status = ANY (ARRAY['pending'::text, 'completed'::text]))",
+          "references": null,
+          "initially_deferred": false
+        },
+        {
+          "name": "tasks_tags_json_check",
+          "type": "CHECK",
+          "fields": [
+            "tags_json"
+          ],
+          "on_delete": null,
+          "on_update": null,
+          "validated": true,
+          "deferrable": false,
+          "definition": "CHECK (jsonb_typeof(tags_json::jsonb) = 'array'::text AND jsonb_array_length(tags_json::jsonb) <= 20)",
+          "references": null,
+          "initially_deferred": false
+        },
+        {
+          "name": "tasks_title_check",
+          "type": "CHECK",
+          "fields": [
+            "title"
+          ],
+          "on_delete": null,
+          "on_update": null,
+          "validated": true,
+          "deferrable": false,
+          "definition": "CHECK (char_length(title) >= 1 AND char_length(title) <= 160 AND title ~ '[^[:space:]]'::text)",
+          "references": null,
+          "initially_deferred": false
+        },
+        {
+          "name": "tasks_version_check",
+          "type": "CHECK",
+          "fields": [
+            "version"
+          ],
+          "on_delete": null,
+          "on_update": null,
+          "validated": true,
+          "deferrable": false,
+          "definition": "CHECK (version >= 1)",
+          "references": null,
+          "initially_deferred": false
+        }
+      ],
+      "rls_enabled": true,
+      "public_role_privileges": [
+        {
+          "role": "anon",
+          "grantable": "NO",
+          "privilege": "INSERT"
+        },
+        {
+          "role": "anon",
+          "grantable": "NO",
+          "privilege": "SELECT"
+        },
+        {
+          "role": "authenticated",
+          "grantable": "NO",
+          "privilege": "INSERT"
+        },
+        {
+          "role": "authenticated",
+          "grantable": "NO",
+          "privilege": "SELECT"
+        }
+      ],
+      "primary_key": {
+        "name": "tasks_pkey",
+        "type": "PRIMARY KEY",
+        "fields": [
+          "id"
+        ],
+        "on_delete": null,
+        "on_update": null,
+        "validated": true,
+        "deferrable": false,
+        "definition": "PRIMARY KEY (id)",
+        "references": null,
+        "initially_deferred": false
+      },
+      "foreign_keys": [
+        {
+          "name": "tasks_plan_id_fkey",
+          "fields": [
+            "plan_id"
+          ],
+          "field": "plan_id",
+          "references": {
+            "table": "plans",
+            "fields": [
+              "id"
+            ],
+            "schema": "public",
+            "field": "id"
+          },
+          "on_delete": "NO ACTION",
+          "on_update": "NO ACTION",
+          "deferrable": false,
+          "initially_deferred": false
+        }
+      ],
+      "checks": [
+        {
+          "name": "tasks_completion_cycle_check",
+          "type": "CHECK",
+          "fields": [
+            "completion_cycle"
+          ],
+          "on_delete": null,
+          "on_update": null,
+          "validated": true,
+          "deferrable": false,
+          "definition": "CHECK (completion_cycle >= 0)",
+          "references": null,
+          "initially_deferred": false
+        },
+        {
+          "name": "tasks_due_date_check",
+          "type": "CHECK",
+          "fields": [
+            "due_date"
+          ],
+          "on_delete": null,
+          "on_update": null,
+          "validated": true,
+          "deferrable": false,
+          "definition": "CHECK (due_date IS NULL OR due_date ~ '^\\d{4}-\\d{2}-\\d{2}$'::text)",
+          "references": null,
+          "initially_deferred": false
+        },
+        {
+          "name": "tasks_expected_minutes_check",
+          "type": "CHECK",
+          "fields": [
+            "expected_minutes"
+          ],
+          "on_delete": null,
+          "on_update": null,
+          "validated": true,
+          "deferrable": false,
+          "definition": "CHECK (expected_minutes >= 0 AND expected_minutes <= 1000000)",
+          "references": null,
+          "initially_deferred": false
+        },
+        {
+          "name": "tasks_notes_check",
+          "type": "CHECK",
+          "fields": [
+            "notes"
+          ],
+          "on_delete": null,
+          "on_update": null,
+          "validated": true,
+          "deferrable": false,
+          "definition": "CHECK (char_length(notes) <= 4000)",
+          "references": null,
+          "initially_deferred": false
+        },
+        {
+          "name": "tasks_priority_check",
+          "type": "CHECK",
+          "fields": [
+            "priority"
+          ],
+          "on_delete": null,
+          "on_update": null,
+          "validated": true,
+          "deferrable": false,
+          "definition": "CHECK (priority = ANY (ARRAY['high'::text, 'medium'::text, 'low'::text]))",
+          "references": null,
+          "initially_deferred": false
+        },
+        {
+          "name": "tasks_record_origin_check",
+          "type": "CHECK",
+          "fields": [
+            "record_origin"
+          ],
+          "on_delete": null,
+          "on_update": null,
+          "validated": true,
+          "deferrable": false,
+          "definition": "CHECK (record_origin = 'user'::text)",
+          "references": null,
+          "initially_deferred": false
+        },
+        {
+          "name": "tasks_status_check",
+          "type": "CHECK",
+          "fields": [
+            "status"
+          ],
+          "on_delete": null,
+          "on_update": null,
+          "validated": true,
+          "deferrable": false,
+          "definition": "CHECK (status = ANY (ARRAY['pending'::text, 'completed'::text]))",
+          "references": null,
+          "initially_deferred": false
+        },
+        {
+          "name": "tasks_tags_json_check",
+          "type": "CHECK",
+          "fields": [
+            "tags_json"
+          ],
+          "on_delete": null,
+          "on_update": null,
+          "validated": true,
+          "deferrable": false,
+          "definition": "CHECK (jsonb_typeof(tags_json::jsonb) = 'array'::text AND jsonb_array_length(tags_json::jsonb) <= 20)",
+          "references": null,
+          "initially_deferred": false
+        },
+        {
+          "name": "tasks_title_check",
+          "type": "CHECK",
+          "fields": [
+            "title"
+          ],
+          "on_delete": null,
+          "on_update": null,
+          "validated": true,
+          "deferrable": false,
+          "definition": "CHECK (char_length(title) >= 1 AND char_length(title) <= 160 AND title ~ '[^[:space:]]'::text)",
+          "references": null,
+          "initially_deferred": false
+        },
+        {
+          "name": "tasks_version_check",
+          "type": "CHECK",
+          "fields": [
+            "version"
+          ],
+          "on_delete": null,
+          "on_update": null,
+          "validated": true,
+          "deferrable": false,
+          "definition": "CHECK (version >= 1)",
+          "references": null,
+          "initially_deferred": false
+        }
+      ],
+      "unique_indexes": [
+        {
+          "name": "tasks_pkey",
+          "ready": true,
+          "valid": true,
+          "fields": [
+            "id"
+          ],
+          "method": "btree",
+          "unique": true,
+          "primary": true,
+          "predicate": null,
+          "definition": "CREATE UNIQUE INDEX tasks_pkey ON public.tasks USING btree (id)"
+        }
+      ]
+    }
+  ],
+  "triggers": [
+    {
+      "name": "plan_history_immutable",
+      "enabled": "O",
+      "function": "pds_history_immutable",
+      "definition": "CREATE TRIGGER plan_history_immutable BEFORE DELETE OR UPDATE ON plan_history FOR EACH ROW EXECUTE FUNCTION pds_history_immutable()",
+      "table_name": "plan_history"
+    }
+  ],
+  "functions": [
+    {
+      "name": "pds_date",
+      "schema": "public",
+      "language": "plpgsql",
+      "settings": [
+        "search_path=public"
+      ],
+      "volatility": "IMMUTABLE",
+      "result_type": "text",
+      "anon_execute": true,
+      "security_mode": "INVOKER",
+      "security_definer": false,
+      "identity_arguments": "p jsonb, k text, nullable boolean",
+      "authenticated_execute": true
+    },
+    {
+      "name": "pds_history_immutable",
+      "schema": "public",
+      "language": "plpgsql",
+      "settings": [
+        "search_path=public"
+      ],
+      "volatility": "VOLATILE",
+      "result_type": "trigger",
+      "anon_execute": true,
+      "security_mode": "INVOKER",
+      "security_definer": false,
+      "identity_arguments": "",
+      "authenticated_execute": true
+    },
+    {
+      "name": "pds_instant",
+      "schema": "public",
+      "language": "plpgsql",
+      "settings": [
+        "search_path=public"
+      ],
+      "volatility": "IMMUTABLE",
+      "result_type": "text",
+      "anon_execute": true,
+      "security_mode": "INVOKER",
+      "security_definer": false,
+      "identity_arguments": "p jsonb, k text",
+      "authenticated_execute": true
+    },
+    {
+      "name": "pds_integer",
+      "schema": "public",
+      "language": "plpgsql",
+      "settings": [
+        "search_path=public"
+      ],
+      "volatility": "IMMUTABLE",
+      "result_type": "integer",
+      "anon_execute": true,
+      "security_mode": "INVOKER",
+      "security_definer": false,
+      "identity_arguments": "p jsonb, k text, lo integer, hi integer, fallback integer",
+      "authenticated_execute": true
+    },
+    {
+      "name": "pds_mutate",
+      "schema": "public",
+      "language": "plpgsql",
+      "settings": [
+        "search_path=public"
+      ],
+      "volatility": "VOLATILE",
+      "result_type": "jsonb",
+      "anon_execute": true,
+      "security_mode": "INVOKER",
+      "security_definer": false,
+      "identity_arguments": "p_action text, p_payload jsonb",
+      "authenticated_execute": true
+    },
+    {
+      "name": "pds_state",
+      "schema": "public",
+      "language": "sql",
+      "settings": [
+        "search_path=public"
+      ],
+      "volatility": "STABLE",
+      "result_type": "jsonb",
+      "anon_execute": true,
+      "security_mode": "INVOKER",
+      "security_definer": false,
+      "identity_arguments": "",
+      "authenticated_execute": true
+    },
+    {
+      "name": "pds_tags",
+      "schema": "public",
+      "language": "plpgsql",
+      "settings": [
+        "search_path=public"
+      ],
+      "volatility": "IMMUTABLE",
+      "result_type": "text",
+      "anon_execute": true,
+      "security_mode": "INVOKER",
+      "security_definer": false,
+      "identity_arguments": "p jsonb",
+      "authenticated_execute": true
+    },
+    {
+      "name": "pds_text",
+      "schema": "public",
+      "language": "plpgsql",
+      "settings": [
+        "search_path=public"
+      ],
+      "volatility": "IMMUTABLE",
+      "result_type": "text",
+      "anon_execute": true,
+      "security_mode": "INVOKER",
+      "security_definer": false,
+      "identity_arguments": "p jsonb, k text, lim integer, required boolean, fallback text",
+      "authenticated_execute": true
+    },
+    {
+      "name": "pds_uuid",
+      "schema": "public",
+      "language": "plpgsql",
+      "settings": [
+        "search_path=public"
+      ],
+      "volatility": "IMMUTABLE",
+      "result_type": "text",
+      "anon_execute": true,
+      "security_mode": "INVOKER",
+      "security_definer": false,
+      "identity_arguments": "p jsonb, k text",
+      "authenticated_execute": true
+    }
+  ],
+  "local_sqlite_tables": [
+    {
+      "name": "completion_events",
+      "fields": [
+        {
+          "name": "id",
+          "type": "TEXT",
+          "nullable": false,
+          "primary_key": true,
+          "default": null,
+          "ordinal_position": 1
+        },
+        {
+          "name": "task_id",
+          "type": "TEXT",
+          "nullable": false,
+          "primary_key": false,
+          "default": null,
+          "ordinal_position": 2
+        },
+        {
+          "name": "cycle",
+          "type": "INTEGER",
+          "nullable": false,
+          "primary_key": false,
+          "default": null,
+          "ordinal_position": 3
+        },
+        {
+          "name": "request_id",
+          "type": "TEXT",
+          "nullable": false,
+          "primary_key": false,
+          "default": null,
+          "ordinal_position": 4
+        },
+        {
+          "name": "completed_at",
+          "type": "TEXT",
+          "nullable": false,
+          "primary_key": false,
+          "default": null,
+          "ordinal_position": 5
+        }
+      ],
+      "foreign_keys": [
+        {
+          "field": "task_id",
+          "references": {
+            "table": "tasks",
+            "field": "id"
+          },
+          "on_delete": "NO ACTION",
+          "on_update": "NO ACTION"
+        }
+      ],
+      "indexes": [
+        {
+          "name": "sqlite_autoindex_completion_events_3",
+          "unique": true,
+          "origin": "u",
+          "partial": false,
+          "fields": [
+            "task_id",
+            "cycle"
+          ]
+        },
+        {
+          "name": "sqlite_autoindex_completion_events_2",
+          "unique": true,
+          "origin": "u",
+          "partial": false,
+          "fields": [
+            "request_id"
+          ]
+        },
+        {
+          "name": "sqlite_autoindex_completion_events_1",
+          "unique": true,
+          "origin": "pk",
+          "partial": false,
+          "fields": [
+            "id"
+          ]
+        }
+      ],
+      "unique_indexes": [
+        {
+          "name": "sqlite_autoindex_completion_events_3",
+          "unique": true,
+          "origin": "u",
+          "partial": false,
+          "fields": [
+            "task_id",
+            "cycle"
+          ]
+        },
+        {
+          "name": "sqlite_autoindex_completion_events_2",
+          "unique": true,
+          "origin": "u",
+          "partial": false,
+          "fields": [
+            "request_id"
+          ]
+        },
+        {
+          "name": "sqlite_autoindex_completion_events_1",
+          "unique": true,
+          "origin": "pk",
+          "partial": false,
+          "fields": [
+            "id"
+          ]
+        }
+      ],
+      "create_sql": "CREATE TABLE completion_events (\n  id TEXT PRIMARY KEY, task_id TEXT NOT NULL REFERENCES tasks(id), cycle INTEGER NOT NULL CHECK(cycle >= 0),\n  request_id TEXT NOT NULL UNIQUE, completed_at TEXT NOT NULL, UNIQUE(task_id,cycle)\n) STRICT"
+    },
+    {
+      "name": "executions",
+      "fields": [
+        {
+          "name": "id",
+          "type": "TEXT",
+          "nullable": false,
+          "primary_key": true,
+          "default": null,
+          "ordinal_position": 1
+        },
+        {
+          "name": "task_id",
+          "type": "TEXT",
+          "nullable": false,
+          "primary_key": false,
+          "default": null,
+          "ordinal_position": 2
+        },
+        {
+          "name": "started_at",
+          "type": "TEXT",
+          "nullable": false,
+          "primary_key": false,
+          "default": null,
+          "ordinal_position": 3
+        },
+        {
+          "name": "ended_at",
+          "type": "TEXT",
+          "nullable": false,
+          "primary_key": false,
+          "default": null,
+          "ordinal_position": 4
+        },
+        {
+          "name": "actual_minutes",
+          "type": "INTEGER",
+          "nullable": false,
+          "primary_key": false,
+          "default": null,
+          "ordinal_position": 5
+        },
+        {
+          "name": "blocked_reason",
+          "type": "TEXT",
+          "nullable": false,
+          "primary_key": false,
+          "default": "''",
+          "ordinal_position": 6
+        },
+        {
+          "name": "record_origin",
+          "type": "TEXT",
+          "nullable": false,
+          "primary_key": false,
+          "default": null,
+          "ordinal_position": 7
+        },
+        {
+          "name": "created_at",
+          "type": "TEXT",
+          "nullable": false,
+          "primary_key": false,
+          "default": null,
+          "ordinal_position": 8
+        }
+      ],
+      "foreign_keys": [
+        {
+          "field": "task_id",
+          "references": {
+            "table": "tasks",
+            "field": "id"
+          },
+          "on_delete": "NO ACTION",
+          "on_update": "NO ACTION"
+        }
+      ],
+      "indexes": [
+        {
+          "name": "executions_task",
+          "unique": false,
+          "origin": "c",
+          "partial": false,
+          "fields": [
+            "task_id"
+          ]
+        },
+        {
+          "name": "sqlite_autoindex_executions_1",
+          "unique": true,
+          "origin": "pk",
+          "partial": false,
+          "fields": [
+            "id"
+          ]
+        }
+      ],
+      "unique_indexes": [
+        {
+          "name": "sqlite_autoindex_executions_1",
+          "unique": true,
+          "origin": "pk",
+          "partial": false,
+          "fields": [
+            "id"
+          ]
+        }
+      ],
+      "create_sql": "CREATE TABLE executions (\n  id TEXT PRIMARY KEY, task_id TEXT NOT NULL REFERENCES tasks(id), started_at TEXT NOT NULL,\n  ended_at TEXT NOT NULL CHECK(ended_at >= started_at),\n  actual_minutes INTEGER NOT NULL CHECK(actual_minutes BETWEEN 0 AND 1000000),\n  blocked_reason TEXT NOT NULL DEFAULT '' CHECK(length(blocked_reason) <= 4000),\n  record_origin TEXT NOT NULL CHECK(record_origin IN ('user','synthetic')), created_at TEXT NOT NULL\n) STRICT"
+    },
+    {
+      "name": "plan_history",
+      "fields": [
+        {
+          "name": "id",
+          "type": "TEXT",
+          "nullable": false,
+          "primary_key": true,
+          "default": null,
+          "ordinal_position": 1
+        },
+        {
+          "name": "plan_id",
+          "type": "TEXT",
+          "nullable": false,
+          "primary_key": false,
+          "default": null,
+          "ordinal_position": 2
+        },
+        {
+          "name": "version",
+          "type": "INTEGER",
+          "nullable": false,
+          "primary_key": false,
+          "default": null,
+          "ordinal_position": 3
+        },
+        {
+          "name": "snapshot_json",
+          "type": "TEXT",
+          "nullable": false,
+          "primary_key": false,
+          "default": null,
+          "ordinal_position": 4
+        },
+        {
+          "name": "created_at",
+          "type": "TEXT",
+          "nullable": false,
+          "primary_key": false,
+          "default": null,
+          "ordinal_position": 5
+        }
+      ],
+      "foreign_keys": [
+        {
+          "field": "plan_id",
+          "references": {
+            "table": "plans",
+            "field": "id"
+          },
+          "on_delete": "NO ACTION",
+          "on_update": "NO ACTION"
+        }
+      ],
+      "indexes": [
+        {
+          "name": "sqlite_autoindex_plan_history_2",
+          "unique": true,
+          "origin": "u",
+          "partial": false,
+          "fields": [
+            "plan_id",
+            "version"
+          ]
+        },
+        {
+          "name": "sqlite_autoindex_plan_history_1",
+          "unique": true,
+          "origin": "pk",
+          "partial": false,
+          "fields": [
+            "id"
+          ]
+        }
+      ],
+      "unique_indexes": [
+        {
+          "name": "sqlite_autoindex_plan_history_2",
+          "unique": true,
+          "origin": "u",
+          "partial": false,
+          "fields": [
+            "plan_id",
+            "version"
+          ]
+        },
+        {
+          "name": "sqlite_autoindex_plan_history_1",
+          "unique": true,
+          "origin": "pk",
+          "partial": false,
+          "fields": [
+            "id"
+          ]
+        }
+      ],
+      "create_sql": "CREATE TABLE plan_history (\n  id TEXT PRIMARY KEY, plan_id TEXT NOT NULL REFERENCES plans(id),\n  version INTEGER NOT NULL CHECK(version >= 1),\n  snapshot_json TEXT NOT NULL CHECK(json_valid(snapshot_json) AND json_type(snapshot_json) = 'object'),\n  created_at TEXT NOT NULL, UNIQUE(plan_id,version)\n) STRICT"
+    },
+    {
+      "name": "plans",
+      "fields": [
+        {
+          "name": "id",
+          "type": "TEXT",
+          "nullable": false,
+          "primary_key": true,
+          "default": null,
+          "ordinal_position": 1
+        },
+        {
+          "name": "title",
+          "type": "TEXT",
+          "nullable": false,
+          "primary_key": false,
+          "default": null,
+          "ordinal_position": 2
+        },
+        {
+          "name": "description",
+          "type": "TEXT",
+          "nullable": false,
+          "primary_key": false,
+          "default": "''",
+          "ordinal_position": 3
+        },
+        {
+          "name": "start_date",
+          "type": "TEXT",
+          "nullable": false,
+          "primary_key": false,
+          "default": null,
+          "ordinal_position": 4
+        },
+        {
+          "name": "end_date",
+          "type": "TEXT",
+          "nullable": false,
+          "primary_key": false,
+          "default": null,
+          "ordinal_position": 5
+        },
+        {
+          "name": "priority",
+          "type": "TEXT",
+          "nullable": false,
+          "primary_key": false,
+          "default": null,
+          "ordinal_position": 6
+        },
+        {
+          "name": "success_criteria",
+          "type": "TEXT",
+          "nullable": false,
+          "primary_key": false,
+          "default": null,
+          "ordinal_position": 7
+        },
+        {
+          "name": "expected_minutes",
+          "type": "INTEGER",
+          "nullable": false,
+          "primary_key": false,
+          "default": null,
+          "ordinal_position": 8
+        },
+        {
+          "name": "version",
+          "type": "INTEGER",
+          "nullable": false,
+          "primary_key": false,
+          "default": null,
+          "ordinal_position": 9
+        },
+        {
+          "name": "source_review_id",
+          "type": "TEXT",
+          "nullable": true,
+          "primary_key": false,
+          "default": null,
+          "ordinal_position": 10
+        },
+        {
+          "name": "carried_improvement",
+          "type": "TEXT",
+          "nullable": false,
+          "primary_key": false,
+          "default": "''",
+          "ordinal_position": 11
+        },
+        {
+          "name": "record_origin",
+          "type": "TEXT",
+          "nullable": false,
+          "primary_key": false,
+          "default": null,
+          "ordinal_position": 12
+        },
+        {
+          "name": "created_at",
+          "type": "TEXT",
+          "nullable": false,
+          "primary_key": false,
+          "default": null,
+          "ordinal_position": 13
+        },
+        {
+          "name": "updated_at",
+          "type": "TEXT",
+          "nullable": false,
+          "primary_key": false,
+          "default": null,
+          "ordinal_position": 14
+        }
+      ],
+      "foreign_keys": [
+        {
+          "field": "source_review_id",
+          "references": {
+            "table": "reviews",
+            "field": "id"
+          },
+          "on_delete": "NO ACTION",
+          "on_update": "NO ACTION"
+        }
+      ],
+      "indexes": [
+        {
+          "name": "sqlite_autoindex_plans_2",
+          "unique": true,
+          "origin": "u",
+          "partial": false,
+          "fields": [
+            "source_review_id"
+          ]
+        },
+        {
+          "name": "sqlite_autoindex_plans_1",
+          "unique": true,
+          "origin": "pk",
+          "partial": false,
+          "fields": [
+            "id"
+          ]
+        }
+      ],
+      "unique_indexes": [
+        {
+          "name": "sqlite_autoindex_plans_2",
+          "unique": true,
+          "origin": "u",
+          "partial": false,
+          "fields": [
+            "source_review_id"
+          ]
+        },
+        {
+          "name": "sqlite_autoindex_plans_1",
+          "unique": true,
+          "origin": "pk",
+          "partial": false,
+          "fields": [
+            "id"
+          ]
+        }
+      ],
+      "create_sql": "CREATE TABLE plans (\n  id TEXT PRIMARY KEY, title TEXT NOT NULL CHECK(length(title) BETWEEN 1 AND 160),\n  description TEXT NOT NULL DEFAULT '' CHECK(length(description) <= 4000),\n  start_date TEXT NOT NULL CHECK(start_date GLOB '[0-9][0-9][0-9][0-9]-[0-9][0-9]-[0-9][0-9]'),\n  end_date TEXT NOT NULL CHECK(end_date GLOB '[0-9][0-9][0-9][0-9]-[0-9][0-9]-[0-9][0-9]' AND end_date >= start_date),\n  priority TEXT NOT NULL CHECK(priority IN ('high','medium','low')),\n  success_criteria TEXT NOT NULL CHECK(length(success_criteria) BETWEEN 1 AND 2000),\n  expected_minutes INTEGER NOT NULL CHECK(expected_minutes BETWEEN 0 AND 1000000),\n  version INTEGER NOT NULL CHECK(version >= 1), source_review_id TEXT UNIQUE REFERENCES reviews(id),\n  carried_improvement TEXT NOT NULL DEFAULT '' CHECK(length(carried_improvement) <= 2000),\n  record_origin TEXT NOT NULL CHECK(record_origin IN ('user','synthetic')),\n  created_at TEXT NOT NULL, updated_at TEXT NOT NULL\n) STRICT"
+    },
+    {
+      "name": "request_receipts",
+      "fields": [
+        {
+          "name": "request_id",
+          "type": "TEXT",
+          "nullable": false,
+          "primary_key": true,
+          "default": null,
+          "ordinal_position": 1
+        },
+        {
+          "name": "action",
+          "type": "TEXT",
+          "nullable": false,
+          "primary_key": false,
+          "default": null,
+          "ordinal_position": 2
+        },
+        {
+          "name": "resource_id",
+          "type": "TEXT",
+          "nullable": false,
+          "primary_key": false,
+          "default": null,
+          "ordinal_position": 3
+        },
+        {
+          "name": "response_json",
+          "type": "TEXT",
+          "nullable": false,
+          "primary_key": false,
+          "default": null,
+          "ordinal_position": 4
+        },
+        {
+          "name": "created_at",
+          "type": "TEXT",
+          "nullable": false,
+          "primary_key": false,
+          "default": null,
+          "ordinal_position": 5
+        }
+      ],
+      "foreign_keys": [
+        {
+          "field": "resource_id",
+          "references": {
+            "table": "tasks",
+            "field": "id"
+          },
+          "on_delete": "NO ACTION",
+          "on_update": "NO ACTION"
+        }
+      ],
+      "indexes": [
+        {
+          "name": "sqlite_autoindex_request_receipts_1",
+          "unique": true,
+          "origin": "pk",
+          "partial": false,
+          "fields": [
+            "request_id"
+          ]
+        }
+      ],
+      "unique_indexes": [
+        {
+          "name": "sqlite_autoindex_request_receipts_1",
+          "unique": true,
+          "origin": "pk",
+          "partial": false,
+          "fields": [
+            "request_id"
+          ]
+        }
+      ],
+      "create_sql": "CREATE TABLE request_receipts (\n  request_id TEXT PRIMARY KEY, action TEXT NOT NULL CHECK(action IN ('task.complete','task.reopen')),\n  resource_id TEXT NOT NULL REFERENCES tasks(id), response_json TEXT NOT NULL CHECK(json_valid(response_json) AND json_type(response_json) = 'object'),\n  created_at TEXT NOT NULL\n) STRICT"
+    },
+    {
+      "name": "reviews",
+      "fields": [
+        {
+          "name": "id",
+          "type": "TEXT",
+          "nullable": false,
+          "primary_key": true,
+          "default": null,
+          "ordinal_position": 1
+        },
+        {
+          "name": "plan_id",
+          "type": "TEXT",
+          "nullable": false,
+          "primary_key": false,
+          "default": null,
+          "ordinal_position": 2
+        },
+        {
+          "name": "improvement",
+          "type": "TEXT",
+          "nullable": false,
+          "primary_key": false,
+          "default": null,
+          "ordinal_position": 3
+        },
+        {
+          "name": "next_plan_id",
+          "type": "TEXT",
+          "nullable": true,
+          "primary_key": false,
+          "default": null,
+          "ordinal_position": 4
+        },
+        {
+          "name": "record_origin",
+          "type": "TEXT",
+          "nullable": false,
+          "primary_key": false,
+          "default": null,
+          "ordinal_position": 5
+        },
+        {
+          "name": "created_at",
+          "type": "TEXT",
+          "nullable": false,
+          "primary_key": false,
+          "default": null,
+          "ordinal_position": 6
+        }
+      ],
+      "foreign_keys": [
+        {
+          "field": "next_plan_id",
+          "references": {
+            "table": "plans",
+            "field": "id"
+          },
+          "on_delete": "NO ACTION",
+          "on_update": "NO ACTION"
+        },
+        {
+          "field": "plan_id",
+          "references": {
+            "table": "plans",
+            "field": "id"
+          },
+          "on_delete": "NO ACTION",
+          "on_update": "NO ACTION"
+        }
+      ],
+      "indexes": [
+        {
+          "name": "sqlite_autoindex_reviews_2",
+          "unique": true,
+          "origin": "u",
+          "partial": false,
+          "fields": [
+            "next_plan_id"
+          ]
+        },
+        {
+          "name": "sqlite_autoindex_reviews_1",
+          "unique": true,
+          "origin": "pk",
+          "partial": false,
+          "fields": [
+            "id"
+          ]
+        }
+      ],
+      "unique_indexes": [
+        {
+          "name": "sqlite_autoindex_reviews_2",
+          "unique": true,
+          "origin": "u",
+          "partial": false,
+          "fields": [
+            "next_plan_id"
+          ]
+        },
+        {
+          "name": "sqlite_autoindex_reviews_1",
+          "unique": true,
+          "origin": "pk",
+          "partial": false,
+          "fields": [
+            "id"
+          ]
+        }
+      ],
+      "create_sql": "CREATE TABLE reviews (\n  id TEXT PRIMARY KEY, plan_id TEXT NOT NULL REFERENCES plans(id),\n  improvement TEXT NOT NULL CHECK(length(trim(improvement)) BETWEEN 1 AND 2000),\n  next_plan_id TEXT UNIQUE REFERENCES plans(id),\n  record_origin TEXT NOT NULL CHECK(record_origin IN ('user','synthetic')), created_at TEXT NOT NULL\n) STRICT"
+    },
+    {
+      "name": "tasks",
+      "fields": [
+        {
+          "name": "id",
+          "type": "TEXT",
+          "nullable": false,
+          "primary_key": true,
+          "default": null,
+          "ordinal_position": 1
+        },
+        {
+          "name": "plan_id",
+          "type": "TEXT",
+          "nullable": false,
+          "primary_key": false,
+          "default": null,
+          "ordinal_position": 2
+        },
+        {
+          "name": "title",
+          "type": "TEXT",
+          "nullable": false,
+          "primary_key": false,
+          "default": null,
+          "ordinal_position": 3
+        },
+        {
+          "name": "notes",
+          "type": "TEXT",
+          "nullable": false,
+          "primary_key": false,
+          "default": "''",
+          "ordinal_position": 4
+        },
+        {
+          "name": "due_date",
+          "type": "TEXT",
+          "nullable": true,
+          "primary_key": false,
+          "default": null,
+          "ordinal_position": 5
+        },
+        {
+          "name": "priority",
+          "type": "TEXT",
+          "nullable": false,
+          "primary_key": false,
+          "default": null,
+          "ordinal_position": 6
+        },
+        {
+          "name": "tags_json",
+          "type": "TEXT",
+          "nullable": false,
+          "primary_key": false,
+          "default": "'[]'",
+          "ordinal_position": 7
+        },
+        {
+          "name": "expected_minutes",
+          "type": "INTEGER",
+          "nullable": false,
+          "primary_key": false,
+          "default": null,
+          "ordinal_position": 8
+        },
+        {
+          "name": "status",
+          "type": "TEXT",
+          "nullable": false,
+          "primary_key": false,
+          "default": null,
+          "ordinal_position": 9
+        },
+        {
+          "name": "completion_cycle",
+          "type": "INTEGER",
+          "nullable": false,
+          "primary_key": false,
+          "default": "0",
+          "ordinal_position": 10
+        },
+        {
+          "name": "version",
+          "type": "INTEGER",
+          "nullable": false,
+          "primary_key": false,
+          "default": null,
+          "ordinal_position": 11
+        },
+        {
+          "name": "deleted_at",
+          "type": "TEXT",
+          "nullable": true,
+          "primary_key": false,
+          "default": null,
+          "ordinal_position": 12
+        },
+        {
+          "name": "record_origin",
+          "type": "TEXT",
+          "nullable": false,
+          "primary_key": false,
+          "default": null,
+          "ordinal_position": 13
+        },
+        {
+          "name": "created_at",
+          "type": "TEXT",
+          "nullable": false,
+          "primary_key": false,
+          "default": null,
+          "ordinal_position": 14
+        },
+        {
+          "name": "updated_at",
+          "type": "TEXT",
+          "nullable": false,
+          "primary_key": false,
+          "default": null,
+          "ordinal_position": 15
+        }
+      ],
+      "foreign_keys": [
+        {
+          "field": "plan_id",
+          "references": {
+            "table": "plans",
+            "field": "id"
+          },
+          "on_delete": "NO ACTION",
+          "on_update": "NO ACTION"
+        }
+      ],
+      "indexes": [
+        {
+          "name": "tasks_plan",
+          "unique": false,
+          "origin": "c",
+          "partial": false,
+          "fields": [
+            "plan_id"
+          ]
+        },
+        {
+          "name": "sqlite_autoindex_tasks_1",
+          "unique": true,
+          "origin": "pk",
+          "partial": false,
+          "fields": [
+            "id"
+          ]
+        }
+      ],
+      "unique_indexes": [
+        {
+          "name": "sqlite_autoindex_tasks_1",
+          "unique": true,
+          "origin": "pk",
+          "partial": false,
+          "fields": [
+            "id"
+          ]
+        }
+      ],
+      "create_sql": "CREATE TABLE tasks (\n  id TEXT PRIMARY KEY, plan_id TEXT NOT NULL REFERENCES plans(id),\n  title TEXT NOT NULL CHECK(length(title) BETWEEN 1 AND 160), notes TEXT NOT NULL DEFAULT '' CHECK(length(notes) <= 4000),\n  due_date TEXT CHECK(due_date IS NULL OR due_date GLOB '[0-9][0-9][0-9][0-9]-[0-9][0-9]-[0-9][0-9]'),\n  priority TEXT NOT NULL CHECK(priority IN ('high','medium','low')),\n  tags_json TEXT NOT NULL DEFAULT '[]' CHECK(json_valid(tags_json) AND json_type(tags_json) = 'array' AND json_array_length(tags_json) <= 20),\n  expected_minutes INTEGER NOT NULL CHECK(expected_minutes BETWEEN 0 AND 1000000),\n  status TEXT NOT NULL CHECK(status IN ('pending','completed')),\n  completion_cycle INTEGER NOT NULL DEFAULT 0 CHECK(completion_cycle >= 0),\n  version INTEGER NOT NULL CHECK(version >= 1), deleted_at TEXT,\n  record_origin TEXT NOT NULL CHECK(record_origin IN ('user','synthetic')),\n  created_at TEXT NOT NULL, updated_at TEXT NOT NULL\n) STRICT"
+    }
+  ],
+  "local_sqlite_triggers": [
+    {
+      "name": "plan_history_no_delete",
+      "table_name": "plan_history",
+      "sql": "CREATE TRIGGER plan_history_no_delete BEFORE DELETE ON plan_history\nBEGIN SELECT RAISE(ABORT,'immutable_history'); END"
+    },
+    {
+      "name": "plan_history_no_update",
+      "table_name": "plan_history",
+      "sql": "CREATE TRIGGER plan_history_no_update BEFORE UPDATE ON plan_history\nBEGIN SELECT RAISE(ABORT,'immutable_history'); END"
+    }
+  ],
+  "field_name_match": {
+    "status": "matched",
+    "tables": 7,
+    "fields": 58,
+    "checked_at": "2026-09-30T01:29:14.158Z",
+    "postgres_snapshot_at": "2026-09-30T01:25:54.125Z",
+    "scope": "Exact ordered database field names; engine-specific defaults, constraints, indexes and triggers remain separately recorded"
+  },
+  "representations": {
+    "database": "tags_json, snapshot_json, response_json are JSON text; production columns use PostgreSQL text/integer, local columns use SQLite TEXT/INTEGER",
+    "api": "tags array, snapshot object, response object; IDs/dates/numeric values retained",
+    "record_origin": "Production CHECK constraints allow user records only; local SQLite also allows synthetic records in isolated QA databases"
+  },
+  "date_rules": {
+    "dates": "YYYY-MM-DD strings representing real calendar dates",
+    "timestamps": "UTC ISO 8601 YYYY-MM-DDTHH:mm:ss.sssZ strings",
+    "displayed_timezone": "Asia/Seoul",
+    "overdue": "nondeleted, pending task due_date strictly before Asia/Seoul today",
+    "period_scope": "all nondeleted tasks linked to selected Plan; label is Plan start/end period",
+    "storage": "Production PostgreSQL text and local SQLite TEXT, not native DATE or timestamp columns",
+    "calendar_validation": "src/validation.mjs validates calendar dates before API writes; production pds_date validates dates inside pds_mutate RPC. Table CHECK constraints retain date pattern/order rules."
+  },
+  "time_rules": {
+    "unit": "minutes",
+    "representation": "integer 0..1000000 per record",
+    "expected": "sum selected Plan active task expected_minutes",
+    "actual": "sum executions linked to selected Plan active tasks",
+    "delta": "actual - expected",
+    "empty_sum": 0,
+    "manual_actual_duration": "may differ from clock interval; imported second measurements must document rounding"
+  },
+  "integrity_rules": {
+    "plan_history": "initial and every subsequent version retained; update/delete rejected by immutable-history triggers",
+    "completions": "unique(task_id,cycle), unique(request_id), transactional receipt replay",
+    "task_deletion": "soft delete; existing executions/events retained; excluded from See",
+    "next_plan": "unique source_review_id; improvement and source relation carried transactionally"
+  },
+  "postgres": {
+    "status": "Actual production schema introspected and recorded",
+    "project_id": "yynsaokvquggrbdrmalr",
+    "catalog": "verification/postgres-catalog.json",
+    "checked_at": "2026-09-30T01:25:54.125Z",
+    "snapshot_reuse": "Schema generation retains this verification timestamp; live cloud must be re-introspected explicitly for a newer check",
+    "bootstrap": "db/postgres.sql",
+    "adapter": "src/store-supabase.mjs",
+    "rpc": [
+      "pds_state()",
+      "pds_mutate(text,jsonb)"
+    ],
+    "access": "T06 dedicated public-safe DB; actual RLS policies and invoker settings recorded above. Publishable key held on server; no service-role key."
+  }
+}

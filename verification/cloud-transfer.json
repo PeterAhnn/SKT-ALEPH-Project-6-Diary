@@ -1,0 +1,30 @@
+{
+  "checked_at": "2026-09-30T01:14:48.989Z",
+  "status": "passed",
+  "project_id": "yynsaokvquggrbdrmalr",
+  "source_storage": "sqlite",
+  "destination_storage": "postgres",
+  "record_origin": "user",
+  "counts": {
+    "plans": 1,
+    "plan_history": 2,
+    "tasks": 7,
+    "executions": 3,
+    "completion_events": 4,
+    "request_receipts": 4,
+    "reviews": 0
+  },
+  "state_sha256": "bfc7a05a652dbc79265f7f14fa7132050db3abf15cf90f33f6b244373ba0a460",
+  "cloud_state_sha256": "bfc7a05a652dbc79265f7f14fa7132050db3abf15cf90f33f6b244373ba0a460",
+  "export_data_sha256": "bab0e320d077304f95d3217e678de6e01ff242e9581922e53fb2ac015e6480b9",
+  "cloud_export_data_sha256": "bab0e320d077304f95d3217e678de6e01ff242e9581922e53fb2ac015e6480b9",
+  "checks": {
+    "seven_tables_equal": true,
+    "all_ids_dates_values_versions_equal": true,
+    "export_data_equal_excluding_exported_at": true,
+    "timezone_equal": true,
+    "time_unit_equal": true,
+    "authentication_false": true,
+    "existing_records_not_overwritten": true
+  }
+}

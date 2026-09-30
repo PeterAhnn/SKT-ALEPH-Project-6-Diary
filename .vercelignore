@@ -1,0 +1,16 @@
+.git
+.data
+.test-data
+.gstack
+.vercel
+.env*
+node_modules
+verification
+records
+docs
+contracts
+HANDOFF.md
+AGENTS.md
+SKT-ALEPH-project-guide.md
+ALEPH-SUBMISSION-TEMPLATE.md
+ALEPH-TASK-READBACK-TEMPLATE.md

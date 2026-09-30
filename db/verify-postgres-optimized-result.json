@@ -1,0 +1,131 @@
+{
+  "verified_at_utc": "2026-09-30 01:24:01 UTC",
+  "project_id": "yynsaokvquggrbdrmalr",
+  "engine": "Supabase PostgreSQL",
+  "migration": {
+    "name": "optimize_t06_diary",
+    "applied": true,
+    "new_fk_indexes": [
+      "request_receipts_resource(resource_id)",
+      "reviews_plan(plan_id)"
+    ],
+    "changed_rls_policies": 10,
+    "gate_semantics_unchanged": true
+  },
+  "synthetic_test": true,
+  "fixture_scope": "Fresh UUIDs in a rolled-back transaction; existing user records preserved by exact state comparison.",
+  "before_counts": {
+    "plans": 2,
+    "tasks": 7,
+    "reviews": 1,
+    "executions": 3,
+    "plan_history": 3,
+    "request_receipts": 4,
+    "completion_events": 4
+  },
+  "checks": [
+    "anon-role",
+    "initial-plan-and-history",
+    "same-id-immutable-snapshots",
+    "optimistic-plan-conflict",
+    "parsed-task-tags",
+    "optimistic-task-conflict",
+    "separate-utc-execution",
+    "double-completion-one-event-plus-one-count",
+    "reopen-cycle-once",
+    "old-complete-replay-after-reopen-no-mutation",
+    "new-completion-cycle-retains-old-event",
+    "db-task-cycle-unique",
+    "global-receipt-other-task-conflict",
+    "global-receipt-other-action-conflict",
+    "soft-delete-history-and-restore",
+    "one-next-plan-carries-review-improvement",
+    "raw-invalid-date-rejected",
+    "raw-negative-minutes-rejected",
+    "raw-fractional-minutes-rejected",
+    "raw-non-array-tags-rejected",
+    "raw-whitespace-tag-rejected",
+    "raw-non-uuid-request-rejected",
+    "raw-whitespace-improvement-rejected",
+    "raw-whitespace-title-rejected",
+    "public-synthetic-origin-rejected",
+    "raw-non-utc-timestamp-rejected",
+    "raw-table-insert-rls-rejected",
+    "raw-table-update-rls-rejected",
+    "no-delete-table-privilege",
+    "anon-history-alter-rejected",
+    "state-seven-table-counts",
+    "parsed-snapshot-and-receipt-response",
+    "preexisting-state-preserved",
+    "history-trigger-owner-update-rejected",
+    "history-trigger-owner-delete-rejected"
+  ],
+  "status": "PASS",
+  "assertions": 35,
+  "primary_role": "anon",
+  "post_rollback_counts": {
+    "plans": 2,
+    "tasks": 7,
+    "reviews": 1,
+    "executions": 3,
+    "plan_history": 3,
+    "request_receipts": 4,
+    "completion_events": 4
+  },
+  "transaction_rolled_back": true,
+  "history_trigger_checked_as": "owner",
+  "advisors": {
+    "security": {
+      "lints": []
+    },
+    "performance": {
+      "lints": [
+        {
+          "name": "unused_index",
+          "title": "Unused Index",
+          "level": "INFO",
+          "facing": "EXTERNAL",
+          "categories": [
+            "PERFORMANCE"
+          ],
+          "description": "Detects if an index has never been used and may be a candidate for removal.",
+          "remediation": "https://supabase.com/docs/guides/database/database-linter?lint=0005_unused_index",
+          "count": 3,
+          "findings": [
+            {
+              "detail": "Index \\`tasks_plan\\` on table \\`public.tasks\\` has not been used",
+              "metadata": {
+                "name": "tasks",
+                "type": "table",
+                "schema": "public"
+              },
+              "observed_at": "2026-09-30T01:23:18.604Z"
+            },
+            {
+              "detail": "Index \\`request_receipts_resource\\` on table \\`public.request_receipts\\` has not been used",
+              "metadata": {
+                "name": "request_receipts",
+                "type": "table",
+                "schema": "public"
+              },
+              "observed_at": "2026-09-30T01:23:18.604Z"
+            },
+            {
+              "detail": "Index \\`reviews_plan\\` on table \\`public.reviews\\` has not been used",
+              "metadata": {
+                "name": "reviews",
+                "type": "table",
+                "schema": "public"
+              },
+              "observed_at": "2026-09-30T01:23:18.604Z"
+            }
+          ]
+        }
+      ]
+    },
+    "security_findings": 0,
+    "performance_warning_findings": 0,
+    "performance_info_findings": 3,
+    "retained_indexes_reason": "INFO unused-index notices on a new small database do not justify removing FK lookup indexes."
+  }
+}
