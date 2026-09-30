@@ -16,22 +16,22 @@ Node.js 24 기본 HTTP/ES modules 앱, 실제 SQLite, Vercel API/Supabase Postgr
 
 사용자가 고른 개선 **작업 전에 파일 읽기와 검사 실행 권한부터 확인한다**를 cloud UI로 저장하고 다음 계획 **ALEPH 남은 검증 마무리**(2026-10-01~02, 예상135분)에 연결했다. 다음 계획에는 아직 할 일이 없다. 전체 cloud 수량은 Plan2/history3/Task7/Execution3/completion4/receipt4/review1이다.
 
-공개 저장소는 [PeterAhnn/SKT-ALEPH-Project-6-Diary](https://github.com/PeterAhnn/SKT-ALEPH-Project-6-Diary)이며 push·전체 커밋 확인 전이다. 첫 Vercel 운영 배포는 READY이고 [공개 URL](https://skt-aleph-project-6-diary.vercel.app)의 health에서 HTTP200·postgres·authentication:false를 확인했다. 새 공개 브라우저의 화면/자료 확인과 최종 소스 일치는 남아 있다.
+앱/T07 기준점은 [b9de0298cd200961eac56286c6a6a55299947a96](https://github.com/PeterAhnn/SKT-ALEPH-Project-6-Diary/commit/b9de0298cd200961eac56286c6a6a55299947a96)이다. push·원격 해시·로그인하지 않은 GitHub 화면·HTTP/API200을 확인했다. 최종 Vercel 배포 dpl_EzpXjtay3cRvFr1vJXV2rPwV8JpM는 READY·Node24.x이며 메타데이터의3가지 전체해시가 기준점과 같다. [공개 앱](https://skt-aleph-project-6-diary.vercel.app)은 무인증 HTTP200·실제 PostgreSQL이며 내장 브라우저에 열어 두었다.
 
 ## 3. 실행 명령
 
-Node.js 24 이상이 필요하다. 외부 런타임 패키지 의존성은 없다.
+Node.js 24가 필요하다. 외부 런타임 패키지 의존성은 없다.
 
     npm start
     npm test
     npm run check
 
-기본 포트는 8006이다. .env의 Supabase URL/publishable 키가 있으면 PostgreSQL, 없으면 .data/diary.sqlite를 사용한다. 현재 승인 자료 SQLite 서버는 8006, PostgreSQL 검사 서버는 8008이다. 재개 시 실제 서버/포트 상태를 확인한다.
+기본 포트는 8006이다. .env의 Supabase URL/publishable 키가 있으면 PostgreSQL, 없으면 .data/diary.sqlite를 사용한다. 8006의 승인 자료 SQLite는 cloud 이전 시점 백업이며 이후 추가된 회고/다음 계획은 공개DB와 최종export에 보존했다. 일시적인 합성검사8007·cloud검사8008 서버는 작업 후 정리한다. 재개 시 실제 서버/포트 상태를 확인한다.
 
     node scripts/write-schema.mjs
     node scripts/transfer-to-cloud.mjs verify
 
-스키마 생성은 실제 디스크 DB를 introspection한다. 이전 검증은 8006/8008의 7표·export 동일성을 검사한다. 추가 편집으로 DB가 달라졌다면 실패가 정상일 수 있고 자동 덮어쓰기를 하지 않는다. 승인 자료 가져오기를 다시 실행하려면 출처 해시와 현재 기록을 확인한다.
+스키마 생성은 실제 SQLite PRAGMA를 새로 읽고 저장된 운영 PostgreSQL 7표·58필드 카탈로그와 비교한다. 운영 조회 시각은 유지하며 새 cloud 검사로 표시하지 않는다. 이전 검증은 당시8006/8008의7표·export 동일성을 검사한 근거다. 회고 추가 뒤 local/cloud가 달라져 실패할 수 있고 자동 덮어쓰기를 하지 않는다. 승인 자료 가져오기를 다시 실행하려면 출처 해시와 현재 기록을 확인한다.
 
 작업 폴더: C:\Users\Administrator\Desktop\SKT ALEPH\SKT-ALEPH\SKT-ALEPH-Project-6-Diary.
 
@@ -45,13 +45,13 @@ Node.js 24 이상이 필요하다. 외부 런타임 패키지 의존성은 없�
 
 ## 5. 남은 문제
 
-최종 push/커밋, 새 인증 없는 브라우저 접근, 배포와 커밋 일치, 화면 폭, 공개 환경 비밀값/콘솔/네트워크 점검을 마쳐야 한다. 플랫폼 제출·접수·승인은 완료하지 않았다.
+구현·DB·공개 접근·모바일·다운로드·고정 소스와 배포 대조는 완료했다. [verification/delivery.json](verification/delivery.json), [public-verification.json](verification/public-verification.json), [public-write-validation.json](verification/public-write-validation.json)을 따른다. 플랫폼 제출 버튼·접수·강사/마스터 승인은 수행하지 않았다.
 
 ## 6. 다음 행동
 
-1. 공개 브라우저에서 원계획·기여 기록·개선 연결·전체 내보내기를 다시 확인한다.
-2. 공개 배포·최신 DB 계약·최종 소스를 검증하고 실제 전체 커밋 URL을 확정한다.
-3. 남은 UI/공개 접근/안전성을 기록하고 [docs/SUBMISSION.md](docs/SUBMISSION.md)를 최종화한다. T07용 전체 export·계약·기준 커밋을 보존한다.
+1. 사용자 검토는 [docs/FINAL-REPORT.md](docs/FINAL-REPORT.md)와 [docs/SUBMISSION.md](docs/SUBMISSION.md)를 사용한다. 제출 실행은 실제 플랫폼 상태와 별도로 기록한다.
+2. T07은 위 앱 기준 전체 커밋·[contracts/pds-schema-v2.json](contracts/pds-schema-v2.json)·승인 정본·[verification/current-export.json](verification/current-export.json)·[browser-export.json](verification/browser-export.json)을 보존한 뒤 시작한다.
+3. 공개 자료는 편집 가능하므로 제출/다음 과제 전에 현재 상태와 보존된 export의 차이를 확인한다. 이후 보고서·근거 커밋은 앱 기준점을 대체하지 않는다.
 
 ## 7. 건드리지 말 것
 
@@ -60,4 +60,3 @@ Node.js 24 이상이 필요하다. 외부 런타임 패키지 의존성은 없�
 - T06 로그인 없음·정확한 공개 안내, Plan 불변 이력·실행 분리·DB 요청 중복 방지.
 - .env, .data, .test-data, .vercel은 Git 제외. 키를 제품 화면·보고서·제출·Git에 넣지 않는다. service-role/secret 키를 사용하지 않는다.
 - 기존 인증 내장 브라우저 우선. 공개 접근/반복 QA는 격리된 gstack 세션이며 개인 Chrome 탭/탭 그룹을 만들지 않는다.
-

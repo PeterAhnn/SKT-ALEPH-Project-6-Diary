@@ -1,0 +1,112 @@
+{
+  "checked_at": "2026-09-30T01:38:06.240Z",
+  "status": "PASS",
+  "public_url": "https://skt-aleph-project-6-diary.vercel.app",
+  "application_baseline_commit": "b9de0298cd200961eac56286c6a6a55299947a96",
+  "deployment_id": "dpl_EzpXjtay3cRvFr1vJXV2rPwV8JpM",
+  "deployment_metadata_source": "Parent verified READY deployment before authorizing this run; this script does not introspect deployment metadata",
+  "credentials": "omit; no cookies, Authorization, apikey or deployment bypass headers",
+  "original_plan_id": "ac9cad6d-c16c-4c20-b890-eac7466e6ad2",
+  "requests": [
+    {
+      "method": "GET",
+      "path": "/api/state",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/api/plans",
+      "status": 400,
+      "request_bytes": 12,
+      "error": {
+        "code": "VALIDATION",
+        "message": "계획 제목을(를) 비어 있지 않은 160자 이하의 글로 입력해 주세요."
+      }
+    },
+    {
+      "method": "POST",
+      "path": "/api/plans",
+      "status": 400,
+      "request_bytes": 1,
+      "error": {
+        "code": "VALIDATION",
+        "message": "입력 형식을 읽을 수 없습니다."
+      }
+    },
+    {
+      "method": "POST",
+      "path": "/api/plans",
+      "status": 413,
+      "request_bytes": 65561,
+      "error": {
+        "code": "PAYLOAD_TOO_LARGE",
+        "message": "입력 자료가 너무 큽니다. 64KB 이하로 줄여 주세요."
+      }
+    },
+    {
+      "method": "PATCH",
+      "path": "/api/plans/ac9cad6d-c16c-4c20-b890-eac7466e6ad2",
+      "status": 409,
+      "request_bytes": 1350,
+      "error": {
+        "code": "CONFLICT",
+        "message": "다른 변경 또는 같은 요청 식별자가 있습니다. 최신 자료를 확인해 주세요."
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/api/state",
+      "status": 200
+    }
+  ],
+  "checks": {
+    "public_state_without_credentials": true,
+    "empty_title_400_field_validation": true,
+    "malformed_json_400": true,
+    "body_over_64kb_413": true,
+    "stale_valid_plan_patch_409": true,
+    "all_seven_tables_deep_equal": true,
+    "state_hash_unchanged": true
+  },
+  "scope": "Rejected writes only. No valid record creation, no current-version update, no deletion, no automatic retry.",
+  "original_plan_version_before": 2,
+  "before_counts": {
+    "plans": 2,
+    "plan_history": 3,
+    "tasks": 7,
+    "executions": 3,
+    "completion_events": 4,
+    "request_receipts": 4,
+    "reviews": 1
+  },
+  "before_state_sha256": "c0f8ead9dcf2d3ef78353b1d8c54d445f1f1ae75bca90852b81e573796d4a22a",
+  "stale_patch": {
+    "supplied_expected_version": 1,
+    "observed_plan_version": 2,
+    "fields": [
+      "title",
+      "description",
+      "start_date",
+      "end_date",
+      "priority",
+      "success_criteria",
+      "expected_minutes"
+    ],
+    "changed_field_values": 0,
+    "inference": "Valid input passed HTTP validation; the observed 409 is the adapter mapping of database conflict. This script does not inspect private runtime logs."
+  },
+  "after_counts": {
+    "plans": 2,
+    "plan_history": 3,
+    "tasks": 7,
+    "executions": 3,
+    "completion_events": 4,
+    "request_receipts": 4,
+    "reviews": 1
+  },
+  "after_state_sha256": "c0f8ead9dcf2d3ef78353b1d8c54d445f1f1ae75bca90852b81e573796d4a22a",
+  "original_plan_version_after": 2,
+  "records_created": 0,
+  "records_changed": 0,
+  "finished_at": "2026-09-30T01:38:09.380Z"
+}

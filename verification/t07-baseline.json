@@ -1,0 +1,62 @@
+{
+  "checked_at": "2026-09-30T01:44:27.077Z",
+  "task": "T06",
+  "status": "implementation_and_submission_materials_ready",
+  "platform_submitted": false,
+  "source_commit": "b9de0298cd200961eac56286c6a6a55299947a96",
+  "source_url": "https://github.com/PeterAhnn/SKT-ALEPH-Project-6-Diary/commit/b9de0298cd200961eac56286c6a6a55299947a96",
+  "result_url": "https://skt-aleph-project-6-diary.vercel.app",
+  "next_task": "T07",
+  "preserved_files": [
+    {
+      "path": "contracts/pds-schema-v2.json",
+      "sha256": "c0b7d8a1486ff84bd3309ed446cef2dccbec2d33a29a70847841127ca9f48a1e"
+    },
+    {
+      "path": "verification/postgres-catalog.json",
+      "sha256": "39bb3b86a1d121d191fc400f0f106648e0cef21b0b1970e43883e52d7a3ede0b"
+    },
+    {
+      "path": "records/user-approved-recommendation.json",
+      "sha256": "4e492ebab2b364bf3d068972917426d938ea55f41d5ffa4e5fdd55660890b420"
+    },
+    {
+      "path": "verification/current-export.json",
+      "sha256": "4c0b8d835d5f1bbf80eac13192f95d28af8fb9e324bb5b58bd3827293851d0e2"
+    },
+    {
+      "path": "verification/browser-export.json",
+      "sha256": "212c25cfe62cb893ffc1674d10d4a3bd2f71aba277d1d8971967d5d22441df28"
+    },
+    {
+      "path": "verification/delivery.json",
+      "sha256": "49cbfcddfba90cccedcf60344baec2edb1149ea521db7bcb9d05e046a77e7e0e"
+    }
+  ],
+  "submission": {
+    "verification_labels": 4,
+    "judgment_labels": 3,
+    "verification_characters": 465,
+    "judgment_characters": 318,
+    "limit_each": 1500
+  },
+  "tests": {
+    "node": 27,
+    "postgres": 35
+  },
+  "record_counts": {
+    "plans": 2,
+    "plan_history": 3,
+    "tasks": 7,
+    "executions": 3,
+    "completion_events": 4,
+    "request_receipts": 4,
+    "reviews": 1
+  },
+  "actual_records_note": "Executions are user-approved, measured T05 AI collaboration intervals, not measured human study time.",
+  "improvement": "작업 전에 파일 읽기와 검사 실행 권한부터 확인한다",
+  "next_plan_period": [
+    "2026-10-01",
+    "2026-10-02"
+  ]
+}

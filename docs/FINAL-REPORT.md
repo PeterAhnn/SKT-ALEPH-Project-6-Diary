@@ -62,6 +62,9 @@ API에서 개선 원문·nextPlan.source_review_id·review.next_plan_id의 일�
 | 공개 무인증 GET | 9요청·HTTP200·로그인 전환 없음 | state2회·전체 export·정적4파일 SHA 동일, [public-verification.json](../verification/public-verification.json) |
 | 실제 화면과 모바일 | 실제 집계·기여 기록·화면 넘침 없음 | [See 화면](../verification/see-desktop.png)·[375px 모바일](../verification/see-mobile.png)·[실행 기여 기록](../verification/actual-contributors.png), 콘솔 오류0 |
 | 배포 요청 본문 | Vercel helper 선소비 방지·64KB 유지 | helpers:false 적용, 실제 설치된 runtime 재현 통과, [vercel-request-body.json](../verification/vercel-request-body.json) |
+| 최종 공개 저장 경로 | 본문 처리·제한·실제DB 충돌 거절·자료 불변 | 빈 제목400·잘못된JSON400·64KB초과413·기존Plan stale PATCH409, 전후7표 동일, [public-write-validation.json](../verification/public-write-validation.json) |
+| 내장 브라우저 실제 다운로드 | 서버 첨부 JSON 파일 하나·전체 자료 | 실제 버튼→pds-diary-2026-09-30.json 다운로드, [browser-export.json](../verification/browser-export.json) 전체7표·ID/시각/값/단위 API와 동일 |
+| 고정 소스와 배포 | 원격 전체 커밋·무인증·배포 동일 | 로그인하지 않은 GitHub 화면/HTTP200/API200·배포 메타데이터·실행 파일11개 동일, [delivery.json](../verification/delivery.json) |
 
 합성 fixture는 기능 시험 근거이며 본인 실제 활동으로 사용하지 않는다. cloud 이전 근거는 **회고 추가 전** Plan1/history2/Task7/Execution3/completion4/receipt4/review0 시점이다. 이후 실제 회고로 바뀐 현재 전체 state의 해시라고 쓰지 않는다.
 
@@ -79,11 +82,15 @@ PG에는 RLS·SECURITY INVOKER·컬럼별 권한을 적용하며 RPC transaction
 
 ## 배포·제출·T07 상태
 
-공개 저장소 [PeterAhnn/SKT-ALEPH-Project-6-Diary](https://github.com/PeterAhnn/SKT-ALEPH-Project-6-Diary)를 만들었다. 최종 push·실제 전체 커밋·고정 소스 URL은 확인 전이다. Vercel CLI61.1.0, 계정 ahs3810, scope peter-ahns-projects, 프로젝트 skt-aleph-project-6-diary의 첫 운영 배포는 READY이다. [공개 결과물](https://skt-aleph-project-6-diary.vercel.app) health 요청에서 HTTP200·postgres·authentication:false를 확인했다.
+앱 기준 소스는 [실제 전체 커밋 b9de0298cd200961eac56286c6a6a55299947a96](https://github.com/PeterAhnn/SKT-ALEPH-Project-6-Diary/commit/b9de0298cd200961eac56286c6a6a55299947a96)이다. Git push와 원격 해시, 무인증 HTML/API HTTP200 및 로그인하지 않은 브라우저의 커밋 화면을 확인했다. 이후 보고서/근거 추가 커밋은 이 앱 기준점을 바꾸지 않는다.
+
+Vercel CLI61.1.0, scope peter-ahns-projects, 프로젝트 skt-aleph-project-6-diary의 최종 운영 배포 **dpl_EzpXjtay3cRvFr1vJXV2rPwV8JpM**는 READY·Node24.x이다. [공개 결과물](https://skt-aleph-project-6-diary.vercel.app)에서 HTTP200·postgres·authentication:false를 확인했다. [deployment.json](../verification/deployment.json)의 t06SourceCommit/gitCommitSha/githubCommitSha는 모두 앱 기준 커밋과 같다. 현재 실행 파일11개는 커밋의 바이트와 같으며 공개 정적4파일도 같았다.
 
 확인: 격리된 gstack 브라우저의 공개 화면·실제 집계·기여 기록·375px 화면·가로 넘침 없음·콘솔 오류0, 무인증 API state 재조회/전체 export와 정적 파일 SHA 일치. 최신 전체 자료는 [current-export.json](../verification/current-export.json) 한 파일에 보관했다. 내장 브라우저에도 공개 앱을 열어 두었다.
 
-남은 최종 확인: 최종 push/전체 커밋·고정 소스 공개 접근, 수정된 배포 요청 본문과 서버 첨부 다운로드의 공개 실행, 배포/커밋 일치 및 최종 T07 기준점. 플랫폼 제출·접수·강사/마스터 승인은 수행하지 않았다.
+최종 공개 저장 요청은 유효한 새 자료를 만들지 않고 검증했다. 정상 본문은 필드 검증까지 도달하며 실제 DB의 기존 버전 충돌은409로 거절했다. 잘못된 요청4건 전후7표의 모든 값·해시가 같았다. 내장 브라우저에서 실제 첨부 JSON을 다운로드하고 현재API의 전체7표·ID·날짜·값·단위와 같음을 확인했다. export마다 생성 시각은 달라질 수 있어 자료와 단위를 따로 비교한다.
+
+T07 기준점은 위 전체 커밋, 실제 DB 계약, 승인 정본, [current-export.json](../verification/current-export.json)·[browser-export.json](../verification/browser-export.json), 이 보고서와 검증 근거이다. 현재 공개 앱은 편집할 수 있으므로 이 export를 보존된 검증 시점으로 사용한다. 플랫폼 제출·접수·강사/마스터 승인은 수행하지 않았다.
 
 제출 항목은 검증한 공개 HTTPS 결과물·실제 소문자 전체 커밋 /commit/ URL·확인4항목·실제 AI/사용자 판단3항목이다. [SUBMISSION.md](SUBMISSION.md)에 문안을 관리한다. 보고서·증거 화면은 임의로 필수 첨부로 추가하지 않는다.
 

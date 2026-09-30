@@ -1,0 +1,111 @@
+{
+  "checked_at": "2026-09-30T01:40:11.017Z",
+  "status": "passed",
+  "source_commit": "b9de0298cd200961eac56286c6a6a55299947a96",
+  "source_url": "https://github.com/PeterAhnn/SKT-ALEPH-Project-6-Diary/commit/b9de0298cd200961eac56286c6a6a55299947a96",
+  "source_html_status": 200,
+  "source_api_status": 200,
+  "source_browser_signed_out": true,
+  "git_remote": "https://github.com/PeterAhnn/SKT-ALEPH-Project-6-Diary.git",
+  "remote_main_at_check": "b9de0298cd200961eac56286c6a6a55299947a96",
+  "deployment_id": "dpl_EzpXjtay3cRvFr1vJXV2rPwV8JpM",
+  "deployment_ready": true,
+  "deployment_metadata_matches": true,
+  "runtime_files": [
+    {
+      "path": "public/index.html",
+      "source_commit_sha256": "c24c277c3ed1e34aeb586de2243d079e7f132f49f3a75a341de918fcf13a1363",
+      "local_sha256": "c24c277c3ed1e34aeb586de2243d079e7f132f49f3a75a341de918fcf13a1363",
+      "equal": true
+    },
+    {
+      "path": "public/app.mjs",
+      "source_commit_sha256": "2d4c769490e84be0778a1bb07186a3ff15fced5f6eca808fd83df4ecff848deb",
+      "local_sha256": "2d4c769490e84be0778a1bb07186a3ff15fced5f6eca808fd83df4ecff848deb",
+      "equal": true
+    },
+    {
+      "path": "public/core.mjs",
+      "source_commit_sha256": "9026c3bdb3681e549f83b85daf6dec8dc7793ae1794cc20f7b13c6bd7eaed0c2",
+      "local_sha256": "9026c3bdb3681e549f83b85daf6dec8dc7793ae1794cc20f7b13c6bd7eaed0c2",
+      "equal": true
+    },
+    {
+      "path": "public/styles.css",
+      "source_commit_sha256": "2ea2177ed46e5e8986ef2818b2900c567d4c92b9006ea385c16dcfdda0446321",
+      "local_sha256": "2ea2177ed46e5e8986ef2818b2900c567d4c92b9006ea385c16dcfdda0446321",
+      "equal": true
+    },
+    {
+      "path": "api/index.mjs",
+      "source_commit_sha256": "dbfc997580d9dcea70dc4b8c05634956c17810861c95c0da4ce7bb5b8b60135c",
+      "local_sha256": "dbfc997580d9dcea70dc4b8c05634956c17810861c95c0da4ce7bb5b8b60135c",
+      "equal": true
+    },
+    {
+      "path": "src/http.mjs",
+      "source_commit_sha256": "16417d5006fb0a81b0161e7261c5bbc03ce1647e9297a25d3ee5299c754474bf",
+      "local_sha256": "16417d5006fb0a81b0161e7261c5bbc03ce1647e9297a25d3ee5299c754474bf",
+      "equal": true
+    },
+    {
+      "path": "src/store-supabase.mjs",
+      "source_commit_sha256": "6e70d5c60cc7251ec4afe30909ce66cc6ac88b352d46fa888979459df372e70d",
+      "local_sha256": "6e70d5c60cc7251ec4afe30909ce66cc6ac88b352d46fa888979459df372e70d",
+      "equal": true
+    },
+    {
+      "path": "src/validation.mjs",
+      "source_commit_sha256": "2aaf5fb99216d33a651b5089a9d24237dbbeebdf4308bb813206f574914d097e",
+      "local_sha256": "2aaf5fb99216d33a651b5089a9d24237dbbeebdf4308bb813206f574914d097e",
+      "equal": true
+    },
+    {
+      "path": "vercel.json",
+      "source_commit_sha256": "c1fd2e13527a832140403d0859451f7c41a27781a866a0ddd74077aa61b2c241",
+      "local_sha256": "c1fd2e13527a832140403d0859451f7c41a27781a866a0ddd74077aa61b2c241",
+      "equal": true
+    },
+    {
+      "path": "package.json",
+      "source_commit_sha256": "f3655bc1b0e69ac87ffc16edfe8e624999735291d7337dae13881ad9e7f36c83",
+      "local_sha256": "f3655bc1b0e69ac87ffc16edfe8e624999735291d7337dae13881ad9e7f36c83",
+      "equal": true
+    },
+    {
+      "path": "package-lock.json",
+      "source_commit_sha256": "7be9285de7067f58911386256ff1a61a6fc35e4678d9bc609ad4e698e5b7ea9f",
+      "local_sha256": "7be9285de7067f58911386256ff1a61a6fc35e4678d9bc609ad4e698e5b7ea9f",
+      "equal": true
+    }
+  ],
+  "browser_download": {
+    "browser": "Codex in-app browser",
+    "control": "전체 내보내기",
+    "file": "pds-diary-2026-09-30.json",
+    "all_seven_tables_equal": true,
+    "ids_dates_values_and_units_equal": true,
+    "exported_at": "per-export timestamp; intentionally not required to match",
+    "counts": {
+      "plans": 2,
+      "plan_history": 3,
+      "tasks": 7,
+      "executions": 3,
+      "completion_events": 4,
+      "request_receipts": 4,
+      "reviews": 1
+    }
+  },
+  "checks": {
+    "source_public_html": true,
+    "source_public_api": true,
+    "source_signed_out_browser": true,
+    "runtime_matches_fixed_commit": true,
+    "public_static_matches_local": true,
+    "native_browser_export_matches_api": true
+  },
+  "limitations": [
+    "This source commit is the immutable application baseline. Later commits add final documentation and verification only.",
+    "Public data is editable without login in T06; this export preserves the checked snapshot."
+  ]
+}

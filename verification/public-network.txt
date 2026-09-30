@@ -1,0 +1,5 @@
+GET https://skt-aleph-project-6-diary.vercel.app/ → 200 (61ms, 2461B)
+GET https://skt-aleph-project-6-diary.vercel.app/styles.css → 200 (18ms, 5596B)
+GET https://skt-aleph-project-6-diary.vercel.app/app.mjs → 200 (11ms, 14348B)
+GET https://skt-aleph-project-6-diary.vercel.app/core.mjs → 200 (15ms, 1129B)
+GET https://skt-aleph-project-6-diary.vercel.app/api/state → 200 (1000ms, 4428B)

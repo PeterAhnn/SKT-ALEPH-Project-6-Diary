@@ -1,5 +1,5 @@
 {
-  "checked_at": "2026-09-30T01:29:45.406Z",
+  "checked_at": "2026-09-30T01:37:05.046Z",
   "base_url": "https://skt-aleph-project-6-diary.vercel.app",
   "status": "passed",
   "scope": "Unauthenticated GET root, four static files, health, state twice, and complete export. No writes or DOM interaction.",
@@ -34,7 +34,7 @@
   "next_plan_id": "a38f2070-8f88-413e-b132-58d75ad8f1ae",
   "state_sha256": "c0f8ead9dcf2d3ef78353b1d8c54d445f1f1ae75bca90852b81e573796d4a22a",
   "repeated_state_sha256": "c0f8ead9dcf2d3ef78353b1d8c54d445f1f1ae75bca90852b81e573796d4a22a",
-  "export_sha256": "ce884e41260a3f7cace2a257b81d7bfb88c47068752147392b77d07691f352be",
+  "export_sha256": "4b12c588c44d0cc352bc2a09842c7bb58df8da4e6bfab2a0d6e03376fd9947fb",
   "checks": {
     "exact_public_notice": true,
     "assets_equal": true,
@@ -59,8 +59,8 @@
     },
     {
       "path": "/app.mjs",
-      "local_sha256": "1309fe273059fc144324c43ca914c47225da2bd34e60192ff260842d079f56db",
-      "public_sha256": "1309fe273059fc144324c43ca914c47225da2bd34e60192ff260842d079f56db",
+      "local_sha256": "2d4c769490e84be0778a1bb07186a3ff15fced5f6eca808fd83df4ecff848deb",
+      "public_sha256": "2d4c769490e84be0778a1bb07186a3ff15fced5f6eca808fd83df4ecff848deb",
       "equal": true
     },
     {

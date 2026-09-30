@@ -2,7 +2,7 @@
 
 기준일: 2026-09-30. 공식 전체 설명·카드 1~5·제출 화면을 기존 인증된 내장 브라우저에서 확인했다. 원문 대조는 [TASK-READBACK.md](TASK-READBACK.md), 실제 결과와 한계는 [FINAL-REPORT.md](FINAL-REPORT.md)를 따른다.
 
-한국어 Plan → Do → See 앱, 로컬 디스크 SQLite, 공개 배포용 Supabase PostgreSQL을 구현했다. 승인 자료를 두 DB에 저장하고 원자료 동일성을 확인했다. 공개 배포·전체 커밋·플랫폼 제출은 별도 진행 상태이다.
+한국어 Plan → Do → See 앱과 실제 SQLite/Supabase PostgreSQL, 공개 Vercel 배포를 완성했다. 고정 앱 커밋 b9de0298cd200961eac56286c6a6a55299947a96의 push·무인증 접근·배포 일치를 확인했다. 플랫폼 제출 버튼·접수·승인은 수행하지 않았다.
 
 ## 현재 자료와 출처
 
@@ -26,13 +26,13 @@
 | 개선 → 다음 계획 | 회고 잠금·단일 연결·개선 원문 보존 | 자동 검사·사용자 개선 cloud UI/API 대조 통과 |
 | 실제 DB·새로고침 유지 | SQLite 재시작 검사·승인 자료 PG 이전 | 통과 |
 | 한 파일 내보내기 | 전체 7표·날짜·분 단위 JSON | local/PG export 데이터 동일 통과 |
-| 실제 DB 계약 | SQLite PRAGMA로 7표·필드·관계·제약 확인, 실제 PG 검사 | 로컬 계약 완료; PG 최신 반영 확인 필요 |
+| 실제 DB 계약 | 실제 운영PG7표·58필드·16인덱스·17정책·9INVOKER함수, SQLite 필드명 일치 | 실제 카탈로그·계약 보존 완료 |
 | 본인 자료 최소 수량·0 아닌 See | 승인 계획 1·Task 7·실측 AI 협업 실행 3 | 수량 충족·출처 구분 유지 |
 | 로그인 없음·첫 화면 공개 안내 | 공식 문구 그대로 표시·T06 인증 기능 없음 | 구현·로컬 UI 확인 |
-| 문자열 미실행·비밀값 | textContent·CSP·입력 제한·서버 환경·RLS/컬럼 권한 | 합성 XSS UI/HTTP 통과·PG advisors 0건; 공개 환경 대기 |
-| 공개 URL·고정 전체 커밋 | Vercel 배포·공개 GitHub 저장소 준비 | 배포·push·공개 접근 진행 |
-| 확인 4항목·판단 3항목 | 실제 검사·사용자 결정으로 [SUBMISSION.md](SUBMISSION.md) 작성 | URL·커밋 확정 뒤 최종 확인 |
-| T07 기준점 | 스키마·승인 자료·근거·최종 export·커밋 보존 | 최종 배포/커밋 대기 |
+| 문자열 미실행·비밀값 | textContent·CSP·입력 제한·서버 환경·RLS/컬럼 권한 | 합성XSS·공개응답/소스 검사·PG security0건 통과 |
+| 공개 URL·고정 전체 커밋 | 공개앱·실제40자리 커밋·배포 메타데이터/실행파일 대조 | 무인증 브라우저/HTML/API·push·일치 통과 |
+| 확인 4항목·판단 3항목 | 실제 검사·사용자 결정·확정URL로 [SUBMISSION.md](SUBMISSION.md) 작성 | 두 문안 각각1,500자 이하·준비 완료 |
+| T07 기준점 | 스키마·승인 정본·현재export·실제 브라우저export·앱 전체커밋 | 보존 완료 |
 
 ## 확보한 검사와 남은 검사
 
@@ -40,9 +40,8 @@
 
 합성 UI에서 Plan·Task·Execution 입력, 완료, 검색·상태 필터, See 1/1/0/1·예상20/실제25/차이+5와 기여 기록, 스크립트 모양 문자열의 문자 표시·미실행을 확인했다. 기능 시험 자료를 사용자 실제 활동 근거로 사용하지 않는다.
 
-Vercel 첫 운영 배포는 READY이며 [공개 URL](https://skt-aleph-project-6-diary.vercel.app)의 health 요청에서 HTTP200·postgres·authentication:false를 확인했다. 공개 브라우저에서 실제 화면·자료를 다시 확인하기 전에는 모든 공개 접근 검사가 끝났다고 표시하지 않는다.
+Vercel 최종 운영 배포는 READY·Node24.x이다. [공개 URL](https://skt-aleph-project-6-diary.vercel.app)의 무인증HTTP200·postgres·실제집계, 공개커밋화면, 새로고침, 375px모바일·가로넘침없음·오류없음을 확인했다. 공개 저장경로400/400/413/409검사 전후7표는 그대로였다. 내장 브라우저에서 실제 전체JSON다운로드와 API7표 대조도 통과했다.
 
-남은 검사: 화면 폭별 사용성, 공개 결과물/고정 소스의 새 인증 없는 브라우저 접근, 배포 소스와 전체 커밋 일치, 공개 환경의 네트워크·콘솔·배포 파일·최종 Git 비밀값 점검. 플랫폼 제출·접수·승인은 아직 수행하지 않았다.
+검증 근거: [public-verification.json](../verification/public-verification.json), [public-write-validation.json](../verification/public-write-validation.json), [delivery.json](../verification/delivery.json), [browser-export.json](../verification/browser-export.json). 플랫폼 제출·접수·승인은 아직 수행하지 않았다. 실제 사용자 직접 공부 시간이나 현재 다른 과제 승인 상태를 추가로 확인했다고 쓰지 않는다.
 
 별도 보고서 업로드는 공식 필수가 아니다. 보고서는 검토·보관용이며 선택 첨부 여부는 제출 화면 기준으로 정한다.
-
