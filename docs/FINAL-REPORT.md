@@ -1,6 +1,6 @@
 # T06 구현·검증 보고서
 
-기준일: 2026-09-30. 검토·보관용이며 공식 필수 첨부물이 아니다. 원문 요구와 출처는 [ASSIGNMENT.md](ASSIGNMENT.md), 전체 설명·5단계 대조는 [TASK-READBACK.md](TASK-READBACK.md)를 따른다. 아래 완료와 남은 검사를 구분한다.
+기준일: 2026-09-30. 검토·보관용이며 공식 필수 첨부물이 아니다. 원문 요구와 출처는 [ASSIGNMENT.md](ASSIGNMENT.md), 전체 설명·5단계 대조는 [TASK-READBACK.md](TASK-READBACK.md), 제출 직전 대조는 [REQUIREMENTS-CHECK.md](REQUIREMENTS-CHECK.md)를 따른다. 구현·검증·제출을 마쳤으며 강사/마스터 승인과 채점은 대기 상태다.
 
 ## 목적과 구현
 
@@ -65,6 +65,9 @@ API에서 개선 원문·nextPlan.source_review_id·review.next_plan_id의 일�
 | 최종 공개 저장 경로 | 본문 처리·제한·실제DB 충돌 거절·자료 불변 | 빈 제목400·잘못된JSON400·64KB초과413·기존Plan stale PATCH409, 전후7표 동일, [public-write-validation.json](../verification/public-write-validation.json) |
 | 내장 브라우저 실제 다운로드 | 서버 첨부 JSON 파일 하나·전체 자료 | 실제 버튼→pds-diary-2026-09-30.json 다운로드, [browser-export.json](../verification/browser-export.json) 전체7표·ID/시각/값/단위 API와 동일 |
 | 고정 소스와 배포 | 원격 전체 커밋·무인증·배포 동일 | 로그인하지 않은 GitHub 화면/HTTP200/API200·배포 메타데이터·실행 파일11개 동일, [delivery.json](../verification/delivery.json) |
+| 제출 직전 최신 공개 상태 | 결과물/고정 소스 무인증·보존 자료 동일 | 2026-09-30 18:02 서울, 5 GET 모두HTTP200·리다이렉트 없음·현재7표/단위가 보존된 export와 동일·차이 없음, [pre-submission-public.json](../verification/pre-submission-public.json) |
+| 단계별 화면 보완 | 실제 Plan 이력과 합성 Task 동작 보관 | [실제 Plan v1/v2](../verification/plan-history-public.png), [합성 수정/다시 열기](../verification/synthetic-task-edit-reopen.png)·[삭제](../verification/synthetic-task-delete.png)·[검색/필터/정렬](../verification/synthetic-search-filter-sort.png)·[실행 연결](../verification/synthetic-execution-link.png). [행동/전후값·사진 대응](../verification/synthetic-screen-evidence.json)에 실제 행동10개·검사7개를 기록. 공개 실제 기록은 변경하지 않음 |
+| 공식 폼 제출 | 실제 입력·성공·대기 상태 확인 | 두URL·확인465자·판단318자 일치 후 제출, “T06 제출을 마쳤습니다”와 “강사 승인 대기” 확인, [platform-submission.json](../verification/platform-submission.json) |
 
 합성 fixture는 기능 시험 근거이며 본인 실제 활동으로 사용하지 않는다. cloud 이전 근거는 **회고 추가 전** Plan1/history2/Task7/Execution3/completion4/receipt4/review0 시점이다. 이후 실제 회고로 바뀐 현재 전체 state의 해시라고 쓰지 않는다.
 
@@ -90,7 +93,7 @@ Vercel CLI61.1.0, scope peter-ahns-projects, 프로젝트 skt-aleph-project-6-di
 
 최종 공개 저장 요청은 유효한 새 자료를 만들지 않고 검증했다. 정상 본문은 필드 검증까지 도달하며 실제 DB의 기존 버전 충돌은409로 거절했다. 잘못된 요청4건 전후7표의 모든 값·해시가 같았다. 내장 브라우저에서 실제 첨부 JSON을 다운로드하고 현재API의 전체7표·ID·날짜·값·단위와 같음을 확인했다. export마다 생성 시각은 달라질 수 있어 자료와 단위를 따로 비교한다.
 
-T07 기준점은 위 전체 커밋, 실제 DB 계약, 승인 정본, [current-export.json](../verification/current-export.json)·[browser-export.json](../verification/browser-export.json), 이 보고서와 검증 근거이다. 현재 공개 앱은 편집할 수 있으므로 이 export를 보존된 검증 시점으로 사용한다. 플랫폼 제출·접수·강사/마스터 승인은 수행하지 않았다.
+T07 기준점은 위 전체 커밋, 실제 DB 계약, 승인 정본, [current-export.json](../verification/current-export.json)·[browser-export.json](../verification/browser-export.json), 이 보고서와 검증 근거이다. 현재 공개 앱은 편집할 수 있으므로 이 export를 보존된 검증 시점으로 사용한다. 2026-09-30 18:10 서울에 플랫폼 제출 완료 화면을 확인했고 현재는 **강사 승인 대기**다. [완료 화면](../verification/submission-success.png)·[대기 화면](../verification/submission-pending.png)·[실제 입력값](../verification/submission-inputs.json)을 보존했다. 강사/마스터 승인과 별도 채점은 완료로 기록하지 않는다.
 
 제출 항목은 검증한 공개 HTTPS 결과물·실제 소문자 전체 커밋 /commit/ URL·확인4항목·실제 AI/사용자 판단3항목이다. [SUBMISSION.md](SUBMISSION.md)에 문안을 관리한다. 보고서·증거 화면은 임의로 필수 첨부로 추가하지 않는다.
 

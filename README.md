@@ -4,6 +4,8 @@ ALEPH 공부·과제 진행을 계획하고, 실제로 한 일과 차이를 돌�
 
 [공개 앱 열기](https://skt-aleph-project-6-diary.vercel.app) · [구현·검증 보고서](docs/FINAL-REPORT.md) · [제출 문안](docs/SUBMISSION.md)
 
+2026-09-30 최신 전체 설명·5단계를 대조한 뒤 공식 플랫폼에 제출했습니다. 현재는 **강사 승인 대기**입니다. [요구사항 대조표](docs/REQUIREMENTS-CHECK.md)·[실제 접수 기록](verification/platform-submission.json)에서 확인할 수 있습니다.
+
 지금은 로그인이 없어 링크를 아는 사람은 누구나 볼 수 있습니다. 남이 봐도 괜찮은 내용만 넣으세요
 
 ## 실행
@@ -39,7 +41,7 @@ node scripts/write-schema.mjs
 - [과제 요구사항과 남길 근거](docs/TASK-READBACK.md)
 - [이전 과제의 기록 추천](docs/RECOMMENDED-RECORDS.md)
 - [실제 DB 스키마 계약](contracts/pds-schema-v2.json)
-- [제출 문안과 남은 확인](docs/SUBMISSION.md)
+- [실제 제출 문안과 접수 상태](docs/SUBMISSION.md)
 
 로컬 자동 검사 27개와 실제 PostgreSQL 검사 35개가 통과했습니다. 합성 시험 자료는 실제 기록과 분리하거나 트랜잭션을 롤백했습니다. 공개 앱에는 사용자가 승인한 할 일 7개·실측 AI 협업 실행 3건과 개선의 다음 계획 연결을 저장했습니다. AI 협업 시간은 직접 공부 시간으로 바꾸어 기록하지 않았습니다.
 

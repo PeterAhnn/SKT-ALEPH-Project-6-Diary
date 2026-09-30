@@ -1,8 +1,8 @@
 {
   "checked_at": "2026-09-30T01:44:27.077Z",
   "task": "T06",
-  "status": "implementation_and_submission_materials_ready",
-  "platform_submitted": false,
+  "status": "submitted_awaiting_instructor_approval",
+  "platform_submitted": true,
   "source_commit": "b9de0298cd200961eac56286c6a6a55299947a96",
   "source_url": "https://github.com/PeterAhnn/SKT-ALEPH-Project-6-Diary/commit/b9de0298cd200961eac56286c6a6a55299947a96",
   "result_url": "https://skt-aleph-project-6-diary.vercel.app",
@@ -58,5 +58,54 @@
   "next_plan_period": [
     "2026-10-01",
     "2026-10-02"
+  ],
+  "platform_status": "강사 승인 대기",
+  "platform_submission_checked_at": "2026-09-30T09:11:06.546Z",
+  "platform_submission_receipt": "verification/platform-submission.json",
+  "submission_evidence_files": [
+    {
+      "path": "verification/submission-inputs.json",
+      "sha256": "5f5fabc44525c137a327a18e7f9b83f88e77999912cdcf42857665e0ee7fa7ba"
+    },
+    {
+      "path": "verification/platform-submission.json",
+      "sha256": "638038d843925a822c4c7d0ec971476637a20be55b74b45b57a15f5fbf9e8f14"
+    },
+    {
+      "path": "verification/submission-success.png",
+      "sha256": "6d4f6033c000b4b87209b865e91d65bf3669319d2edb7d76fe3d8ba994d93072"
+    },
+    {
+      "path": "verification/submission-pending.png",
+      "sha256": "779cb71929958bf07eb87c1a06a610c2f75a5dc69948674bc8a0b8efef1a8d70"
+    },
+    {
+      "path": "verification/plan-history-public.png",
+      "sha256": "a6adcb19e404cd019f43f1cf92f6bcae72999fc842deac58c702e4ab4c7c187e"
+    },
+    {
+      "path": "verification/synthetic-screen-evidence.json",
+      "sha256": "0519a1e24ec5782dbd9684743bfbda04286fcd5699ee9d1e1c88a01d9367b0dd"
+    },
+    {
+      "path": "verification/synthetic-task-edit-reopen.png",
+      "sha256": "1d135b7f666ed883c2a2136ec35f59f8de28e0d749f1d4c65eebf46435b5638d"
+    },
+    {
+      "path": "verification/synthetic-task-delete.png",
+      "sha256": "a5aa39552195d430cb119247ef26c27d2655262d4b4eca4531bcd1ebdc2b4ded"
+    },
+    {
+      "path": "verification/synthetic-search-filter-sort.png",
+      "sha256": "00157dca735b19bebaba8e111f00ebb90c8af7f1ff5d77d1e9ec456a037da369"
+    },
+    {
+      "path": "verification/synthetic-execution-link.png",
+      "sha256": "267000d47408bd8be6372a01c0bd28c6962dd5ed226429dca2d33200300abc5f"
+    },
+    {
+      "path": "verification/pre-submission-public.json",
+      "sha256": "2ef36418185413c4739bbf63bab41582dc81718e7ad6a158926ee80404cbf69d"
+    }
   ]
 }

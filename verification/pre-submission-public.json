@@ -1,0 +1,96 @@
+{
+  "checked_at": "2026-09-30T09:02:42.909Z",
+  "status": "passed",
+  "scope": "Unauthenticated read-only GET root, health, state, export, fixed GitHub commit; no POST/PATCH/DELETE and no DOM actions. Saved export and T07 baseline never written.",
+  "base_url": "https://skt-aleph-project-6-diary.vercel.app",
+  "submitted_source_url": "https://github.com/PeterAhnn/SKT-ALEPH-Project-6-Diary/commit/b9de0298cd200961eac56286c6a6a55299947a96",
+  "submitted_commit": "b9de0298cd200961eac56286c6a6a55299947a96",
+  "responses": [
+    {
+      "name": "root",
+      "url": "https://skt-aleph-project-6-diary.vercel.app/",
+      "method": "GET",
+      "status": 200,
+      "redirected": false,
+      "content_type": "text/html; charset=utf-8",
+      "credentials_sent": false
+    },
+    {
+      "name": "health",
+      "url": "https://skt-aleph-project-6-diary.vercel.app/api/health",
+      "method": "GET",
+      "status": 200,
+      "redirected": false,
+      "content_type": "application/json; charset=utf-8",
+      "credentials_sent": false
+    },
+    {
+      "name": "state",
+      "url": "https://skt-aleph-project-6-diary.vercel.app/api/state",
+      "method": "GET",
+      "status": 200,
+      "redirected": false,
+      "content_type": "application/json; charset=utf-8",
+      "credentials_sent": false
+    },
+    {
+      "name": "export",
+      "url": "https://skt-aleph-project-6-diary.vercel.app/api/export",
+      "method": "GET",
+      "status": 200,
+      "redirected": false,
+      "content_type": "application/json; charset=utf-8",
+      "credentials_sent": false
+    },
+    {
+      "name": "commit",
+      "url": "https://github.com/PeterAhnn/SKT-ALEPH-Project-6-Diary/commit/b9de0298cd200961eac56286c6a6a55299947a96",
+      "method": "GET",
+      "status": 200,
+      "redirected": false,
+      "content_type": "text/html; charset=utf-8",
+      "credentials_sent": false
+    }
+  ],
+  "health": {
+    "ok": true,
+    "storage": "postgres",
+    "authentication": false
+  },
+  "counts": {
+    "plans": 2,
+    "plan_history": 3,
+    "tasks": 7,
+    "executions": 3,
+    "completion_events": 4,
+    "request_receipts": 4,
+    "reviews": 1
+  },
+  "checks": {
+    "all_http_200_without_credentials": true,
+    "seven_tables_equal_saved_export": true,
+    "seven_tables_equal_live_export": true,
+    "id_date_value_arrays_equal": true,
+    "time_units_timezone_equal": true,
+    "saved_export_file_unchanged": true
+  },
+  "saved_export_file": "verification/current-export.json",
+  "saved_export_file_sha256_before": "4c0b8d835d5f1bbf80eac13192f95d28af8fb9e324bb5b58bd3827293851d0e2",
+  "saved_export_file_sha256_after": "4c0b8d835d5f1bbf80eac13192f95d28af8fb9e324bb5b58bd3827293851d0e2",
+  "live_state_sha256": "c0f8ead9dcf2d3ef78353b1d8c54d445f1f1ae75bca90852b81e573796d4a22a",
+  "saved_state_sha256": "c0f8ead9dcf2d3ef78353b1d8c54d445f1f1ae75bca90852b81e573796d4a22a",
+  "saved_export_generated_at": "2026-09-30T01:37:04.343Z",
+  "live_export_generated_at": "2026-09-30T09:02:39.596Z",
+  "export_generated_at_excluded_from_data_comparison": true,
+  "delta": [],
+  "failure": null,
+  "initial_request_attempt": {
+    "status": "network_failure",
+    "code": "EAI_AGAIN",
+    "retry_after_fresh_dns_lookup": true
+  },
+  "limitations": [
+    "HTTP/API equality is narrower than a browser DOM check.",
+    "The fixed commit route was checked without authentication; no new commit or platform submission was performed."
+  ]
+}

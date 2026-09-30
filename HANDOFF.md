@@ -45,12 +45,12 @@ Node.js 24가 필요하다. 외부 런타임 패키지 의존성은 없다.
 
 ## 5. 남은 문제
 
-구현·DB·공개 접근·모바일·다운로드·고정 소스와 배포 대조는 완료했다. [verification/delivery.json](verification/delivery.json), [public-verification.json](verification/public-verification.json), [public-write-validation.json](verification/public-write-validation.json)을 따른다. 플랫폼 제출 버튼·접수·강사/마스터 승인은 수행하지 않았다.
+구현·DB·공개 접근·모바일·다운로드·고정 소스와 배포 대조는 완료했다. [verification/delivery.json](verification/delivery.json), [public-verification.json](verification/public-verification.json), [public-write-validation.json](verification/public-write-validation.json)을 따른다. 최신 전체 설명·5단계와 현재 공개 자료를 다시 대조해 2026-09-30 18:10 서울에 공식 폼 제출을 마쳤다. [verification/platform-submission.json](verification/platform-submission.json)과 성공/대기 화면을 보존했다. 현재 **강사 승인 대기**이며 강사/마스터 승인·채점은 아직 완료되지 않았다.
 
 ## 6. 다음 행동
 
-1. 사용자 검토는 [docs/FINAL-REPORT.md](docs/FINAL-REPORT.md)와 [docs/SUBMISSION.md](docs/SUBMISSION.md)를 사용한다. 제출 실행은 실제 플랫폼 상태와 별도로 기록한다.
-2. T07은 위 앱 기준 전체 커밋·[contracts/pds-schema-v2.json](contracts/pds-schema-v2.json)·승인 정본·[verification/current-export.json](verification/current-export.json)·[browser-export.json](verification/browser-export.json)을 보존한 뒤 시작한다.
+1. 사용자 검토는 [docs/REQUIREMENTS-CHECK.md](docs/REQUIREMENTS-CHECK.md)·[docs/FINAL-REPORT.md](docs/FINAL-REPORT.md)·[docs/SUBMISSION.md](docs/SUBMISSION.md)를 사용한다. 제출 완료와 강사/마스터 승인은 구분한다.
+2. T07은 마스터 승인으로 실제 안내가 열린 뒤 최신 페이지를 먼저 읽고 시작한다. 위 앱 기준 전체 커밋·[contracts/pds-schema-v2.json](contracts/pds-schema-v2.json)·승인 정본·[verification/current-export.json](verification/current-export.json)·[browser-export.json](verification/browser-export.json)·T06 접수 기록을 보존한다.
 3. 공개 자료는 편집 가능하므로 제출/다음 과제 전에 현재 상태와 보존된 export의 차이를 확인한다. 이후 보고서·근거 커밋은 앱 기준점을 대체하지 않는다.
 
 ## 7. 건드리지 말 것

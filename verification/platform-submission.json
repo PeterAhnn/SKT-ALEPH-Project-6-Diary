@@ -1,0 +1,24 @@
+{
+  "checked_at": "2026-09-30T09:11:06.546Z",
+  "task": "T06",
+  "platform_url": "https://aleph-omega.vercel.app/cortex?panel=tasks",
+  "platform_submitted": true,
+  "submission_success_observed_at": "2026-09-30T09:10:45.090Z",
+  "success_heading": "T06 제출을 마쳤습니다",
+  "current_status": "강사 승인 대기",
+  "current_status_message": "과제를 제출했습니다. 강사 승인을 기다려 주세요.",
+  "teacher_approved": false,
+  "master_approved": false,
+  "grading_complete": false,
+  "source_commit": "b9de0298cd200961eac56286c6a6a55299947a96",
+  "result_url": "https://skt-aleph-project-6-diary.vercel.app",
+  "source_url": "https://github.com/PeterAhnn/SKT-ALEPH-Project-6-Diary/commit/b9de0298cd200961eac56286c6a6a55299947a96",
+  "verification_characters": 465,
+  "judgment_characters": 318,
+  "files_attached": [],
+  "screenshots": [
+    "verification/submission-success.png",
+    "verification/submission-pending.png"
+  ],
+  "verification_method": "Authorized official form submission via existing logged-in in-app browser; observed success modal, then instructor approval waiting state. No approval or grading inferred."
+}

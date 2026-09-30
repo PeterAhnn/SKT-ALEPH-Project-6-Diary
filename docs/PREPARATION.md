@@ -2,7 +2,7 @@
 
 기준일: 2026-09-30. 공식 전체 설명·카드 1~5·제출 화면을 기존 인증된 내장 브라우저에서 확인했다. 원문 대조는 [TASK-READBACK.md](TASK-READBACK.md), 실제 결과와 한계는 [FINAL-REPORT.md](FINAL-REPORT.md)를 따른다.
 
-한국어 Plan → Do → See 앱과 실제 SQLite/Supabase PostgreSQL, 공개 Vercel 배포를 완성했다. 고정 앱 커밋 b9de0298cd200961eac56286c6a6a55299947a96의 push·무인증 접근·배포 일치를 확인했다. 플랫폼 제출 버튼·접수·승인은 수행하지 않았다.
+한국어 Plan → Do → See 앱과 실제 SQLite/Supabase PostgreSQL, 공개 Vercel 배포를 완성했다. 고정 앱 커밋 b9de0298cd200961eac56286c6a6a55299947a96의 push·무인증 접근·배포 일치를 확인했다. 최신 전체 설명·5단계를 다시 대조하고 2026-09-30 18:10 서울에 공식 폼 제출·접수 확인을 마쳤다. 현재는 **강사 승인 대기**다.
 
 ## 현재 자료와 출처
 
@@ -31,7 +31,8 @@
 | 로그인 없음·첫 화면 공개 안내 | 공식 문구 그대로 표시·T06 인증 기능 없음 | 구현·로컬 UI 확인 |
 | 문자열 미실행·비밀값 | textContent·CSP·입력 제한·서버 환경·RLS/컬럼 권한 | 합성XSS·공개응답/소스 검사·PG security0건 통과 |
 | 공개 URL·고정 전체 커밋 | 공개앱·실제40자리 커밋·배포 메타데이터/실행파일 대조 | 무인증 브라우저/HTML/API·push·일치 통과 |
-| 확인 4항목·판단 3항목 | 실제 검사·사용자 결정·확정URL로 [SUBMISSION.md](SUBMISSION.md) 작성 | 두 문안 각각1,500자 이하·준비 완료 |
+| 확인 4항목·판단 3항목 | 실제 검사·사용자 결정·확정URL로 [SUBMISSION.md](SUBMISSION.md) 작성 | 두 문안 각각1,500자 이하·입력값 대조·실제 제출 완료 |
+| 공식 플랫폼 제출 | 두URL·확인465자·판단318자 입력 후 성공 화면·강사 승인 대기 | 제출·접수 완료, 승인/채점 대기 |
 | T07 기준점 | 스키마·승인 정본·현재export·실제 브라우저export·앱 전체커밋 | 보존 완료 |
 
 ## 확보한 검사와 남은 검사
@@ -42,6 +43,6 @@
 
 Vercel 최종 운영 배포는 READY·Node24.x이다. [공개 URL](https://skt-aleph-project-6-diary.vercel.app)의 무인증HTTP200·postgres·실제집계, 공개커밋화면, 새로고침, 375px모바일·가로넘침없음·오류없음을 확인했다. 공개 저장경로400/400/413/409검사 전후7표는 그대로였다. 내장 브라우저에서 실제 전체JSON다운로드와 API7표 대조도 통과했다.
 
-검증 근거: [public-verification.json](../verification/public-verification.json), [public-write-validation.json](../verification/public-write-validation.json), [delivery.json](../verification/delivery.json), [browser-export.json](../verification/browser-export.json). 플랫폼 제출·접수·승인은 아직 수행하지 않았다. 실제 사용자 직접 공부 시간이나 현재 다른 과제 승인 상태를 추가로 확인했다고 쓰지 않는다.
+검증 근거: [public-verification.json](../verification/public-verification.json), [public-write-validation.json](../verification/public-write-validation.json), [delivery.json](../verification/delivery.json), [browser-export.json](../verification/browser-export.json). 제출 직전 현재 자료가 저장된 전체7표와 같은지는 [pre-submission-public.json](../verification/pre-submission-public.json), 실제 접수와 승인 대기는 [platform-submission.json](../verification/platform-submission.json)을 따른다. 실제 사용자 직접 공부 시간을 추가로 측정했다고 쓰지 않는다.
 
 별도 보고서 업로드는 공식 필수가 아니다. 보고서는 검토·보관용이며 선택 첨부 여부는 제출 화면 기준으로 정한다.

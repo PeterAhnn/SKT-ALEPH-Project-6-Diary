@@ -1,0 +1,812 @@
+{
+  "started_at": "2026-09-30T09:01:50.477Z",
+  "record_origin": "synthetic",
+  "purpose": "Official T06 screen evidence supplement; synthetic functional QA, not user-owned actual coursework records.",
+  "database": {
+    "path": ".test-data/browser.sqlite",
+    "server_port": 8007,
+    "production_database_touched": false,
+    "remote_supabase_enabled": false
+  },
+  "before": {
+    "counts": {
+      "plans": 1,
+      "plan_history": 4,
+      "tasks": 1,
+      "executions": 1,
+      "completion_events": 1,
+      "request_receipts": 1,
+      "reviews": 0
+    },
+    "state_sha256": "782a2e9cfae0baa688d4f0cf5c3aee341743fac15f0752cab2f641842ee941b1",
+    "state_hash_order": "listed tables; each ORDER BY primary id (request_id for request_receipts); JSON.stringify full rows"
+  },
+  "checks": [
+    {
+      "name": "task_create_via_ui",
+      "checked_at": "2026-09-30T09:03:43.063Z",
+      "observed": "Created synthetic task B with due_date 2026-10-02, priority high, tags 검사/화면, expected 20 minutes; API and UI agree.",
+      "result": "pass"
+    },
+    {
+      "name": "task_update_complete_reopen",
+      "checked_at": "2026-09-30T09:04:20.145Z",
+      "result": "pass",
+      "observed": "Same task ID: edited v2 → completed v3 with one completion event → reopened v4/cycle1, original completion event retained."
+    },
+    {
+      "name": "task_soft_delete",
+      "checked_at": "2026-09-30T09:04:56.106Z",
+      "result": "pass",
+      "observed": "B moved out of active list into expanded deleted section, same ID/title/notes, deleted_at set, version5, completion event retained."
+    },
+    {
+      "name": "task_restore",
+      "checked_at": "2026-09-30T09:05:52.322Z",
+      "result": "pass",
+      "observed": "B returned to active list with same ID, version6 and prior completion event."
+    },
+    {
+      "name": "search_status_priority_tag_and_sort",
+      "checked_at": "2026-09-30T09:05:52.379Z",
+      "result": "pass",
+      "observed": "Specific pending + high + 화면 + 수정됨 filters returned only B. Search 합성 + high + 검사 returned B then A for created descending, and UI displayed ID tie-break rule."
+    },
+    {
+      "name": "execution_task_link_and_original_plan",
+      "checked_at": "2026-09-30T09:06:35.826Z",
+      "result": "pass",
+      "observed": "Synthetic 17:00–17:12 Seoul execution saved as 08:00–08:12 UTC, actual12 minutes linked to B. Entire Plan object identical before/after; B expected20/current pending retained."
+    },
+    {
+      "name": "script_text_not_executed",
+      "checked_at": "2026-09-30T09:06:35.881Z",
+      "result": "pass",
+      "observed": "Existing script-shaped synthetic strings remain literal; window.__t06_xss is undefined."
+    }
+  ],
+  "screenshots": [
+    {
+      "path": "verification/synthetic-task-edit-reopen.png",
+      "record_origin": "synthetic",
+      "shows": [
+        "edited B title and notes",
+        "reopened B currently pending",
+        "existing A currently completed"
+      ],
+      "action_mapping": [
+        "task.create",
+        "task.update",
+        "task.complete",
+        "task.reopen"
+      ],
+      "ui_observed_at": "2026-09-30T09:04:55.668Z",
+      "saved_at": "2026-09-30T09:04:55.8242481Z",
+      "bytes": 107983,
+      "sha256": "1d135b7f666ed883c2a2136ec35f59f8de28e0d749f1d4c65eebf46435b5638d",
+      "timestamp_source": "PNG LastWriteTimeUtc recorded after capture",
+      "visually_inspected": true
+    },
+    {
+      "path": "verification/synthetic-task-delete.png",
+      "record_origin": "synthetic",
+      "shows": [
+        "B excluded from active list",
+        "expanded deleted section with B and restore control"
+      ],
+      "action_mapping": [
+        "task.delete"
+      ],
+      "ui_observed_at": "2026-09-30T09:04:56.106Z",
+      "saved_at": "2026-09-30T09:04:56.1997710Z",
+      "bytes": 103542,
+      "sha256": "a5aa39552195d430cb119247ef26c27d2655262d4b4eca4531bcd1ebdc2b4ded",
+      "timestamp_source": "PNG LastWriteTimeUtc recorded after capture",
+      "visually_inspected": true
+    },
+    {
+      "path": "verification/synthetic-search-filter-sort.png",
+      "record_origin": "synthetic",
+      "shows": [
+        "search 합성",
+        "priority high",
+        "tag 검사",
+        "created-desc sort and ID tie rule",
+        "B then A matches persisted creation times"
+      ],
+      "action_mapping": [
+        "task.restore",
+        "task.search",
+        "task.status_filter",
+        "task.priority_filter",
+        "task.tag_filter",
+        "task.sort"
+      ],
+      "ui_observed_at": "2026-09-30T09:05:52.379Z",
+      "saved_at": "2026-09-30T09:05:52.4872422Z",
+      "bytes": 110577,
+      "sha256": "00157dca735b19bebaba8e111f00ebb90c8af7f1ff5d77d1e9ec456a037da369",
+      "timestamp_source": "PNG LastWriteTimeUtc recorded after capture",
+      "visually_inspected": true
+    },
+    {
+      "path": "verification/synthetic-execution-link.png",
+      "record_origin": "synthetic",
+      "shows": [
+        "B task details/full notes",
+        "current pending status and expected20 minutes",
+        "one previous completion event",
+        "linked execution12 minutes and Seoul start/end",
+        "explicit synthetic blocked reason"
+      ],
+      "action_mapping": [
+        "execution.create",
+        "execution.task_link",
+        "execution.plan_unchanged",
+        "task.completion_history"
+      ],
+      "ui_observed_at": "2026-09-30T09:06:35.881Z",
+      "saved_at": "2026-09-30T09:06:36.0389398Z",
+      "bytes": 175472,
+      "sha256": "267000d47408bd8be6372a01c0bd28c6962dd5ed226429dca2d33200300abc5f",
+      "timestamp_source": "PNG LastWriteTimeUtc recorded after capture",
+      "visually_inspected": true
+    }
+  ],
+  "synthetic_task_id": "cc48eabf-268d-4b26-ae62-c9bf11229e52",
+  "lifecycle_observations": [
+    {
+      "action": "updated",
+      "checked_at": "2026-09-30T09:04:19.464Z",
+      "task": {
+        "id": "cc48eabf-268d-4b26-ae62-c9bf11229e52",
+        "plan_id": "3e94fd23-77b0-45d9-a98d-f2f0a7544f8b",
+        "title": "합성 화면 보관 할 일 B · 수정됨",
+        "notes": "합성 기능 검사입니다. 실제 사용자 공부·과제 기록이 아닙니다. 할 일 B를 수정하고 완료·진행 중으로 되돌리기·삭제·복원을 확인합니다.",
+        "due_date": "2026-10-02",
+        "priority": "high",
+        "expected_minutes": 20,
+        "status": "pending",
+        "completion_cycle": 0,
+        "version": 2,
+        "deleted_at": null,
+        "record_origin": "synthetic",
+        "created_at": "2026-09-30T09:03:42.389Z",
+        "updated_at": "2026-09-30T09:04:19.428Z",
+        "tags": [
+          "검사",
+          "화면"
+        ]
+      }
+    },
+    {
+      "action": "completed",
+      "checked_at": "2026-09-30T09:04:19.557Z",
+      "task": {
+        "id": "cc48eabf-268d-4b26-ae62-c9bf11229e52",
+        "plan_id": "3e94fd23-77b0-45d9-a98d-f2f0a7544f8b",
+        "title": "합성 화면 보관 할 일 B · 수정됨",
+        "notes": "합성 기능 검사입니다. 실제 사용자 공부·과제 기록이 아닙니다. 할 일 B를 수정하고 완료·진행 중으로 되돌리기·삭제·복원을 확인합니다.",
+        "due_date": "2026-10-02",
+        "priority": "high",
+        "expected_minutes": 20,
+        "status": "completed",
+        "completion_cycle": 0,
+        "version": 3,
+        "deleted_at": null,
+        "record_origin": "synthetic",
+        "created_at": "2026-09-30T09:03:42.389Z",
+        "updated_at": "2026-09-30T09:04:19.544Z",
+        "tags": [
+          "검사",
+          "화면"
+        ]
+      },
+      "completion_events": [
+        {
+          "id": "eb3d3328-f366-4149-9dbd-3f83fa17cf50",
+          "task_id": "cc48eabf-268d-4b26-ae62-c9bf11229e52",
+          "cycle": 0,
+          "request_id": "9f822f76-7b5d-4e00-84d7-30fb8b815530",
+          "completed_at": "2026-09-30T09:04:19.544Z"
+        }
+      ]
+    },
+    {
+      "action": "reopened",
+      "checked_at": "2026-09-30T09:04:19.608Z",
+      "task": {
+        "id": "cc48eabf-268d-4b26-ae62-c9bf11229e52",
+        "plan_id": "3e94fd23-77b0-45d9-a98d-f2f0a7544f8b",
+        "title": "합성 화면 보관 할 일 B · 수정됨",
+        "notes": "합성 기능 검사입니다. 실제 사용자 공부·과제 기록이 아닙니다. 할 일 B를 수정하고 완료·진행 중으로 되돌리기·삭제·복원을 확인합니다.",
+        "due_date": "2026-10-02",
+        "priority": "high",
+        "expected_minutes": 20,
+        "status": "pending",
+        "completion_cycle": 1,
+        "version": 4,
+        "deleted_at": null,
+        "record_origin": "synthetic",
+        "created_at": "2026-09-30T09:03:42.389Z",
+        "updated_at": "2026-09-30T09:04:19.594Z",
+        "tags": [
+          "검사",
+          "화면"
+        ]
+      },
+      "completion_events": [
+        {
+          "id": "eb3d3328-f366-4149-9dbd-3f83fa17cf50",
+          "task_id": "cc48eabf-268d-4b26-ae62-c9bf11229e52",
+          "cycle": 0,
+          "request_id": "9f822f76-7b5d-4e00-84d7-30fb8b815530",
+          "completed_at": "2026-09-30T09:04:19.544Z"
+        }
+      ]
+    },
+    {
+      "action": "restored",
+      "checked_at": "2026-09-30T09:05:52.322Z",
+      "task": {
+        "id": "cc48eabf-268d-4b26-ae62-c9bf11229e52",
+        "plan_id": "3e94fd23-77b0-45d9-a98d-f2f0a7544f8b",
+        "title": "합성 화면 보관 할 일 B · 수정됨",
+        "notes": "합성 기능 검사입니다. 실제 사용자 공부·과제 기록이 아닙니다. 할 일 B를 수정하고 완료·진행 중으로 되돌리기·삭제·복원을 확인합니다.",
+        "due_date": "2026-10-02",
+        "priority": "high",
+        "expected_minutes": 20,
+        "status": "pending",
+        "completion_cycle": 1,
+        "version": 6,
+        "deleted_at": null,
+        "record_origin": "synthetic",
+        "created_at": "2026-09-30T09:03:42.389Z",
+        "updated_at": "2026-09-30T09:05:52.308Z",
+        "tags": [
+          "검사",
+          "화면"
+        ]
+      },
+      "completion_events": [
+        {
+          "id": "eb3d3328-f366-4149-9dbd-3f83fa17cf50",
+          "task_id": "cc48eabf-268d-4b26-ae62-c9bf11229e52",
+          "cycle": 0,
+          "request_id": "9f822f76-7b5d-4e00-84d7-30fb8b815530",
+          "completed_at": "2026-09-30T09:04:19.544Z"
+        }
+      ]
+    }
+  ],
+  "filter_sort_observations": [
+    {
+      "action": "filtered_pending_specific_tag",
+      "checked_at": "2026-09-30T09:05:52.361Z",
+      "filters": {
+        "search": "수정됨",
+        "status": "pending",
+        "priority": "high",
+        "tag": "화면",
+        "sort": "created"
+      },
+      "visibleIds": [
+        "cc48eabf-268d-4b26-ae62-c9bf11229e52"
+      ]
+    },
+    {
+      "action": "filtered_and_sorted_two_results",
+      "checked_at": "2026-09-30T09:05:52.379Z",
+      "filters": {
+        "search": "합성",
+        "status": "all",
+        "priority": "high",
+        "tag": "검사",
+        "sort": "created"
+      },
+      "visibleTasks": [
+        {
+          "id": "cc48eabf-268d-4b26-ae62-c9bf11229e52",
+          "title": "합성 화면 보관 할 일 B · 수정됨"
+        },
+        {
+          "id": "148fc030-e39d-4100-8430-7677c86460dd",
+          "title": "합성 할 일 A"
+        }
+      ],
+      "sortRule": "화면에서 검색·필터·정렬합니다. 동률 처리: 생성 시각 최근 순 → ID 순"
+    }
+  ],
+  "execution_observations": [
+    {
+      "action": "before_execution",
+      "checked_at": "2026-09-30T09:06:35.707Z",
+      "plan": {
+        "id": "3e94fd23-77b0-45d9-a98d-f2f0a7544f8b",
+        "title": "합성 수정 <script>window.__t06_xss=1</script>",
+        "description": "<img src=x onerror=window.__t06_xss=2> 문자 표시 검사",
+        "start_date": "2026-09-30",
+        "end_date": "2026-10-02",
+        "priority": "high",
+        "success_criteria": "문자 그대로 저장·표시하고 실행하지 않는다",
+        "expected_minutes": 60,
+        "version": 4,
+        "source_review_id": null,
+        "carried_improvement": "",
+        "record_origin": "synthetic",
+        "created_at": "2026-09-30T01:06:29.677Z",
+        "updated_at": "2026-09-30T01:33:50.609Z"
+      }
+    },
+    {
+      "action": "execution_created",
+      "checked_at": "2026-09-30T09:06:35.826Z",
+      "plan": {
+        "id": "3e94fd23-77b0-45d9-a98d-f2f0a7544f8b",
+        "title": "합성 수정 <script>window.__t06_xss=1</script>",
+        "description": "<img src=x onerror=window.__t06_xss=2> 문자 표시 검사",
+        "start_date": "2026-09-30",
+        "end_date": "2026-10-02",
+        "priority": "high",
+        "success_criteria": "문자 그대로 저장·표시하고 실행하지 않는다",
+        "expected_minutes": 60,
+        "version": 4,
+        "source_review_id": null,
+        "carried_improvement": "",
+        "record_origin": "synthetic",
+        "created_at": "2026-09-30T01:06:29.677Z",
+        "updated_at": "2026-09-30T01:33:50.609Z"
+      },
+      "task": {
+        "id": "cc48eabf-268d-4b26-ae62-c9bf11229e52",
+        "plan_id": "3e94fd23-77b0-45d9-a98d-f2f0a7544f8b",
+        "title": "합성 화면 보관 할 일 B · 수정됨",
+        "notes": "합성 기능 검사입니다. 실제 사용자 공부·과제 기록이 아닙니다. 할 일 B를 수정하고 완료·진행 중으로 되돌리기·삭제·복원을 확인합니다.",
+        "due_date": "2026-10-02",
+        "priority": "high",
+        "expected_minutes": 20,
+        "status": "pending",
+        "completion_cycle": 1,
+        "version": 6,
+        "deleted_at": null,
+        "record_origin": "synthetic",
+        "created_at": "2026-09-30T09:03:42.389Z",
+        "updated_at": "2026-09-30T09:05:52.308Z",
+        "tags": [
+          "검사",
+          "화면"
+        ]
+      },
+      "executions": [
+        {
+          "id": "c2a4f86f-d13d-43c7-91cb-1fb4472f688b",
+          "task_id": "cc48eabf-268d-4b26-ae62-c9bf11229e52",
+          "started_at": "2026-09-30T08:00:00.000Z",
+          "ended_at": "2026-09-30T08:12:00.000Z",
+          "actual_minutes": 12,
+          "blocked_reason": "합성 기능 검사: 실행 기록과 할 일 B 연결을 확인합니다. 실제 사용자 기록이 아닙니다.",
+          "record_origin": "synthetic",
+          "created_at": "2026-09-30T09:06:35.789Z"
+        }
+      ]
+    },
+    {
+      "checked_at": "2026-09-30T09:06:35.881Z",
+      "dialogTitle": "할 일에 연결된 기록",
+      "dialogText": "합성 화면 보관 할 일 B · 수정됨현재 상태진행 중마감일2026.10.02예상 시간20분우선순위높음할 일 ID cc48eabf-268d-4b26-ae62-c9bf11229e52 · 계획 ID 3e94fd23-77b0-45d9-a98d-f2f0a7544f8b메모 전체합성 기능 검사입니다. 실제 사용자 공부·과제 기록이 아닙니다. 할 일 B를 수정하고 완료·진행 중으로 되돌리기·삭제·복원을 확인합니다.현재 완료 주기 1의 완료 기록 0건 · 전체 완료 이력 1건. See 완료 수에는 현재 완료 상태만 반영합니다.주기 0 · 2026. 09. 30. 18:04 (서울) · 요청 9f822f76-7b5d-4e00-84d7-30fb8b815530실행 기록 1건합성 화면 보관 할 일 B · 수정됨2026. 09. 30. 17:00 → 2026. 09. 30. 17:12 (서울)12분막힌 이유 · 합성 기능 검사: 실행 기록과 할 일 B 연결을 확인합니다. 실제 사용자 기록이 아닙니다.이 할 일에 실행 기록 추가",
+      "open": true,
+      "xssMarker": "undefined"
+    }
+  ],
+  "after": {
+    "checked_at": "2026-09-30T09:09:57.035Z",
+    "counts": {
+      "plans": 1,
+      "plan_history": 4,
+      "tasks": 2,
+      "executions": 2,
+      "completion_events": 2,
+      "request_receipts": 3,
+      "reviews": 0
+    },
+    "state_sha256": "c5ed8bf20462711bd9f0495f5a087959d64ed7dc8edcc627a475ea8098e014c2",
+    "state_hash_order": "listed tables; each ORDER BY primary id (request_id for request_receipts); JSON.stringify full rows",
+    "retained_original_rows_sha256": "782a2e9cfae0baa688d4f0cf5c3aee341743fac15f0752cab2f641842ee941b1",
+    "rows": {
+      "plans": [
+        {
+          "id": "3e94fd23-77b0-45d9-a98d-f2f0a7544f8b",
+          "title": "합성 수정 <script>window.__t06_xss=1</script>",
+          "description": "<img src=x onerror=window.__t06_xss=2> 문자 표시 검사",
+          "start_date": "2026-09-30",
+          "end_date": "2026-10-02",
+          "priority": "high",
+          "success_criteria": "문자 그대로 저장·표시하고 실행하지 않는다",
+          "expected_minutes": 60,
+          "version": 4,
+          "source_review_id": null,
+          "carried_improvement": "",
+          "record_origin": "synthetic",
+          "created_at": "2026-09-30T01:06:29.677Z",
+          "updated_at": "2026-09-30T01:33:50.609Z"
+        }
+      ],
+      "plan_history": [
+        {
+          "id": "32729116-8653-46ef-9e9b-4b6681fafc05",
+          "plan_id": "3e94fd23-77b0-45d9-a98d-f2f0a7544f8b",
+          "version": 4,
+          "snapshot_json": "{\"id\":\"3e94fd23-77b0-45d9-a98d-f2f0a7544f8b\",\"title\":\"합성 수정 <script>window.__t06_xss=1</script>\",\"description\":\"<img src=x onerror=window.__t06_xss=2> 문자 표시 검사\",\"start_date\":\"2026-09-30\",\"end_date\":\"2026-10-02\",\"priority\":\"high\",\"success_criteria\":\"문자 그대로 저장·표시하고 실행하지 않는다\",\"expected_minutes\":60,\"version\":4,\"source_review_id\":null,\"carried_improvement\":\"\",\"record_origin\":\"synthetic\",\"created_at\":\"2026-09-30T01:06:29.677Z\",\"updated_at\":\"2026-09-30T01:33:50.609Z\"}",
+          "created_at": "2026-09-30T01:33:50.609Z"
+        },
+        {
+          "id": "8704f17f-ddfb-4c00-9e10-ec0e679635bd",
+          "plan_id": "3e94fd23-77b0-45d9-a98d-f2f0a7544f8b",
+          "version": 1,
+          "snapshot_json": "{\"id\":\"3e94fd23-77b0-45d9-a98d-f2f0a7544f8b\",\"title\":\"합성 검사 <script>window.__t06_xss=1</script>\",\"description\":\"<img src=x onerror=window.__t06_xss=2> 문자 표시 검사\",\"start_date\":\"2026-09-30\",\"end_date\":\"2026-10-02\",\"priority\":\"high\",\"success_criteria\":\"문자 그대로 저장·표시하고 실행하지 않는다\",\"expected_minutes\":60,\"version\":1,\"source_review_id\":null,\"carried_improvement\":\"\",\"record_origin\":\"synthetic\",\"created_at\":\"2026-09-30T01:06:29.677Z\",\"updated_at\":\"2026-09-30T01:06:29.677Z\"}",
+          "created_at": "2026-09-30T01:06:29.677Z"
+        },
+        {
+          "id": "93395d4a-50ae-4013-b562-1de9f96e990d",
+          "plan_id": "3e94fd23-77b0-45d9-a98d-f2f0a7544f8b",
+          "version": 2,
+          "snapshot_json": "{\"id\":\"3e94fd23-77b0-45d9-a98d-f2f0a7544f8b\",\"title\":\"합성 검사 <script>window.__t06_xss=1</script>\",\"description\":\"<img src=x onerror=window.__t06_xss=2> 문자 표시 검사\",\"start_date\":\"2026-09-30\",\"end_date\":\"2026-10-02\",\"priority\":\"high\",\"success_criteria\":\"문자 그대로 저장·표시하고 실행하지 않는다\",\"expected_minutes\":60,\"version\":2,\"source_review_id\":null,\"carried_improvement\":\"\",\"record_origin\":\"synthetic\",\"created_at\":\"2026-09-30T01:06:29.677Z\",\"updated_at\":\"2026-09-30T01:32:09.924Z\"}",
+          "created_at": "2026-09-30T01:32:09.924Z"
+        },
+        {
+          "id": "a8c428ea-8abb-4884-b2c6-cbe086249e64",
+          "plan_id": "3e94fd23-77b0-45d9-a98d-f2f0a7544f8b",
+          "version": 3,
+          "snapshot_json": "{\"id\":\"3e94fd23-77b0-45d9-a98d-f2f0a7544f8b\",\"title\":\"합성 검사 <script>window.__t06_xss=1</script>\",\"description\":\"<img src=x onerror=window.__t06_xss=2> 문자 표시 검사\",\"start_date\":\"2026-09-30\",\"end_date\":\"2026-10-02\",\"priority\":\"high\",\"success_criteria\":\"문자 그대로 저장·표시하고 실행하지 않는다\",\"expected_minutes\":60,\"version\":3,\"source_review_id\":null,\"carried_improvement\":\"\",\"record_origin\":\"synthetic\",\"created_at\":\"2026-09-30T01:06:29.677Z\",\"updated_at\":\"2026-09-30T01:32:59.904Z\"}",
+          "created_at": "2026-09-30T01:32:59.904Z"
+        }
+      ],
+      "tasks": [
+        {
+          "id": "148fc030-e39d-4100-8430-7677c86460dd",
+          "plan_id": "3e94fd23-77b0-45d9-a98d-f2f0a7544f8b",
+          "title": "합성 할 일 A",
+          "notes": "시험 메모 <svg onload=window.__t06_xss=3>",
+          "due_date": "2026-09-29",
+          "priority": "high",
+          "tags_json": "[\"공부\",\"검사\"]",
+          "expected_minutes": 20,
+          "status": "completed",
+          "completion_cycle": 0,
+          "version": 4,
+          "deleted_at": null,
+          "record_origin": "synthetic",
+          "created_at": "2026-09-30T01:08:11.764Z",
+          "updated_at": "2026-09-30T01:24:03.840Z"
+        },
+        {
+          "id": "cc48eabf-268d-4b26-ae62-c9bf11229e52",
+          "plan_id": "3e94fd23-77b0-45d9-a98d-f2f0a7544f8b",
+          "title": "합성 화면 보관 할 일 B · 수정됨",
+          "notes": "합성 기능 검사입니다. 실제 사용자 공부·과제 기록이 아닙니다. 할 일 B를 수정하고 완료·진행 중으로 되돌리기·삭제·복원을 확인합니다.",
+          "due_date": "2026-10-02",
+          "priority": "high",
+          "tags_json": "[\"검사\",\"화면\"]",
+          "expected_minutes": 20,
+          "status": "pending",
+          "completion_cycle": 1,
+          "version": 6,
+          "deleted_at": null,
+          "record_origin": "synthetic",
+          "created_at": "2026-09-30T09:03:42.389Z",
+          "updated_at": "2026-09-30T09:05:52.308Z"
+        }
+      ],
+      "executions": [
+        {
+          "id": "c2a4f86f-d13d-43c7-91cb-1fb4472f688b",
+          "task_id": "cc48eabf-268d-4b26-ae62-c9bf11229e52",
+          "started_at": "2026-09-30T08:00:00.000Z",
+          "ended_at": "2026-09-30T08:12:00.000Z",
+          "actual_minutes": 12,
+          "blocked_reason": "합성 기능 검사: 실행 기록과 할 일 B 연결을 확인합니다. 실제 사용자 기록이 아닙니다.",
+          "record_origin": "synthetic",
+          "created_at": "2026-09-30T09:06:35.789Z"
+        },
+        {
+          "id": "c63eee55-e17d-4780-8288-b2034c34dbda",
+          "task_id": "148fc030-e39d-4100-8430-7677c86460dd",
+          "started_at": "2026-09-30T00:00:00.000Z",
+          "ended_at": "2026-09-30T00:25:00.000Z",
+          "actual_minutes": 25,
+          "blocked_reason": "합성 검사: 자료 확인에 막힘 <script>window.__t06_xss=4</script>",
+          "record_origin": "synthetic",
+          "created_at": "2026-09-30T01:10:47.447Z"
+        }
+      ],
+      "completion_events": [
+        {
+          "id": "b41b45e7-a265-46ed-b62d-a31c41b93097",
+          "task_id": "148fc030-e39d-4100-8430-7677c86460dd",
+          "cycle": 0,
+          "request_id": "b90e2af5-5497-4786-a134-493057afaa9a",
+          "completed_at": "2026-09-30T01:17:08.168Z"
+        },
+        {
+          "id": "eb3d3328-f366-4149-9dbd-3f83fa17cf50",
+          "task_id": "cc48eabf-268d-4b26-ae62-c9bf11229e52",
+          "cycle": 0,
+          "request_id": "9f822f76-7b5d-4e00-84d7-30fb8b815530",
+          "completed_at": "2026-09-30T09:04:19.544Z"
+        }
+      ],
+      "request_receipts": [
+        {
+          "request_id": "9f822f76-7b5d-4e00-84d7-30fb8b815530",
+          "action": "task.complete",
+          "resource_id": "cc48eabf-268d-4b26-ae62-c9bf11229e52",
+          "response_json": "{\"entity\":{\"id\":\"cc48eabf-268d-4b26-ae62-c9bf11229e52\",\"plan_id\":\"3e94fd23-77b0-45d9-a98d-f2f0a7544f8b\",\"title\":\"합성 화면 보관 할 일 B · 수정됨\",\"notes\":\"합성 기능 검사입니다. 실제 사용자 공부·과제 기록이 아닙니다. 할 일 B를 수정하고 완료·진행 중으로 되돌리기·삭제·복원을 확인합니다.\",\"due_date\":\"2026-10-02\",\"priority\":\"high\",\"expected_minutes\":20,\"status\":\"completed\",\"completion_cycle\":0,\"version\":3,\"deleted_at\":null,\"record_origin\":\"synthetic\",\"created_at\":\"2026-09-30T09:03:42.389Z\",\"updated_at\":\"2026-09-30T09:04:19.544Z\",\"tags\":[\"검사\",\"화면\"]},\"changed\":true,\"event\":{\"id\":\"eb3d3328-f366-4149-9dbd-3f83fa17cf50\",\"task_id\":\"cc48eabf-268d-4b26-ae62-c9bf11229e52\",\"cycle\":0,\"request_id\":\"9f822f76-7b5d-4e00-84d7-30fb8b815530\",\"completed_at\":\"2026-09-30T09:04:19.544Z\"}}",
+          "created_at": "2026-09-30T09:04:19.544Z"
+        },
+        {
+          "request_id": "b90e2af5-5497-4786-a134-493057afaa9a",
+          "action": "task.complete",
+          "resource_id": "148fc030-e39d-4100-8430-7677c86460dd",
+          "response_json": "{\"entity\":{\"id\":\"148fc030-e39d-4100-8430-7677c86460dd\",\"plan_id\":\"3e94fd23-77b0-45d9-a98d-f2f0a7544f8b\",\"title\":\"합성 할 일 A\",\"notes\":\"시험 메모 <svg onload=window.__t06_xss=3>\",\"due_date\":\"2026-09-29\",\"priority\":\"high\",\"expected_minutes\":20,\"status\":\"completed\",\"completion_cycle\":0,\"version\":2,\"deleted_at\":null,\"record_origin\":\"synthetic\",\"created_at\":\"2026-09-30T01:08:11.764Z\",\"updated_at\":\"2026-09-30T01:17:08.168Z\",\"tags\":[\"공부\",\"검사\"]},\"changed\":true,\"event\":{\"id\":\"b41b45e7-a265-46ed-b62d-a31c41b93097\",\"task_id\":\"148fc030-e39d-4100-8430-7677c86460dd\",\"cycle\":0,\"request_id\":\"b90e2af5-5497-4786-a134-493057afaa9a\",\"completed_at\":\"2026-09-30T01:17:08.168Z\"}}",
+          "created_at": "2026-09-30T01:17:08.168Z"
+        },
+        {
+          "request_id": "dd342c49-d8ce-4a27-90b5-dccfd3a00c98",
+          "action": "task.reopen",
+          "resource_id": "cc48eabf-268d-4b26-ae62-c9bf11229e52",
+          "response_json": "{\"entity\":{\"id\":\"cc48eabf-268d-4b26-ae62-c9bf11229e52\",\"plan_id\":\"3e94fd23-77b0-45d9-a98d-f2f0a7544f8b\",\"title\":\"합성 화면 보관 할 일 B · 수정됨\",\"notes\":\"합성 기능 검사입니다. 실제 사용자 공부·과제 기록이 아닙니다. 할 일 B를 수정하고 완료·진행 중으로 되돌리기·삭제·복원을 확인합니다.\",\"due_date\":\"2026-10-02\",\"priority\":\"high\",\"expected_minutes\":20,\"status\":\"pending\",\"completion_cycle\":1,\"version\":4,\"deleted_at\":null,\"record_origin\":\"synthetic\",\"created_at\":\"2026-09-30T09:03:42.389Z\",\"updated_at\":\"2026-09-30T09:04:19.594Z\",\"tags\":[\"검사\",\"화면\"]},\"changed\":true}",
+          "created_at": "2026-09-30T09:04:19.594Z"
+        }
+      ],
+      "reviews": []
+    }
+  },
+  "actual_actions": [
+    {
+      "action": "task.create",
+      "method": "gstack /browse actual UI interaction followed by DOM or localhost /api/state observation",
+      "observed_at": "2026-09-30T09:03:43.063Z",
+      "record_origin": "synthetic",
+      "resource_id": "cc48eabf-268d-4b26-ae62-c9bf11229e52",
+      "observed": {
+        "status": "pending",
+        "version": 1,
+        "completion_cycle": 0,
+        "title": "합성 화면 보관 할 일 B",
+        "expected_minutes": 20,
+        "due_date": "2026-10-02",
+        "priority": "high",
+        "tags": [
+          "검사",
+          "화면"
+        ]
+      },
+      "screenshots": [
+        "verification/synthetic-task-edit-reopen.png"
+      ],
+      "persisted_created_at": "2026-09-30T09:03:42.389Z"
+    },
+    {
+      "action": "task.update",
+      "method": "gstack /browse actual UI interaction followed by DOM or localhost /api/state observation",
+      "observed_at": "2026-09-30T09:04:19.464Z",
+      "record_origin": "synthetic",
+      "resource_id": "cc48eabf-268d-4b26-ae62-c9bf11229e52",
+      "observed": {
+        "status": "pending",
+        "version": 2,
+        "completion_cycle": 0,
+        "title": "합성 화면 보관 할 일 B · 수정됨",
+        "completion_events": 0
+      },
+      "screenshots": [
+        "verification/synthetic-task-edit-reopen.png"
+      ],
+      "persisted_updated_at": "2026-09-30T09:04:19.428Z"
+    },
+    {
+      "action": "task.complete",
+      "method": "gstack /browse actual UI interaction followed by DOM or localhost /api/state observation",
+      "observed_at": "2026-09-30T09:04:19.557Z",
+      "record_origin": "synthetic",
+      "resource_id": "cc48eabf-268d-4b26-ae62-c9bf11229e52",
+      "observed": {
+        "status": "completed",
+        "version": 3,
+        "completion_cycle": 0,
+        "title": "합성 화면 보관 할 일 B · 수정됨",
+        "completion_events": 1
+      },
+      "screenshots": [
+        "verification/synthetic-task-edit-reopen.png"
+      ],
+      "persisted_updated_at": "2026-09-30T09:04:19.544Z",
+      "screen_limit": "Screenshot shows the reopened final state; completion is evidenced by retained event and API observation."
+    },
+    {
+      "action": "task.reopen",
+      "method": "gstack /browse actual UI interaction followed by DOM or localhost /api/state observation",
+      "observed_at": "2026-09-30T09:04:19.608Z",
+      "record_origin": "synthetic",
+      "resource_id": "cc48eabf-268d-4b26-ae62-c9bf11229e52",
+      "observed": {
+        "status": "pending",
+        "version": 4,
+        "completion_cycle": 1,
+        "title": "합성 화면 보관 할 일 B · 수정됨",
+        "completion_events": 1
+      },
+      "screenshots": [
+        "verification/synthetic-task-edit-reopen.png"
+      ],
+      "persisted_updated_at": "2026-09-30T09:04:19.594Z"
+    },
+    {
+      "action": "task.delete",
+      "method": "gstack /browse actual UI interaction followed by DOM or localhost /api/state observation",
+      "observed_at": "2026-09-30T09:04:56.106Z",
+      "record_origin": "synthetic",
+      "resource_id": "cc48eabf-268d-4b26-ae62-c9bf11229e52",
+      "observed": {
+        "status": "pending",
+        "version": 5,
+        "completion_cycle": 1,
+        "deleted_at": "2026-09-30T09:04:56.024Z",
+        "excluded_from_active_list": true,
+        "visible_in_deleted_section": true
+      },
+      "screenshots": [
+        "verification/synthetic-task-delete.png"
+      ]
+    },
+    {
+      "action": "task.restore",
+      "method": "gstack /browse actual UI interaction followed by DOM or localhost /api/state observation",
+      "observed_at": "2026-09-30T09:05:52.322Z",
+      "record_origin": "synthetic",
+      "resource_id": "cc48eabf-268d-4b26-ae62-c9bf11229e52",
+      "observed": {
+        "status": "pending",
+        "version": 6,
+        "completion_cycle": 1,
+        "deleted_at": null,
+        "completion_events": 1
+      },
+      "screenshots": [
+        "verification/synthetic-search-filter-sort.png"
+      ]
+    },
+    {
+      "action": "task.search_status_priority_tag_filter",
+      "method": "gstack /browse actual UI interaction followed by DOM or localhost /api/state observation",
+      "observed_at": "2026-09-30T09:05:52.361Z",
+      "record_origin": "synthetic",
+      "resource_id": "cc48eabf-268d-4b26-ae62-c9bf11229e52",
+      "observed": {
+        "action": "filtered_pending_specific_tag",
+        "checked_at": "2026-09-30T09:05:52.361Z",
+        "filters": {
+          "search": "수정됨",
+          "status": "pending",
+          "priority": "high",
+          "tag": "화면",
+          "sort": "created"
+        },
+        "visibleIds": [
+          "cc48eabf-268d-4b26-ae62-c9bf11229e52"
+        ]
+      },
+      "screenshots": [
+        "verification/synthetic-search-filter-sort.png"
+      ],
+      "screen_limit": "Screenshot displays subsequent all-status/two-result state; exact pending filter result is preserved in this DOM observation."
+    },
+    {
+      "action": "task.sort",
+      "method": "gstack /browse actual UI interaction followed by DOM or localhost /api/state observation",
+      "observed_at": "2026-09-30T09:05:52.379Z",
+      "record_origin": "synthetic",
+      "resource_id": "cc48eabf-268d-4b26-ae62-c9bf11229e52",
+      "observed": {
+        "action": "filtered_and_sorted_two_results",
+        "checked_at": "2026-09-30T09:05:52.379Z",
+        "filters": {
+          "search": "합성",
+          "status": "all",
+          "priority": "high",
+          "tag": "검사",
+          "sort": "created"
+        },
+        "visibleTasks": [
+          {
+            "id": "cc48eabf-268d-4b26-ae62-c9bf11229e52",
+            "title": "합성 화면 보관 할 일 B · 수정됨"
+          },
+          {
+            "id": "148fc030-e39d-4100-8430-7677c86460dd",
+            "title": "합성 할 일 A"
+          }
+        ],
+        "sortRule": "화면에서 검색·필터·정렬합니다. 동률 처리: 생성 시각 최근 순 → ID 순"
+      },
+      "screenshots": [
+        "verification/synthetic-search-filter-sort.png"
+      ]
+    },
+    {
+      "action": "execution.create",
+      "method": "gstack /browse actual UI interaction followed by DOM or localhost /api/state observation",
+      "observed_at": "2026-09-30T09:06:35.826Z",
+      "record_origin": "synthetic",
+      "resource_id": "cc48eabf-268d-4b26-ae62-c9bf11229e52",
+      "observed": {
+        "id": "c2a4f86f-d13d-43c7-91cb-1fb4472f688b",
+        "task_id": "cc48eabf-268d-4b26-ae62-c9bf11229e52",
+        "actual_minutes": 12,
+        "started_at": "2026-09-30T08:00:00.000Z",
+        "ended_at": "2026-09-30T08:12:00.000Z",
+        "entered_in_seoul": {
+          "start": "2026-09-30T17:00",
+          "end": "2026-09-30T17:12"
+        },
+        "plan_unchanged": true,
+        "task_expected_minutes": 20
+      },
+      "screenshots": [
+        "verification/synthetic-execution-link.png"
+      ],
+      "persisted_created_at": "2026-09-30T09:06:35.789Z"
+    },
+    {
+      "action": "task.completion_history_and_execution_details",
+      "method": "gstack /browse actual UI interaction followed by DOM or localhost /api/state observation",
+      "observed_at": "2026-09-30T09:06:35.881Z",
+      "record_origin": "synthetic",
+      "resource_id": "cc48eabf-268d-4b26-ae62-c9bf11229e52",
+      "observed": {
+        "current_status": "pending",
+        "completion_cycle": 1,
+        "current_cycle_completion_count": 0,
+        "whole_completion_history_count": 1,
+        "linked_execution_count": 1,
+        "linked_actual_minutes": 12
+      },
+      "screenshots": [
+        "verification/synthetic-execution-link.png"
+      ]
+    }
+  ],
+  "retained_original_rows": {
+    "result": "pass",
+    "method": "After rows excluding newly created B and its execution/completion/request receipts hash identically to before.",
+    "before_sha256": "782a2e9cfae0baa688d4f0cf5c3aee341743fac15f0752cab2f641842ee941b1",
+    "after_subset_sha256": "782a2e9cfae0baa688d4f0cf5c3aee341743fac15f0752cab2f641842ee941b1"
+  },
+  "cleanup": {
+    "server_pid": 21288,
+    "server_port": 8007,
+    "checked_at": "2026-09-30T09:09:56.4367597Z",
+    "active_listeners": 0,
+    "browse_state_file": "C:/Users/Administrator/.gstack/t06-screen-evidence/browse.json",
+    "browse_state_file_exists_after_stop": false,
+    "browse_stop_outcome": "stop command exited 1 after Server connection lost / Server crashed twice; own state file absent on subsequent filesystem check. App QA completed before cleanup.",
+    "personal_chrome_accessed": false
+  },
+  "scope": {
+    "new_files": [
+      "verification/synthetic-task-edit-reopen.png",
+      "verification/synthetic-task-delete.png",
+      "verification/synthetic-search-filter-sort.png",
+      "verification/synthetic-execution-link.png",
+      "verification/synthetic-screen-evidence.json"
+    ],
+    "runtime_sources_changed": false,
+    "public_supabase_accessed": false,
+    "user_diary_database_accessed": false,
+    "mutated_database": ".test-data/browser.sqlite",
+    "mutation": "Only newly created synthetic B and linked rows; original rows hash unchanged.",
+    "original_database_left_in_place": true
+  },
+  "finished_at": "2026-09-30T09:11:28.983Z",
+  "result": "pass"
+}
